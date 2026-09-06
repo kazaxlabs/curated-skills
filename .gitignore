@@ -1,0 +1,21 @@
+﻿# Exclude unrequested workspaces & heavy local databases
+ontology_research/
+openclaw_sandbox/
+servers/
+.playwright-mcp/
+.antigravity-install-manifest.json
+fetch_transcripts.py
+package-lock.json
+
+# Virtual environments & dependencies
+.venv_311/
+**/.venv/
+**/venv/
+**/node_modules/
+**/__pycache__/
+*.py[cod]
+
+# Temporary & OS artifacts
+.DS_Store
+Thumbs.db
+*.log

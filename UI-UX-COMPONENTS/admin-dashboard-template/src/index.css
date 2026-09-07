@@ -1,0 +1,382 @@
+:root {
+  /* =======================================================================
+     KAZALABS CANONICAL BRAND DESIGN TOKENS (SPATIAL STUDIO / ATLAS)
+     ======================================================================= */
+  --color-ink: #000000;
+  --color-graphite: #55585b;
+  --color-slate: #737373;
+  --color-ash: #8a8d90;
+  --color-hairline: #e5e5e5;
+  --color-hairline-subtle: #f0f0f0;
+  
+  --surface-canvas: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-recessed: #f1f5f9;
+  --surface-overlay: rgba(15, 23, 42, 0.45);
+  
+  --brand-border: var(--color-hairline);
+  --brand-border-hover: var(--color-ink);
+  
+  --brand-text-primary: var(--color-ink);
+  --brand-text-secondary: var(--color-graphite);
+  --brand-text-muted: var(--color-slate);
+  --brand-text-subtle: var(--color-ash);
+  
+  /* OPERATIONAL TRUTH & ANOMALY SIGNALS */
+  --signal-live: #059669;
+  --signal-live-bg: #ecfdf5;
+  --signal-live-border: #a7f3d0;
+  
+  --signal-risk: #d97706;
+  --signal-risk-bg: #fffbeb;
+  --signal-risk-border: #fde68a;
+  
+  --signal-danger: #dc2626;
+  --signal-danger-bg: #fef2f2;
+  --signal-danger-border: #fecaca;
+
+  --signal-info: #2563eb;
+  --signal-info-bg: #eff6ff;
+  --signal-info-border: #bfdbfe;
+
+  --signal-purple: #7c3aed;
+  --signal-purple-bg: #f5f3ff;
+  --signal-purple-border: #ddd6fe;
+  
+  /* SOLE BRAND FONT: MONTSERRAT EXCLUSIVELY + JETBRAINS MONO */
+  --font-brand: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --sidebar-width-collapsed: 56px;
+  --sidebar-width-expanded: 240px;
+  --topbar-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-brand);
+}
+
+body {
+  background-color: var(--surface-canvas);
+  color: var(--brand-text-primary);
+  font-family: var(--font-brand);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* =========================================================================
+   SCROLLBAR & SELECTION
+   ========================================================================= */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ash);
+}
+
+/* =========================================================================
+   BUTTONS & CONTROLS
+   ========================================================================= */
+button {
+  font-family: var(--font-brand);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: #ffffff;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--color-ink);
+}
+
+.btn-primary:hover {
+  background: #27272a;
+  border-color: #27272a;
+}
+
+.btn-secondary {
+  background: var(--surface-card);
+  color: var(--brand-text-primary);
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--color-hairline);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-recessed);
+  border-color: var(--color-ash);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brand-text-secondary);
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 4px;
+}
+
+.btn-ghost:hover {
+  background: var(--surface-recessed);
+  color: var(--brand-text-primary);
+}
+
+.btn-danger {
+  background: var(--signal-danger-bg);
+  color: var(--signal-danger);
+  border: 1px solid var(--signal-danger-border);
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+}
+
+.btn-danger:hover {
+  background: var(--signal-danger);
+  color: #ffffff;
+}
+
+/* =========================================================================
+   BADGES & PILLS
+   ========================================================================= */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-live {
+  background: var(--signal-live-bg);
+  color: var(--signal-live);
+  border: 1px solid var(--signal-live-border);
+}
+
+.badge-risk {
+  background: var(--signal-risk-bg);
+  color: var(--signal-risk);
+  border: 1px solid var(--signal-risk-border);
+}
+
+.badge-danger {
+  background: var(--signal-danger-bg);
+  color: var(--signal-danger);
+  border: 1px solid var(--signal-danger-border);
+}
+
+.badge-info {
+  background: var(--signal-info-bg);
+  color: var(--signal-info);
+  border: 1px solid var(--signal-info-border);
+}
+
+.badge-neutral {
+  background: var(--surface-recessed);
+  color: var(--brand-text-secondary);
+  border: 1px solid var(--color-hairline);
+}
+
+/* =========================================================================
+   DATA TABLES
+   ========================================================================= */
+.data-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-hairline);
+  border-radius: 4px;
+  background: var(--surface-card);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.data-table th {
+  padding: 10px 14px;
+  background: #fdfdfd;
+  color: var(--brand-text-secondary);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--color-hairline);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-hairline-subtle);
+  color: var(--brand-text-primary);
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background-color: #fafbfc;
+}
+
+/* =========================================================================
+   INPUTS & FORMS
+   ========================================================================= */
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: var(--font-brand);
+  background: var(--surface-card);
+  border: 1px solid var(--color-hairline);
+  border-radius: 4px;
+  color: var(--brand-text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus {
+  border-color: var(--color-ink);
+}
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--brand-text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+/* =========================================================================
+   SLIDE-OUT DRAWER & MODAL OVERLAY
+   ========================================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--surface-overlay);
+  backdrop-filter: blur(2px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+
+.modal-content {
+  background: var(--surface-card);
+  border: 1px solid var(--color-hairline);
+  border-radius: 6px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 580px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: scaleIn 0.15s ease;
+}
+
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--surface-overlay);
+  backdrop-filter: blur(2px);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.15s ease;
+}
+
+.drawer-content {
+  background: var(--surface-card);
+  border-left: 1px solid var(--color-hairline);
+  box-shadow: -10px 0 25px -5px rgba(0, 0, 0, 0.08);
+  width: 480px;
+  max-width: 95vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

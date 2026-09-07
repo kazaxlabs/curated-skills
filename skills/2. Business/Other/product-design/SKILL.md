@@ -1,6 +1,6 @@
 ---
 name: product-design
-description: "Design de produto nivel Apple — sistemas visuais, UX flows, acessibilidade, linguagem visual proprietaria, design tokens, prototipagem e handoff. Cobre Figma, design systems, tipografia, cor, espacamento, motion design e principios de design cognitivo."
+description: "Apple-level product design — visual systems, UX flows, accessibility, proprietary visual language, design tokens, prototyping, and handoff. Covers Figma, design systems, typography, color, spacing, motion design, and cognitive design principles."
 risk: none
 source: community
 date_added: '2026-03-06'
@@ -19,11 +19,11 @@ tools:
 - codex-cli
 ---
 
-# PRODUCT DESIGN — Nivel Apple
+# PRODUCT DESIGN — Apple-Level
 
 ## Overview
 
-Design de produto nivel Apple — sistemas visuais, UX flows, acessibilidade, linguagem visual proprietaria, design tokens, prototipagem e handoff. Cobre Figma, design systems, tipografia, cor, espacamento, motion design e principios de design cognitivo. Ativar para: criar design system, definir visual language, revisar UX, acessibilidade, tokens de design, branding de produto, UI critique.
+Apple-level product design — visual systems, UX flows, accessibility, proprietary visual language, design tokens, prototyping, and handoff. Covers Figma, design systems, typography, color, spacing, motion design, and cognitive design principles. Activate to: create design systems, define visual language, review UX, accessibility, design tokens, product branding, and UI critique.
 
 ## When to Use This Skill
 
@@ -42,55 +42,55 @@ Design de produto nivel Apple — sistemas visuais, UX flows, acessibilidade, li
 
 ---
 
-## Os 10 Principios De Jony Ive / Apple
+## The 10 Principles of Jony Ive / Apple
 
-1. **Simplicidade radical** — remova tudo que nao e essencial
-2. **Honestidade material** — cada elemento existe por uma razao
-3. **Menos e mais** — restraint e uma decisao de design
-4. **Coerencia sistemica** — tudo faz parte de um sistema unico
-5. **Detalhes importam** — o usuario sente, mesmo sem notar
-6. **Funcao define forma** — a estetica serve ao proposito
-7. **Durabilidade** — design que envelhece bem
-8. **Acessibilidade como padrao** — nao como adicional
-9. **Continuidade entre telas** — experiencia unificada
-10. **Surpresa deleitosa** — o inesperado que encanta
+1. **Radical simplicity** — remove everything that is non-essential
+2. **Material honesty** — every element exists for a reason
+3. **Less is more** — restraint is a design decision
+4. **Systemic coherence** — everything is part of a single unified system
+5. **Details matter** — the user feels them, even without noticing
+6. **Function defines form** — aesthetics serve purpose
+7. **Durability** — design that ages well
+8. **Accessibility by default** — not as an add-on
+9. **Continuity across screens** — unified experience
+10. **Delightful surprise** — the unexpected that charms
 
-## Design Cognitivo
+## Cognitive Design
 
-- **Carga cognitiva zero** — o usuario nunca deve pensar
-- **Affordances claras** — o que e clicavel parece clicavel
-- **Feedback imediato** — toda acao tem resposta visual
-- **Erros previnem-se** — design que impossibilita erros
+- **Zero cognitive load** — the user should never have to stop and think
+- **Clear affordances** — what is clickable looks clickable
+- **Immediate feedback** — every action has a visual response
+- **Error prevention** — design that makes mistakes impossible
 
 ---
 
-## Estrutura De Um Design System De Elite
+## Structure of an Elite Design System
 
 ```
 design-system/
 ├── tokens/
-│   ├── colors.json       # paleta completa com semantica
-│   ├── typography.json   # escala tipografica
-│   ├── spacing.json      # grid e espacamento
-│   ├── shadows.json      # elevacao e profundidade
-│   ├── motion.json       # duracao e easing
-│   └── radius.json       # bordas arredondadas
+│   ├── colors.json       # full palette with semantic mapping
+│   ├── typography.json   # typographic scale
+│   ├── spacing.json      # grid and spacing scale
+│   ├── shadows.json      # elevation and depth
+│   ├── motion.json       # duration and easing
+│   └── radius.json       # border radii
 ├── components/
 │   ├── atoms/            # Button, Input, Icon, Badge
 │   ├── molecules/        # Card, Form, NavItem
 │   └── organisms/        # Header, Sidebar, Modal
 ├── patterns/
-│   ├── onboarding.md     # primeiro acesso
-│   ├── empty-states.md   # estados vazios
-│   ├── loading.md        # estados de carregamento
-│   └── errors.md         # tratamento de erros
+│   ├── onboarding.md     # first-time user experience
+│   ├── empty-states.md   # zero-data states
+│   ├── loading.md        # loading states
+│   └── errors.md         # error handling
 └── guidelines/
-    ├── voice-tone.md     # voz e tom
-    ├── imagery.md        # fotografia e ilustracao
+    ├── voice-tone.md     # voice and tone
+    ├── imagery.md        # photography and illustration
     └── accessibility.md  # WCAG 2.1 AA
 ```
 
-## Design Tokens — Exemplo Auri
+## Design Tokens — Auri Example
 
 ```json
 {
@@ -147,196 +147,196 @@ design-system/
 
 ---
 
-## Estrutura De Um Ux Flow
+## Structure of a UX Flow
 
 ```
-1. Entry Point (como o usuario chega)
-2. Context (o que o usuario sabe/quer)
-3. Action (o que o usuario faz)
-4. Feedback (resposta imediata do sistema)
-5. Outcome (o que o usuario conseguiu)
-6. Next Step (o que vem depois naturalmente)
+1. Entry Point (how the user arrives)
+2. Context (what the user knows/wants)
+3. Action (what the user does)
+4. Feedback (immediate system response)
+5. Outcome (what the user achieved)
+6. Next Step (what naturally comes next)
 ```
 
-## Onboarding De Elite (Primeiros 5 Minutos)
+## Elite Onboarding (First 5 Minutes)
 
 ```
-Tela 1: Promessa — "O que voce vai conseguir"
-  - Uma frase impactante
-  - Uma imagem que mostra o resultado
-  - CTA: "Comecar" (nao "Criar conta")
+Screen 1: Promise — "What you will achieve"
+  - One high-impact sentence
+  - An image demonstrating the outcome
+  - CTA: "Get Started" (not "Create account")
 
-Tela 2: Acao imediata — primeiro valor antes de cadastro
-  - Deixe o usuario experimentar algo real
-  - Formulario minimo (email apenas)
-  - Progresso visivel (1 de 3)
+Screen 2: Immediate action — initial value before sign-up
+  - Let the user experience something real
+  - Minimal form (email only)
+  - Visible progress indicator (1 of 3)
 
-Tela 3: Personalizacao — "Me conte sobre voce"
-  - Max 3 perguntas
-  - Visual, nao texto
-  - Pula disponivel sempre
+Screen 3: Personalization — "Tell us about yourself"
+  - Max 3 questions
+  - Visual selection, not text entry
+  - Skip option always available
 
-Tela 4: Momento Aha — primeiro sucesso real
-  - O usuario faz algo que funciona
-  - Celebracao genuina (nao excessiva)
-  - "Voce acabou de [acao de valor]"
+Screen 4: Aha Moment — first genuine success
+  - The user completes an action that works
+  - Genuine celebration (not exaggerated)
+  - "You just completed [high-value action]"
 ```
 
-## Empty States Que Encantam
+## Empty States That Delight
 
 ```
-Nao mostre: "Nenhum item encontrado"
-Mostre:
-  - Ilustracao contextual
-  - Mensagem de oportunidade: "Ainda nao ha [X]. Crie o primeiro!"
-  - CTA primario
-  - Talvez: dica de como comecar
-```
-
----
-
-## Principios Unicos Para Voice Ui
-
-1. **Zero carga visual** — o usuario nao ve nada (apenas ouve)
-2. **Reversibilidade facil** — "desfazer" e sempre possivel
-3. **Confirmacao opcional** — so para acoes irreversiveis
-4. **Variedade de resposta** — nunca a mesma frase duas vezes
-5. **Silencio e ok** — pausa de 2s antes de perguntar se precisa de ajuda
-
-## Estrutura De Resposta De Voz
-
-```
-[Hook opcional] + [Resposta core] + [Acao ou pergunta]
-
-Ruim: "Desculpe, nao entendi o que voce disse. Pode repetir?"
-Bom:  "Nao captei bem. Pode repetir de outro jeito?"
-
-Ruim: "Claro! Posso ajudar com isso. A resposta para sua pergunta e..."
-Bom:  "A resposta e: [resposta direta]"
-```
-
-## Scripts De Interacao Auri
-
-```
-Primeiro uso:
-"Oi! Sou a Auri. Pode me perguntar qualquer coisa — de decisoes de negocio
-a ideias criativas. Como posso ajudar hoje?"
-
-Retorno (usuario ja conhecido):
-"Bem-vindo de volta! Onde paramos foi em [topico]. Quer continuar?"
-
-Nao entendeu:
-"Nao peguei bem. Tenta de outro jeito?"
-
-Encerramento:
-"Qualquer coisa, e so chamar. Ate logo!"
+Do not show: "No items found"
+Show instead:
+  - Contextual illustration
+  - Opportunity-driven message: "There is no [X] yet. Create your first one!"
+  - Primary CTA
+  - Optional: quick tip on how to get started
 ```
 
 ---
 
-## Framework De Critica Construtiva
+## Unique Principles for Voice UI
+
+1. **Zero visual load** — the user sees nothing (hears only)
+2. **Effortless reversibility** — "undo" is always possible
+3. **Optional confirmation** — only for irreversible actions
+4. **Response variety** — never the exact same phrase twice
+5. **Silence is okay** — 2-second pause before asking if help is needed
+
+## Voice Response Structure
 
 ```
-1. OBSERVACAO: O que eu vejo (sem julgamento)
-   "Noto que o botao principal esta no canto inferior direito"
+[Optional Hook] + [Core Answer] + [Action or Follow-up Question]
 
-2. PRINCIPIO: Qual principio esta sendo testado
-   "Hierarquia visual e posicionamento de CTA primario"
+Bad:  "Sorry, I didn't understand what you said. Could you repeat that?"
+Good: "I didn't quite catch that. Could you say it another way?"
 
-3. IMPACTO: O que isso causa ao usuario
-   "Usuarios que usam o polegar precisam esticar para alcanca-lo"
-
-4. ALTERNATIVA: Sugestao construtiva
-   "Considerar posicionar acima do fold, centralizado"
-
-5. TRADE-OFF: O que se perde/ganha
-   "Mais acessivel, mas perde area para conteudo"
+Bad:  "Sure! I can help with that. The answer to your question is..."
+Good: "The answer is: [direct answer]"
 ```
 
-## Checklist De Critica De Ui
-
-- [ ] Hierarquia visual clara (o olho sabe para onde ir)
-- [ ] Contraste adequado (WCAG AA: 4.5:1 para texto)
-- [ ] Tamanho de toque minimo (44x44px em mobile)
-- [ ] Consistencia com design system
-- [ ] Estados interativos definidos (hover/active/disabled/focus)
-- [ ] Responsividade (mobile-first)
-- [ ] Loading states e empty states
-- [ ] Tratamento de erros com mensagem util
-- [ ] Acessibilidade (labels, roles ARIA, keyboard nav)
-- [ ] Performance percebida (skeleton screens, optimistic UI)
-
----
-
-## Conceito Visual
-
-A Auri e **inteligencia com calor humano**. Nao e um robo — e uma presenca.
-A identidade visual deve comunicar: sofisticacao acessivel.
-
-## Paleta Principal
+## Auri Interaction Scripts
 
 ```
-Roxo Auri:     #6C63FF  — identidade, inteligencia, inovacao
-Rosa Auri:     #FF6B9D  — calor, empatia, humanidade
-Branco Puro:   #FFFFFF  — clareza, espaco, respiro
-Grafite Suave: #1A1A2E  — autoridade, profundidade, noite
-```
+First Use:
+"Hi! I'm Auri. You can ask me anything — from business decisions
+to creative ideas. How can I help today?"
 
-## Tipografia
+Returning User:
+"Welcome back! Where we left off was in [topic]. Want to continue?"
 
-```
-Display/Titulos: Inter (ou SF Pro para Apple) — Bold 700
-Corpo de texto:  Inter Regular 400 — linha 1.6
-Mono/Codigo:     JetBrains Mono — para elementos tecnicos
-```
+Not Understood:
+"I didn't quite catch that. Try saying it another way?"
 
-## Logo Conceito
-
-```
-Forma: Onda de audio estilizada formando a letra "A"
-Cor: Gradiente roxo → rosa (esquerda para direita)
-Espaco negativo: Sugestao de microfone ou ear
-Versao dark/light: Ambas definidas
-Tamanho minimo: 24px (icone), 120px (lockup completo)
+Sign-Off:
+"If you need anything, just reach out. See you soon!"
 ```
 
 ---
 
-## Stack De Design
-
-| Ferramenta | Uso |
-|-----------|-----|
-| Figma | Design de UI, prototipagem, handoff |
-| FigJam | User journeys, workshops, ideacao |
-| Zeroheight | Documentacao do design system |
-| Lottie | Animacoes (exportadas do After Effects/Figma) |
-| Mobbin | Referencia de patterns de UI |
-| Screenlane | Inspiracao de UI real |
-
-## Processo De Design Sprint (5 Dias)
+## Constructive Critique Framework
 
 ```
-Segunda: Entender — pesquisa, user interviews, definir o problema
-Terca:   Divergir — crazy 8s, sketches individuais, lightning demos
-Quarta:  Decidir — vote, storyboard, decisao final
-Quinta:  Prototipar — prototipo de alta fidelidade no Figma
-Sexta:   Testar — 5 usuarios, insights, iterar
+1. OBSERVATION: What I see (objective, non-judgmental)
+   "I notice the primary button is in the bottom-right corner"
+
+2. PRINCIPLE: Which design principle is being tested
+   "Visual hierarchy and primary CTA positioning"
+
+3. IMPACT: How this affects the user
+   "Users navigating with their thumb have to stretch to reach it"
+
+4. ALTERNATIVE: Constructive suggestion
+   "Consider placing it above the fold, centered"
+
+5. TRADE-OFF: What is gained versus lost
+   "More accessible, but reduces available content area"
+```
+
+## UI Critique Checklist
+
+- [ ] Clear visual hierarchy (the eye instinctively knows where to go)
+- [ ] Adequate contrast (WCAG AA: 4.5:1 for body text)
+- [ ] Minimum touch target size (44x44px on mobile)
+- [ ] Consistency with the design system
+- [ ] Defined interactive states (hover/active/disabled/focus)
+- [ ] Responsiveness (mobile-first)
+- [ ] Loading states and empty states accounted for
+- [ ] Error handling with helpful, actionable messages
+- [ ] Accessibility (labels, ARIA roles, keyboard navigation)
+- [ ] Perceived performance (skeleton screens, optimistic UI)
+
+---
+
+## Visual Concept
+
+Auri is **intelligence with human warmth**. Not a robot — a presence.
+The visual identity must communicate: accessible sophistication.
+
+## Primary Palette
+
+```
+Auri Purple:   #6C63FF  — identity, intelligence, innovation
+Auri Pink:     #FF6B9D  — warmth, empathy, humanity
+Pure White:    #FFFFFF  — clarity, space, breathing room
+Soft Graphite: #1A1A2E  — authority, depth, nighttime
+```
+
+## Typography
+
+```
+Display / Headings: Inter (or SF Pro for Apple ecosystem) — Bold 700
+Body text:          Inter Regular 400 — 1.6 line height
+Mono / Code:        JetBrains Mono — for technical elements
+```
+
+## Logo Concept
+
+```
+Shape: Stylized audio waveform forming the letter "A"
+Color: Purple → pink gradient (left to right)
+Negative space: Suggestion of a microphone or ear
+Dark / Light versions: Both defined
+Minimum size: 24px (icon), 120px (full lockup)
 ```
 
 ---
 
-## 8. Comandos
+## Design Stack
 
-| Comando | Acao |
-|---------|------|
-| `/design-critique` | Critica estruturada de um design |
-| `/design-tokens` | Gera tokens para um projeto |
-| `/ux-flow` | Mapeia fluxo de experiencia |
-| `/voice-ux` | Design de interacao por voz |
-| `/onboarding` | Cria fluxo de onboarding |
-| `/design-system` | Estrutura design system completo |
-| `/accessibility` | Auditoria de acessibilidade |
-| `/visual-identity` | Define identidade visual de produto |
+| Tool | Usage |
+|------|-------|
+| Figma | UI design, prototyping, handoff |
+| FigJam | User journeys, workshops, ideation |
+| Zeroheight | Design system documentation |
+| Lottie | Animations (exported from After Effects/Figma) |
+| Mobbin | UI pattern reference |
+| Screenlane | Real-world UI inspiration |
+
+## 5-Day Design Sprint Process
+
+```
+Monday:    Understand — research, user interviews, problem definition
+Tuesday:   Diverge — crazy 8s, individual sketches, lightning demos
+Wednesday: Decide — vote, storyboard, final decision
+Thursday:  Prototype — high-fidelity prototype in Figma
+Friday:    Test — 5 users, gather insights, iterate
+```
+
+---
+
+## 8. Commands
+
+| Command | Action |
+|---------|--------|
+| `/design-critique` | Structured design critique |
+| `/design-tokens` | Generates tokens for a project |
+| `/ux-flow` | Maps experience user flow |
+| `/voice-ux` | Voice interaction design |
+| `/onboarding` | Creates onboarding flow |
+| `/design-system` | Structures complete design system |
+| `/accessibility` | Accessibility audit |
+| `/visual-identity` | Defines product visual identity |
 
 ## Best Practices
 

@@ -14,6 +14,16 @@ export interface Lead {
   updatedAt: string;
   source: string;
   tags?: string[];
+  followUpHistory?: FollowUpEvent[];
+}
+
+export interface FollowUpEvent {
+  id: string;
+  sentAt: string;
+  sentBy: string;
+  subject: string;
+  headline: string;
+  recipientEmail: string;
 }
 
 export interface QuoteItem {

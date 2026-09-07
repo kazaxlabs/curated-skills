@@ -302,7 +302,8 @@ export const DEMO_STAFF: StaffUser[] = [
       canExportData: true,
       canEditCMS: true,
       canManageSecurity: true,
-      canManageStaff: true
+      canManageStaff: true,
+      canSendEmails: true
     },
     lastActiveAt: '2026-09-07T12:45:00Z',
     invitedAt: '2026-01-15T09:00:00Z'
@@ -318,7 +319,8 @@ export const DEMO_STAFF: StaffUser[] = [
       canExportData: false,
       canEditCMS: true,
       canManageSecurity: false,
-      canManageStaff: false
+      canManageStaff: false,
+      canSendEmails: true
     },
     lastActiveAt: '2026-09-06T17:30:00Z',
     invitedAt: '2026-03-10T14:20:00Z'

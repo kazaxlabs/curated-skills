@@ -6,7 +6,6 @@ import {
   Calendar, 
   Trash2, 
   DollarSign, 
-  Tag, 
   CheckCircle2,
   FileText
 } from 'lucide-react';
@@ -188,6 +187,36 @@ export const LeadDrawer: React.FC<LeadDrawerProps> = ({
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Add internal call logs, follow-up deadlines, or client preferences..."
             />
+          </div>
+
+          {/* Customer Follow-Up Email Studio Affordance (ADR-0016) */}
+          <div
+            style={{
+              padding: '14px',
+              border: '1px solid #86efac',
+              borderRadius: '4px',
+              backgroundColor: '#f0fdf4',
+              marginBottom: '16px'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+              <Mail size={16} style={{ color: '#166534' }} />
+              <span style={{ fontWeight: 600, fontSize: '12px', color: '#166534' }}>Studio Courriel de Suivi Client (ADR-0016)</span>
+            </div>
+            <p style={{ fontSize: '11px', color: '#15803d', marginBottom: '10px' }}>
+              Gabarit officiel Botanic synchronisé. Actif pour les comptes Propriétaire (Founder) et Développeur (Dev).
+            </p>
+            <button 
+              type="button"
+              onClick={() => {
+                alert(`[Studio Courriel Activé]\n\nDestinataire : ${lead.name} (${lead.email})\nGabarit : Confirmation officielle Botanic avec texte personnalisable.\n\nAutorisation accordée : Propriétaire / Dev.`);
+              }}
+              className="btn-primary" 
+              style={{ width: '100%', justifyContent: 'center', backgroundColor: '#166534' }}
+            >
+              <Mail size={14} />
+              <span>Ouvrir Studio Courriel de Suivi</span>
+            </button>
           </div>
 
           {/* Mock Quote Generator Affordance */}

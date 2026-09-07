@@ -55,7 +55,8 @@ const DEFAULT_BLANK_USER: StaffUser = {
     canExportData: true,
     canEditCMS: true,
     canManageSecurity: true,
-    canManageStaff: true
+    canManageStaff: true,
+    canSendEmails: true
   },
   invitedAt: new Date().toISOString()
 };

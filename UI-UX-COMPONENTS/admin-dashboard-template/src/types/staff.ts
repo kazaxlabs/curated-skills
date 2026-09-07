@@ -6,6 +6,7 @@ export interface PermissionSet {
   canEditCMS: boolean;
   canManageSecurity: boolean;
   canManageStaff: boolean;
+  canSendEmails: boolean;
 }
 
 export interface StaffUser {

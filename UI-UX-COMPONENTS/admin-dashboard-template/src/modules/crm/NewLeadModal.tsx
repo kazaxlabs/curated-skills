@@ -120,13 +120,40 @@ export const NewLeadModal: React.FC<NewLeadModalProps> = ({
           </div>
 
           <div className="form-group">
+            <label className="form-label">Initial Stage / Status</label>
+            <select
+              className="form-input"
+              value={status}
+              onChange={(e) => setStatus(e.target.value as LeadStatus)}
+            >
+              <option value="new">New Lead</option>
+              <option value="contacted">Contacted</option>
+              <option value="scheduled">Consultation Scheduled</option>
+              <option value="proposal_sent">Proposal Sent</option>
+              <option value="won">Won / Closed</option>
+              <option value="lost">Archived / Lost</option>
+            </select>
+          </div>
+
+          <div className="form-group">
             <label className="form-label">Inquiry Message</label>
             <textarea
               className="form-input"
-              rows={3}
+              rows={2}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Summary of requirements..."
+              placeholder="Summary of customer requirements..."
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Internal Operator Notes</label>
+            <textarea
+              className="form-input"
+              rows={2}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Private team notes, intake context..."
             />
           </div>
 

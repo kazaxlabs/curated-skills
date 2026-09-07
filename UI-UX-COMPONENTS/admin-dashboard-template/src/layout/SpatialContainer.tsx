@@ -21,32 +21,33 @@ export const SpatialContainer: React.FC<SpatialContainerProps> = ({
       style={{
         backgroundColor: 'var(--surface-card)',
         border: '1px solid var(--color-hairline)',
-        borderRadius: '6px',
+        borderRadius: '10px',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.02)',
+        boxShadow: 'var(--shadow-sm)',
+        transition: 'background-color 0.2s ease, border-color 0.2s ease',
         ...style
       }}
     >
       {(title || actions) && (
         <div
           style={{
-            padding: '12px 16px',
+            padding: '14px 18px',
             borderBottom: '1px solid var(--color-hairline-subtle)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            backgroundColor: '#ffffff'
+            backgroundColor: 'var(--surface-card)'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             {title && (
-              <h3 style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-ink)' }}>
+              <h3 style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '-0.01em', color: 'var(--color-ink)' }}>
                 {title}
               </h3>
             )}
-            {badge && <span className="badge badge-neutral">{badge}</span>}
+            {badge && <span className="badge badge-neutral" style={{ fontSize: '10px' }}>{badge}</span>}
           </div>
           {actions && <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>{actions}</div>}
         </div>

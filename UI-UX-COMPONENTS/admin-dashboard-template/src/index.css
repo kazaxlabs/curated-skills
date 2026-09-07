@@ -1,62 +1,150 @@
+/* ==========================================================================
+   KAZALABS ATELIER — APPLE / STEVE JOBS PRODUCT DESIGN SYSTEM
+   "Design is not just what it looks like and feels like. Design is how it works."
+   ========================================================================== */
+
 :root {
-  /* =======================================================================
-     KAZALABS CANONICAL BRAND DESIGN TOKENS (SPATIAL STUDIO / ATLAS)
-     ======================================================================= */
-  --color-ink: #000000;
-  --color-graphite: #55585b;
-  --color-slate: #737373;
-  --color-ash: #8a8d90;
-  --color-hairline: #e5e5e5;
-  --color-hairline-subtle: #f0f0f0;
+  /* FONT STACKS - OS-Agnostic & Cross-Platform (Windows / Linux / Web) */
+  --font-brand: 'Montserrat', 'Segoe UI', system-ui, -apple-system, Roboto, Ubuntu, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', 'Segoe UI Mono', monospace;
+
+  --sidebar-width-collapsed: 64px;
+  --sidebar-width-expanded: 248px;
+  --topbar-height: 60px;
+}
+
+/* ==========================================================================
+   OS-AGNOSTIC & WINDOWS-READY SCROLLBARS
+   ========================================================================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hairline-focus) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline-focus);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-text-muted);
+}
+
+/* ==========================================================================
+   LIGHT THEME (CANONICAL REFLECTION / ALPINE WHITE)
+   ========================================================================== */
+:root, [data-theme="light"] {
+  --color-ink: #0a0c10;
+  --color-graphite: #383e4a;
+  --color-slate: #5f6878;
+  --color-ash: #9ba3af;
+  --color-hairline: rgba(0, 0, 0, 0.07);
+  --color-hairline-subtle: rgba(0, 0, 0, 0.04);
+  --color-hairline-focus: rgba(0, 0, 0, 0.25);
   
-  --surface-canvas: #f8fafc;
+  --surface-canvas: #f6f8fa;
   --surface-card: #ffffff;
-  --surface-recessed: #f1f5f9;
-  --surface-overlay: rgba(15, 23, 42, 0.45);
+  --surface-recessed: #eef1f5;
+  --surface-glass: rgba(255, 255, 255, 0.82);
+  --surface-overlay: rgba(10, 12, 16, 0.4);
   
   --brand-border: var(--color-hairline);
-  --brand-border-hover: var(--color-ink);
+  --brand-border-hover: rgba(0, 0, 0, 0.16);
   
   --brand-text-primary: var(--color-ink);
   --brand-text-secondary: var(--color-graphite);
   --brand-text-muted: var(--color-slate);
   --brand-text-subtle: var(--color-ash);
   
-  /* OPERATIONAL TRUTH & ANOMALY SIGNALS */
+  /* SIGNALS */
   --signal-live: #059669;
-  --signal-live-bg: #ecfdf5;
-  --signal-live-border: #a7f3d0;
+  --signal-live-bg: rgba(5, 150, 105, 0.08);
+  --signal-live-border: rgba(5, 150, 105, 0.22);
   
   --signal-risk: #d97706;
-  --signal-risk-bg: #fffbeb;
-  --signal-risk-border: #fde68a;
+  --signal-risk-bg: rgba(217, 119, 6, 0.08);
+  --signal-risk-border: rgba(217, 119, 6, 0.22);
   
-  --signal-danger: #dc2626;
-  --signal-danger-bg: #fef2f2;
-  --signal-danger-border: #fecaca;
+  --signal-danger: #e11d48;
+  --signal-danger-bg: rgba(225, 29, 72, 0.08);
+  --signal-danger-border: rgba(225, 29, 72, 0.22);
 
   --signal-info: #2563eb;
-  --signal-info-bg: #eff6ff;
-  --signal-info-border: #bfdbfe;
+  --signal-info-bg: rgba(37, 99, 235, 0.08);
+  --signal-info-border: rgba(37, 99, 235, 0.22);
 
-  --signal-purple: #7c3aed;
-  --signal-purple-bg: #f5f3ff;
-  --signal-purple-border: #ddd6fe;
-  
-  /* SOLE BRAND FONT: MONTSERRAT EXCLUSIVELY + JETBRAINS MONO */
-  --font-brand: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  --sidebar-width-collapsed: 56px;
-  --sidebar-width-expanded: 240px;
-  --topbar-height: 56px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.02);
+  --shadow-modal: 0 24px 48px -12px rgba(0, 0, 0, 0.16), 0 0 0 1px var(--color-hairline);
 }
 
+/* ==========================================================================
+   DARK THEME (SPACE BLACK / OBSIDIAN COCKPIT)
+   ========================================================================== */
+[data-theme="dark"] {
+  --color-ink: #f8fafc;
+  --color-graphite: #cbd5e1;
+  --color-slate: #94a3b8;
+  --color-ash: #64748b;
+  --color-hairline: rgba(255, 255, 255, 0.1);
+  --color-hairline-subtle: rgba(255, 255, 255, 0.05);
+  --color-hairline-focus: rgba(255, 255, 255, 0.35);
+  
+  --surface-canvas: #090a0f;
+  --surface-card: #12141c;
+  --surface-recessed: #181b26;
+  --surface-glass: rgba(18, 20, 28, 0.82);
+  --surface-overlay: rgba(0, 0, 0, 0.7);
+  
+  --brand-border: var(--color-hairline);
+  --brand-border-hover: rgba(255, 255, 255, 0.2);
+  
+  --brand-text-primary: var(--color-ink);
+  --brand-text-secondary: var(--color-graphite);
+  --brand-text-muted: var(--color-slate);
+  --brand-text-subtle: var(--color-ash);
+  
+  --signal-live: #10b981;
+  --signal-live-bg: rgba(16, 185, 129, 0.12);
+  --signal-live-border: rgba(16, 185, 129, 0.25);
+  
+  --signal-risk: #f59e0b;
+  --signal-risk-bg: rgba(245, 158, 11, 0.12);
+  --signal-risk-border: rgba(245, 158, 11, 0.25);
+  
+  --signal-danger: #f43f5e;
+  --signal-danger-bg: rgba(244, 63, 94, 0.12);
+  --signal-danger-border: rgba(244, 63, 94, 0.25);
+
+  --signal-info: #3b82f6;
+  --signal-info-bg: rgba(59, 130, 246, 0.12);
+  --signal-info-border: rgba(59, 130, 246, 0.25);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--color-hairline);
+}
+
+/* ==========================================================================
+   GLOBAL RESET & TYPOGRAPHIC DISCIPLINE
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: var(--font-brand);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -69,6 +157,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 #root {
@@ -78,12 +167,12 @@ body {
   flex-direction: row;
 }
 
-/* =========================================================================
-   SCROLLBAR & SELECTION
-   ========================================================================= */
+/* ==========================================================================
+   SCROLLBAR (MINIMALIST SILENT LUXURY)
+   ========================================================================== */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -92,42 +181,46 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-hairline);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-ash);
 }
 
-/* =========================================================================
-   BUTTONS & CONTROLS
-   ========================================================================= */
+/* ==========================================================================
+   TACTILE BUTTONS & CONTROLS
+   ========================================================================== */
 button {
   font-family: var(--font-brand);
   cursor: pointer;
   border: none;
   background: none;
   outline: none;
-  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 .btn-primary {
   background: var(--color-ink);
-  color: #ffffff;
+  color: var(--surface-card);
   padding: 8px 14px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 4px;
   border: 1px solid var(--color-ink);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-  background: #27272a;
-  border-color: #27272a;
+  opacity: 0.9;
 }
 
 .btn-secondary {
@@ -136,16 +229,13 @@ button {
   padding: 8px 14px;
   font-size: 12px;
   font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 4px;
   border: 1px solid var(--color-hairline);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
   background: var(--surface-recessed);
-  border-color: var(--color-ash);
+  border-color: var(--brand-border-hover);
 }
 
 .btn-ghost {
@@ -154,10 +244,6 @@ button {
   padding: 6px 10px;
   font-size: 12px;
   font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 4px;
 }
 
 .btn-ghost:hover {
@@ -172,10 +258,6 @@ button {
   padding: 8px 14px;
   font-size: 12px;
   font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 4px;
 }
 
 .btn-danger:hover {
@@ -183,9 +265,38 @@ button {
   color: #ffffff;
 }
 
-/* =========================================================================
+/* ==========================================================================
+   SEGMENTED CONTROL (APPLE SLIDING PILL)
+   ========================================================================== */
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface-recessed);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid var(--color-hairline);
+  gap: 2px;
+}
+
+.segmented-control-btn {
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: var(--brand-text-secondary);
+  background: transparent;
+  transition: all 0.15s ease;
+}
+
+.segmented-control-btn.active {
+  background: var(--surface-card);
+  color: var(--brand-text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
    BADGES & PILLS
-   ========================================================================= */
+   ========================================================================== */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -229,15 +340,16 @@ button {
   border: 1px solid var(--color-hairline);
 }
 
-/* =========================================================================
+/* ==========================================================================
    DATA TABLES
-   ========================================================================= */
+   ========================================================================== */
 .data-table-container {
   width: 100%;
   overflow-x: auto;
   border: 1px solid var(--color-hairline);
-  border-radius: 4px;
+  border-radius: 8px;
   background: var(--surface-card);
+  box-shadow: var(--shadow-sm);
 }
 
 .data-table {
@@ -248,8 +360,8 @@ button {
 }
 
 .data-table th {
-  padding: 10px 14px;
-  background: #fdfdfd;
+  padding: 12px 16px;
+  background: var(--surface-recessed);
   color: var(--brand-text-secondary);
   font-weight: 600;
   font-size: 11px;
@@ -260,10 +372,11 @@ button {
 }
 
 .data-table td {
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--color-hairline-subtle);
   color: var(--brand-text-primary);
   vertical-align: middle;
+  transition: background-color 0.1s ease;
 }
 
 .data-table tr:last-child td {
@@ -271,27 +384,32 @@ button {
 }
 
 .data-table tr:hover td {
-  background-color: #fafbfc;
+  background-color: var(--surface-recessed);
 }
 
-/* =========================================================================
+/* ==========================================================================
    INPUTS & FORMS
-   ========================================================================= */
+   ========================================================================== */
 .form-input {
   width: 100%;
-  padding: 8px 12px;
+  padding: 9px 12px;
   font-size: 12px;
   font-family: var(--font-brand);
   background: var(--surface-card);
   border: 1px solid var(--color-hairline);
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--brand-text-primary);
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .form-input:focus {
-  border-color: var(--color-ink);
+  border-color: var(--color-hairline-focus);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
 }
 
 .form-label {
@@ -299,18 +417,18 @@ button {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--brand-text-secondary);
+  letter-spacing: 0.04em;
+  color: var(--brand-text-muted);
   margin-bottom: 6px;
 }
 
 .form-group {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
-/* =========================================================================
-   SLIDE-OUT DRAWER & MODAL OVERLAY
-   ========================================================================= */
+/* ==========================================================================
+   GLASS MODALS & DRAWERS
+   ========================================================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -318,26 +436,26 @@ button {
   width: 100vw;
   height: 100vh;
   background: var(--surface-overlay);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(8px);
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.15s ease;
+  animation: fadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-content {
   background: var(--surface-card);
   border: 1px solid var(--color-hairline);
-  border-radius: 6px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  box-shadow: var(--shadow-modal);
   max-width: 580px;
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  animation: scaleIn 0.15s ease;
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .drawer-overlay {
@@ -347,36 +465,73 @@ button {
   width: 100vw;
   height: 100vh;
   background: var(--surface-overlay);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(8px);
   z-index: 2000;
   display: flex;
   justify-content: flex-end;
-  animation: fadeIn 0.15s ease;
+  animation: fadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .drawer-content {
   background: var(--surface-card);
   border-left: 1px solid var(--color-hairline);
-  box-shadow: -10px 0 25px -5px rgba(0, 0, 0, 0.08);
-  width: 480px;
+  box-shadow: -12px 0 36px -6px rgba(0, 0, 0, 0.12);
+  width: 500px;
   max-width: 95vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  animation: slideInRight 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideInRight 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ==========================================================================
+   FLOATING TOAST HUD (APPLE DYNAMIC ISLAND VIBE)
+   ========================================================================== */
+.toast-hud {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--color-hairline);
+  border-radius: 30px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-lg);
+  animation: hudDrop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.97); }
+  from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideInRight {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
+}
+
+@keyframes hudDrop {
+  from { opacity: 0; transform: translate(-50%, -18px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
 }

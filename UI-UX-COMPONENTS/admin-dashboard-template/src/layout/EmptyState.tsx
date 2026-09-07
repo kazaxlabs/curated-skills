@@ -21,48 +21,48 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   return (
     <div
       style={{
-        padding: '64px 24px',
+        padding: '72px 24px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
         backgroundColor: 'var(--surface-card)',
-        borderRadius: '6px'
+        borderRadius: '10px'
       }}
     >
       <div
         style={{
-          width: '56px',
-          height: '56px',
-          borderRadius: '50%',
+          width: '60px',
+          height: '60px',
+          borderRadius: '16px',
           backgroundColor: 'var(--surface-recessed)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginBottom: '16px',
-          color: 'var(--color-ash)',
+          marginBottom: '18px',
+          color: 'var(--brand-text-muted)',
           border: '1px solid var(--color-hairline)'
         }}
       >
-        <Icon size={26} />
+        <Icon size={28} />
       </div>
-      <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '6px' }}>
+      <h4 style={{ fontSize: '15px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--color-ink)', marginBottom: '8px' }}>
         {title}
       </h4>
       <p
         style={{
           fontSize: '12px',
           color: 'var(--brand-text-muted)',
-          maxWidth: '380px',
-          lineHeight: 1.5,
-          marginBottom: actionLabel ? '20px' : '0'
+          maxWidth: '400px',
+          lineHeight: 1.6,
+          marginBottom: actionLabel ? '24px' : '0'
         }}
       >
         {description}
       </p>
       {actionLabel && onAction && (
-        <button onClick={onAction} className="btn-primary">
+        <button onClick={onAction} className="btn-primary" style={{ padding: '9px 18px' }}>
           <ActionIcon size={14} />
           <span>{actionLabel}</span>
         </button>

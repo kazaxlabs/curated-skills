@@ -1,16 +1,19 @@
 ---
 name: product-design
-description: "Apple-level product design — visual systems, UX flows, accessibility, proprietary visual language, design tokens, prototyping, and handoff. Covers Figma, design systems, typography, color, spacing, motion design, and cognitive design principles."
-risk: none
-source: community
+description: "Master-level product design engineering — visual systems, cognitive UX architecture, design tokens, spatial ergonomics, accessibility (WCAG 2.2 AAA), micro-interactions, and Apple/Dieter Rams industrial design principles."
+risk: safe
+source: curated
 date_added: '2026-03-06'
-author: renat
+date_updated: '2026-09-07'
+author: kazaxlabs
 tags:
 - design
-- ux
+- ux-engineering
 - design-systems
+- visual-hierarchy
+- typography
 - accessibility
-- figma
+- apple-standards
 tools:
 - claude-code
 - antigravity
@@ -19,345 +22,250 @@ tools:
 - codex-cli
 ---
 
-# PRODUCT DESIGN — Apple-Level
+# PRODUCT DESIGN — Elite Engineering & Industrial UX Standard
 
-## Overview
-
-Apple-level product design — visual systems, UX flows, accessibility, proprietary visual language, design tokens, prototyping, and handoff. Covers Figma, design systems, typography, color, spacing, motion design, and cognitive design principles. Activate to: create design systems, define visual language, review UX, accessibility, design tokens, product branding, and UI critique.
-
-## When to Use This Skill
-
-- When you need specialized assistance with this domain
-
-## Do Not Use This Skill When
-
-- The task is unrelated to product design
-- A simpler, more specific tool can handle the request
-- The user needs general-purpose assistance without domain expertise
-
-## How It Works
-
-> "Design is not just what it looks like and feels like. Design is how it works."
+> "Design is not just what it looks like and feels like. Design is how it works."  
 > — Steve Jobs
 
 ---
 
-## The 10 Principles of Jony Ive / Apple
+## 1. Foundational Tenets: The Apple & Dieter Rams Synthesis
 
-1. **Radical simplicity** — remove everything that is non-essential
-2. **Material honesty** — every element exists for a reason
-3. **Less is more** — restraint is a design decision
-4. **Systemic coherence** — everything is part of a single unified system
-5. **Details matter** — the user feels them, even without noticing
-6. **Function defines form** — aesthetics serve purpose
-7. **Durability** — design that ages well
-8. **Accessibility by default** — not as an add-on
-9. **Continuity across screens** — unified experience
-10. **Delightful surprise** — the unexpected that charms
+Elite product design is the ruthless elimination of the non-essential until what remains appears inevitable, natural, and effortless.
 
-## Cognitive Design
-
-- **Zero cognitive load** — the user should never have to stop and think
-- **Clear affordances** — what is clickable looks clickable
-- **Immediate feedback** — every action has a visual response
-- **Error prevention** — design that makes mistakes impossible
+| Tenet | Engineering Translation | Operational Test |
+| :--- | :--- | :--- |
+| **1. Radical Subtraction** | Remove every stroke, container, label, and control that fails to alter user behavior. | **The Deletion Test:** If removing a border or label leaves meaning intact, it was visual noise. |
+| **2. Material Honesty** | Digital surfaces behave with physical logic — weight, inertia, light, and depth. | **No Fake Metaphors:** Shadows denote z-index elevation, not decoration. Gradients follow directional light. |
+| **3. Systemic Coherence** | Every atom, token, and screen derives from a single mathematical and typographic continuum. | **Token Audit:** Zero hardcoded hex codes, pixel sizes, or timing values anywhere in the codebase. |
+| **4. Cognitive Transparency** | The interface disappears behind the user's intent. Zero mental calculation required. | **Zero-Load Rule:** The user never calculates where to click, how to revert, or what state the system is in. |
+| **5. Emotional Resonance** | Restraint creates quiet luxury; purposeful micro-motion provides tactile pleasure. | **Silent Luxury:** High contrast, pristine whitespace, deliberate rhythm, and buttery spring physics. |
+| **6. Deterministic Reversibility** | Safe exploration replaces defensive friction. Undo vaults replace destructive warning modals. | **The Vault Pattern:** Actions execute instantly; reversible safety nets replace confirming prompts. |
+| **7. Universal Accessibility** | High contrast, generous touch hitboxes, and screen-reader semantics baked into the substrate. | **WCAG 2.2 AAA Default:** 7:1 contrast for body text, 44×44px touch targets, full keyboard navigability. |
 
 ---
 
-## Structure of an Elite Design System
+## 2. Design Token Architecture (W3C Standard)
+
+A resilient design system enforces a **Three-Tier Token Hierarchy**: Primitive $\rightarrow$ Semantic $\rightarrow$ Component.
 
 ```
-design-system/
-├── tokens/
-│   ├── colors.json       # full palette with semantic mapping
-│   ├── typography.json   # typographic scale
-│   ├── spacing.json      # grid and spacing scale
-│   ├── shadows.json      # elevation and depth
-│   ├── motion.json       # duration and easing
-│   └── radius.json       # border radii
-├── components/
-│   ├── atoms/            # Button, Input, Icon, Badge
-│   ├── molecules/        # Card, Form, NavItem
-│   └── organisms/        # Header, Sidebar, Modal
-├── patterns/
-│   ├── onboarding.md     # first-time user experience
-│   ├── empty-states.md   # zero-data states
-│   ├── loading.md        # loading states
-│   └── errors.md         # error handling
-└── guidelines/
-    ├── voice-tone.md     # voice and tone
-    ├── imagery.md        # photography and illustration
-    └── accessibility.md  # WCAG 2.1 AA
+┌─────────────────────────────────────────────────────────────┐
+│ 1. PRIMITIVE TOKENS (Raw Palette & Scales)                  │
+│    color.slate.900 = #0f172a | font.scale.16 = 1rem         │
+└──────────────────────────────┬──────────────────────────────┘
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ 2. SEMANTIC TOKENS (Contextual & Functional Meaning)        │
+│    surface.canvas = color.slate.50 | text.primary = slate.900│
+└──────────────────────────────┬──────────────────────────────┘
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ 3. COMPONENT TOKENS (Specific Scoped Properties)            │
+│    button.primary.bg = surface.brand | card.border = hairline│
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## Design Tokens — Auri Example
+### Production Token Specification (`tokens.json`)
 
 ```json
 {
   "color": {
-    "brand": {
-      "primary": "#6C63FF",
-      "primary-dark": "#5A52E0",
-      "accent": "#FF6B6B",
-      "surface": "#F8F7FF"
+    "primitive": {
+      "black": "#000000",
+      "white": "#ffffff",
+      "ink": "#09090b",
+      "graphite": "#27272a",
+      "slate": "#71717a",
+      "hairline": "#e4e4e7",
+      "emerald": "#059669",
+      "amber": "#d97706",
+      "rose": "#e11d48"
     },
     "semantic": {
-      "success": "#22C55E",
-      "warning": "#F59E0B",
-      "error": "#EF4444",
-      "info": "#3B82F6"
-    },
-    "neutral": {
-      "900": "#111827",
-      "800": "#1F2937",
-      "600": "#4B5563",
-      "400": "#9CA3AF",
-      "200": "#E5E7EB",
-      "50":  "#F9FAFB"
+      "surface": {
+        "canvas": "var(--color-primitive-white)",
+        "card": "#ffffff",
+        "recessed": "#f4f4f5",
+        "overlay": "rgba(9, 9, 11, 0.6)"
+      },
+      "text": {
+        "primary": "var(--color-primitive-ink)",
+        "secondary": "var(--color-primitive-graphite)",
+        "muted": "var(--color-primitive-slate)",
+        "inverse": "#ffffff"
+      },
+      "border": {
+        "hairline": "var(--color-primitive-hairline)",
+        "hover": "var(--color-primitive-graphite)",
+        "focus": "var(--color-primitive-ink)"
+      },
+      "status": {
+        "live": { "fg": "#059669", "bg": "#ecfdf5", "border": "#a7f3d0" },
+        "warning": { "fg": "#d97706", "bg": "#fffbeb", "border": "#fde68a" },
+        "danger": { "fg": "#e11d48", "bg": "#fff1f2", "border": "#fecdd3" }
+      }
     }
   },
   "typography": {
-    "display": { "size": "48px", "weight": "700", "line": "1.1" },
-    "h1": { "size": "36px", "weight": "700", "line": "1.2" },
-    "h2": { "size": "28px", "weight": "600", "line": "1.3" },
-    "body": { "size": "16px", "weight": "400", "line": "1.6" },
-    "small": { "size": "14px", "weight": "400", "line": "1.5" }
+    "fontFamily": {
+      "display": "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "scale": {
+      "caption": { "size": "0.6875rem", "lineHeight": "1rem", "weight": "600", "tracking": "0.04em" },
+      "bodySmall": { "size": "0.75rem", "lineHeight": "1.125rem", "weight": "400", "tracking": "0" },
+      "body": { "size": "0.8125rem", "lineHeight": "1.25rem", "weight": "400", "tracking": "-0.01em" },
+      "subheading": { "size": "0.9375rem", "lineHeight": "1.375rem", "weight": "600", "tracking": "-0.02em" },
+      "heading": { "size": "1.25rem", "lineHeight": "1.75rem", "weight": "700", "tracking": "-0.03em" },
+      "display": { "size": "2rem", "lineHeight": "2.25rem", "weight": "800", "tracking": "-0.04em" }
+    }
   },
   "spacing": {
-    "xs": "4px", "sm": "8px", "md": "16px",
-    "lg": "24px", "xl": "32px", "2xl": "48px", "3xl": "64px"
+    "2xs": "2px",
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "2xl": "32px",
+    "3xl": "48px"
   },
-  "radius": {
-    "sm": "4px", "md": "8px", "lg": "12px",
-    "xl": "16px", "full": "9999px"
-  },
-  "shadow": {
-    "sm": "0 1px 3px rgba(0,0,0,0.12)",
-    "md": "0 4px 12px rgba(0,0,0,0.15)",
-    "lg": "0 8px 24px rgba(0,0,0,0.18)",
-    "xl": "0 20px 60px rgba(0,0,0,0.22)"
+  "elevation": {
+    "flat": "none",
+    "hairline": "0 0 0 1px var(--color-semantic-border-hairline)",
+    "card": "0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 1px var(--color-semantic-border-hairline)",
+    "drawer": "-8px 0 24px -4px rgba(0, 0, 0, 0.08)",
+    "modal": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05)"
   },
   "motion": {
-    "fast": "150ms ease-out",
-    "normal": "250ms ease-in-out",
-    "slow": "400ms cubic-bezier(0.34, 1.56, 0.64, 1)"
+    "instant": "80ms ease-out",
+    "rapid": "150ms cubic-bezier(0.16, 1, 0.3, 1)",
+    "deliberate": "250ms cubic-bezier(0.2, 0, 0, 1)",
+    "spring": "cubic-bezier(0.34, 1.56, 0.64, 1)"
   }
 }
 ```
 
 ---
 
-## Structure of a UX Flow
+## 3. Cognitive UX Architecture & Information Ergonomics
+
+### 3.1 Cognitive Laws Applied to UI Engineering
+
+1. **Hick-Hyman Law ($T = b \cdot \log_2(n + 1)$):**  
+   Decision time increases logarithmically with the number of choices.
+   - *Rule:* Maximum 5 primary actions per view. Collapse secondary tools into contextual overflow menus.
+2. **Fitts's Law ($MT = a + b \log_2(2D / W)$):**  
+   Target acquisition time is a function of distance ($D$) and target width ($W$).
+   - *Rule:* Frequently clicked CTAs and navigation rails must sit on screen edges (infinite width affordance) or floating bottom action sheets for mobile thumbs.
+3. **Tesler's Law (Conservation of Complexity):**  
+   Every application has an inherent amount of irreducible complexity.
+   - *Rule:* Shift the complexity burden from user memory onto the software (e.g. automated draft saves, smart field derivation, undo vaults).
+
+### 3.2 The Onboarding Protocol (The 60-Second Aha Curve)
 
 ```
-1. Entry Point (how the user arrives)
-2. Context (what the user knows/wants)
-3. Action (what the user does)
-4. Feedback (immediate system response)
-5. Outcome (what the user achieved)
-6. Next Step (what naturally comes next)
+┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+│ 1. Value Proof  │ ────► │ 2. Zero-Barrier │ ────► │ 3. Immediate Aha│
+│ Single promise  │       │ Instant Sandbox │       │ First real win  │
+│ No login walls  │       │ Working default │       │ Dopamine payoff │
+└─────────────────┘       └─────────────────┘       └─────────────────┘
 ```
 
-## Elite Onboarding (First 5 Minutes)
+- **Step 1 (First 5 seconds):** Show, don't explain. Present live interactive components with realistic data instead of marketing carousels.
+- **Step 2 (Seconds 5–30):** Frictionless engagement. Let the user manipulate sliders, toggle filters, or edit a card before demanding an account.
+- **Step 3 (Seconds 30–60):** The Aha confirmation. Celebrate the first genuine action with understated tactile confirmation (micro-confetti, subtle green check pulse, or quiet spring animation).
+
+### 3.3 Zero-Data & Error Ergonomics
+
+- **Never display a cold blank screen:** "No data found" is a developer error, not UX.
+- **The Triple-Component Zero State:**
+  1. *Contextual SVG Iconography* (32px monochrome glyph, never whimsical illustrations).
+  2. *Actionable Pitch:* "No client invoices generated yet. Create your first quote to initialize the financial ledger."
+  3. *Primary Action Button:* Direct affordance to create or seed demo records.
+- **Error Remediation:** An error dialog that does not offer a 1-click remedy is defective. State: (1) what happened, (2) why it happened, and (3) provide the primary recovery CTA.
+
+---
+
+## 4. Layout, Spacing & The Spatial Grid
+
+### 4.1 The 8-Point Structural Rhythm
+
+All containers, margins, paddings, and column offsets must strictly align to integer multiples of **8px** (with **4px** reserved for micro-spacing inside pills and compact tables).
+
+| Spatial Step | Value | Canonical Purpose |
+| :--- | :--- | :--- |
+| `2xs` | 2px | Hairline borders, focus rings |
+| `xs` | 4px | Internal badge padding, icon-to-text gaps |
+| `sm` | 8px | Button inline gaps, input inner padding |
+| `md` | 12px | Compact table row padding, card inner gutters |
+| `lg` | 16px | Standard card padding, modal content margins |
+| `xl` | 24px | Section padding, canvas edge gutters |
+| `2xl` | 32px | Grid row gaps, workspace separation |
+| `3xl` | 48px | Top-level dashboard module gutters |
+
+### 4.2 Spatial Studio Layout Anatomy
 
 ```
-Screen 1: Promise — "What you will achieve"
-  - One high-impact sentence
-  - An image demonstrating the outcome
-  - CTA: "Get Started" (not "Create account")
-
-Screen 2: Immediate action — initial value before sign-up
-  - Let the user experience something real
-  - Minimal form (email only)
-  - Visible progress indicator (1 of 3)
-
-Screen 3: Personalization — "Tell us about yourself"
-  - Max 3 questions
-  - Visual selection, not text entry
-  - Skip option always available
-
-Screen 4: Aha Moment — first genuine success
-  - The user completes an action that works
-  - Genuine celebration (not exaggerated)
-  - "You just completed [high-value action]"
-```
-
-## Empty States That Delight
-
-```
-Do not show: "No items found"
-Show instead:
-  - Contextual illustration
-  - Opportunity-driven message: "There is no [X] yet. Create your first one!"
-  - Primary CTA
-  - Optional: quick tip on how to get started
+┌────────────────────────────────────────────────────────────────────────┐
+│ TOPBAR (Height: 56px | Border-Bottom: 1px Hairline)                   │
+│ [Breadcrumbs / Active Module]            [Live Toggle] [User Pill]    │
+├─────────┬──────────────────────────────────────────────────────────────┤
+│ SIDEBAR │ MAIN WORKSPACE CANVAS (Overflow-Y: Auto)                     │
+│ 56px /  │                                                              │
+│ 240px   │  ┌────────────────────────────────────────────────────────┐  │
+│ Nav     │  │ KPI METRIC CHIPS (4-Col Grid, 16px Gap)               │  │
+│ Rail    │  └────────────────────────────────────────────────────────┘  │
+│         │                                                              │
+│         │  ┌────────────────────────────────────────────────────────┐  │
+│         │  │ SPATIAL CONTAINER (Hairline Frame, White Surface)      │  │
+│         │  │ ├────────────────────────────────────────────────────┤ │  │
+│         │  │ │ Container Header (Title, Pill, Action Slot)        │ │  │
+│         │  │ ├────────────────────────────────────────────────────┤ │  │
+│         │  │ │ Data Table / Interactive Canvas                    │ │  │
+│         │  │ └────────────────────────────────────────────────────┘ │  │
+│         │  └────────────────────────────────────────────────────────┘  │
+└─────────┴──────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Unique Principles for Voice UI
+## 5. UI Critique & Refactoring Protocol
 
-1. **Zero visual load** — the user sees nothing (hears only)
-2. **Effortless reversibility** — "undo" is always possible
-3. **Optional confirmation** — only for irreversible actions
-4. **Response variety** — never the exact same phrase twice
-5. **Silence is okay** — 2-second pause before asking if help is needed
-
-## Voice Response Structure
+When inspecting an interface, apply the **4-Phase Deconstruction**:
 
 ```
-[Optional Hook] + [Core Answer] + [Action or Follow-up Question]
-
-Bad:  "Sorry, I didn't understand what you said. Could you repeat that?"
-Good: "I didn't quite catch that. Could you say it another way?"
-
-Bad:  "Sure! I can help with that. The answer to your question is..."
-Good: "The answer is: [direct answer]"
+1. OBSERVE   ──► Record raw elements without value judgments.
+2. DIAGNOSE  ──► Map observed friction against cognitive & visual laws.
+3. PRESCRIBE ──► Provide exact tokenized CSS and structural HTML remedies.
+4. VALIDATE  ──► Run the Deletion Test and Contrast Score.
 ```
 
-## Auri Interaction Scripts
+### The 10-Point Product Evaluation Rubric
 
-```
-First Use:
-"Hi! I'm Auri. You can ask me anything — from business decisions
-to creative ideas. How can I help today?"
-
-Returning User:
-"Welcome back! Where we left off was in [topic]. Want to continue?"
-
-Not Understood:
-"I didn't quite catch that. Try saying it another way?"
-
-Sign-Off:
-"If you need anything, just reach out. See you soon!"
-```
+| # | Inspection Dimension | Failure State | Pass State |
+| :---: | :--- | :--- | :--- |
+| **1** | **Visual Hierarchy** | Everything is bold or colored; eye wanders aimlessly. | Single clear primary focus; secondary elements muted to 60% opacity. |
+| **2** | **Touch Ergonomics** | Tiny 24px hit targets on interactive icons. | Generous 44×44px hitboxes with visible focus rings. |
+| **3** | **Contrast Compliance** | Low-contrast light gray text on white (`#999`). | Minimum 4.5:1 for UI elements; 7:1 for continuous reading. |
+| **4** | **Restraint & Color** | Rainbow badges, competing primary buttons. | Monochrome substrate with single semantic accent colors for signals. |
+| **5** | **Typography Pairing** | Generic system fonts with awkward tracking. | Montserrat or Inter paired with JetBrains Mono for metrics; tight negative tracking on display headings. |
+| **6** | **State Completeness** | Missing loading skeletons, error screens, or empty states. | Every async boundary has deterministic loading, zero, and failure views. |
+| **7** | **Affordance Clarity** | Flat text that turns out to be clickable. | Interactive controls carry subtle hover, active, and cursor affordances. |
+| **8** | **Motion Meaning** | Bouncy gratuitous animations that delay user actions. | Snappy 150ms transitions that communicate spatial lineage. |
+| **9** | **Reversibility** | Modal popups interrupting flows with "Are you sure?". | Instant execution with 10-second undo toasts and persistent soft-delete vault. |
+| **10**| **Data Density** | Wasted screens with excessive scrolling for small tables. | High-density information packing with clean 1px hairline dividers. |
 
 ---
 
-## Constructive Critique Framework
+## 6. Execution Commands
 
-```
-1. OBSERVATION: What I see (objective, non-judgmental)
-   "I notice the primary button is in the bottom-right corner"
-
-2. PRINCIPLE: Which design principle is being tested
-   "Visual hierarchy and primary CTA positioning"
-
-3. IMPACT: How this affects the user
-   "Users navigating with their thumb have to stretch to reach it"
-
-4. ALTERNATIVE: Constructive suggestion
-   "Consider placing it above the fold, centered"
-
-5. TRADE-OFF: What is gained versus lost
-   "More accessible, but reduces available content area"
-```
-
-## UI Critique Checklist
-
-- [ ] Clear visual hierarchy (the eye instinctively knows where to go)
-- [ ] Adequate contrast (WCAG AA: 4.5:1 for body text)
-- [ ] Minimum touch target size (44x44px on mobile)
-- [ ] Consistency with the design system
-- [ ] Defined interactive states (hover/active/disabled/focus)
-- [ ] Responsiveness (mobile-first)
-- [ ] Loading states and empty states accounted for
-- [ ] Error handling with helpful, actionable messages
-- [ ] Accessibility (labels, ARIA roles, keyboard navigation)
-- [ ] Perceived performance (skeleton screens, optimistic UI)
-
----
-
-## Visual Concept
-
-Auri is **intelligence with human warmth**. Not a robot — a presence.
-The visual identity must communicate: accessible sophistication.
-
-## Primary Palette
-
-```
-Auri Purple:   #6C63FF  — identity, intelligence, innovation
-Auri Pink:     #FF6B9D  — warmth, empathy, humanity
-Pure White:    #FFFFFF  — clarity, space, breathing room
-Soft Graphite: #1A1A2E  — authority, depth, nighttime
-```
-
-## Typography
-
-```
-Display / Headings: Inter (or SF Pro for Apple ecosystem) — Bold 700
-Body text:          Inter Regular 400 — 1.6 line height
-Mono / Code:        JetBrains Mono — for technical elements
-```
-
-## Logo Concept
-
-```
-Shape: Stylized audio waveform forming the letter "A"
-Color: Purple → pink gradient (left to right)
-Negative space: Suggestion of a microphone or ear
-Dark / Light versions: Both defined
-Minimum size: 24px (icon), 120px (full lockup)
-```
-
----
-
-## Design Stack
-
-| Tool | Usage |
-|------|-------|
-| Figma | UI design, prototyping, handoff |
-| FigJam | User journeys, workshops, ideation |
-| Zeroheight | Design system documentation |
-| Lottie | Animations (exported from After Effects/Figma) |
-| Mobbin | UI pattern reference |
-| Screenlane | Real-world UI inspiration |
-
-## 5-Day Design Sprint Process
-
-```
-Monday:    Understand — research, user interviews, problem definition
-Tuesday:   Diverge — crazy 8s, individual sketches, lightning demos
-Wednesday: Decide — vote, storyboard, final decision
-Thursday:  Prototype — high-fidelity prototype in Figma
-Friday:    Test — 5 users, gather insights, iterate
-```
-
----
-
-## 8. Commands
-
-| Command | Action |
-|---------|--------|
-| `/design-critique` | Structured design critique |
-| `/design-tokens` | Generates tokens for a project |
-| `/ux-flow` | Maps experience user flow |
-| `/voice-ux` | Voice interaction design |
-| `/onboarding` | Creates onboarding flow |
-| `/design-system` | Structures complete design system |
-| `/accessibility` | Accessibility audit |
-| `/visual-identity` | Defines product visual identity |
-
-## Best Practices
-
-- Provide clear, specific context about your project and requirements
-- Review all suggestions before applying them to production code
-- Combine with other complementary skills for comprehensive analysis
-
-## Common Pitfalls
-
-- Using this skill for tasks outside its domain expertise
-- Applying recommendations without understanding your specific context
-- Not providing enough project context for accurate analysis
-
-## Related Skills
-
-- `analytics-product` - Complementary skill for enhanced analysis
-- `growth-engine` - Complementary skill for enhanced analysis
-- `monetization` - Complementary skill for enhanced analysis
-- `product-inventor` - Complementary skill for enhanced analysis
-
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+| Trigger | Operational Output |
+| :--- | :--- |
+| `/design-audit` | Executes full 10-point evaluation rubric over specified UI screens or component files. |
+| `/tokens-generate` | Synthesizes a production `tokens.json` and matching `index.css` tailored to brand guidelines. |
+| `/ux-teardown` | Maps user flow friction, cognitive load bottlenecks, and calculates Hick's Law penalty scores. |
+| `/zero-states` | Generates high-polish empty-state components with SVG illustrations and creation hooks. |
+| `/accessibility-gate`| Runs contrast calculation, ARIA landmark checks, and keyboard traversal audits. |
+that 

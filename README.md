@@ -27,13 +27,30 @@ Curated_Skills/
 
 ---
 
-## ⚡ Global Injection: One-Liner Terminal Commands
+## ⚡ Global Injection: One-Click & Terminal Commands
 
 Clone and link this repository once; every AI assistant on your system inherits all 1,500+ skills, the evidence gate contract, and the collaboration MCP server.
 
-### Windows (PowerShell)
+### Option A: One-Click Automated Injector (Recommended)
 
-Run PowerShell as Administrator or with Developer Mode enabled:
+Run the included cross-platform injection script from within the repository root:
+
+- **Windows (PowerShell):**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File .\scripts\inject-global.ps1
+  ```
+- **macOS / Linux (Bash):**
+  ```bash
+  chmod +x ./scripts/inject-global.sh && ./scripts/inject-global.sh
+  ```
+
+*The script auto-detects your installed AI tools (Claude Code, Google Antigravity, Cursor, Windsurf, Cline/Roo Code), establishes live directory junctions/symlinks, updates global agent rules, and registers `collab-mcp` across all platforms automatically.*
+
+---
+
+### Option B: Manual Terminal Commands
+
+#### Windows (PowerShell)
 
 ```powershell
 # 1. Clone into root or your developer directory

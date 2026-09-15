@@ -30,16 +30,10 @@ Everything above applies. These additions are Claude-only.
   alter `AGENTS.md`.
 
 ## Verifying a change to the contract
-
+ 
 `AGENTS.md` must stay under 12,000 characters or Antigravity will drop the excess.
 After editing it:
-
+ 
 ```bash
 wc -m AGENTS.md
-```
-
-And after editing `agent.config.json` or moving a skill:
-
-```bash
-python scripts/validate_agent_config.py
 ```

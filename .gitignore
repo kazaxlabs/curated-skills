@@ -1,21 +1,22 @@
-﻿# Exclude unrequested workspaces & heavy local databases
+# Dependencies
+**/node_modules/
+package-lock.json
+
+# Local environments & unrequested workspaces
+.claude/
+.venv_311/
+**/.venv/
+**/venv/
+**/__pycache__/
+*.py[cod]
 ontology_research/
 openclaw_sandbox/
 servers/
 .playwright-mcp/
 .antigravity-install-manifest.json
 fetch_transcripts.py
-package-lock.json
 
-# Virtual environments & dependencies
-.venv_311/
-**/.venv/
-**/venv/
-**/node_modules/
-**/__pycache__/
-*.py[cod]
-
-# Temporary & OS artifacts
+# Logs and temporary files
+*.log
 .DS_Store
 Thumbs.db
-*.log

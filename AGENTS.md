@@ -173,22 +173,16 @@ Skills live under `skills/<category>/<subcategory>/<name>/SKILL.md`. Category fo
 organisational only — they carry no precedence.
 
 **If a referenced skill does not resolve, say so.** A missing skill is a silent no-op
-otherwise. Run `python scripts/validate_agent_config.py` to check every reference in
-`agent.config.json` against the filesystem.
+otherwise. Verify skill paths directly against the `skills/` directory.
 
 ---
 
 ## 8. Repository facts
 
-- **Platform:** Windows 11. PowerShell and Git Bash are both available and take different
-  syntax. `ln -s` needs Developer Mode or elevation — prefer file imports over symlinks.
-- **Layout:** `skills/` (skill library, ~1,480 skills), `UI-UX-COMPONENTS/`,
-  `simulation_agent_architecture.md`.
+- **Platform:** Windows 11 / macOS / Linux. PowerShell and Bash are both supported.
+- **Layout:** `skills/` (~1,500+ curated skills), `collab-mcp/` (cross-agent collaboration MCP server), `AGENTS.md` (canonical contract), `CLAUDE.md`, `agent.md`, and `README.md`.
 - **Not tracked:** `ontology_research/`, `openclaw_sandbox/`, `servers/`, `node_modules/`.
-  These are local workspaces; do not assume a reader of this repo can see them.
-- **Config:** `agent.config.json` declares protocol state and the core manifest. It is
-  validated by `scripts/validate_agent_config.py` against `schemas/agent-config.schema.json`.
-  If you change one, run the validator.
+  These are local workspaces or transient packages; do not assume an external reader can see them.
 
 ---
 

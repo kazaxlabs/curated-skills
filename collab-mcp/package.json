@@ -1,0 +1,20 @@
+{
+  "name": "collab-mcp",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Shared MCP server exposing docs/COLLAB handoff files to any MCP-capable tool (Claude Code, Antigravity, ...).",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
+}

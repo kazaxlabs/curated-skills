@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: "Integrity & Build Gate"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'collab-mcp/package.json'
+
+      - name: Install & Build collab-mcp
+        run: |
+          cd collab-mcp
+          npm install
+          npm run build
+          cd ..
+
+      - name: Run Integrity Suite
+        run: node scripts/validate.js
+
+      - name: Validate Shell Script Syntax
+        run: bash -n scripts/inject-global.sh
+
+      - name: Validate PowerShell Script Syntax
+        run: pwsh -Command "Get-Command -Syntax scripts/inject-global.ps1"

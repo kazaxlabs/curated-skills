@@ -36,6 +36,9 @@ jobs:
       - name: Run Integrity Suite
         run: node scripts/validate.js
 
+      - name: Check Skills Structure
+        run: node scripts/check-structure.mjs
+
       - name: Validate Shell Script Syntax
         run: bash -n scripts/inject-global.sh
 

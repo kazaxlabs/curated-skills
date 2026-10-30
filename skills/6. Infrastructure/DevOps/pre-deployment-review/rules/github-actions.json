@@ -1,0 +1,105 @@
+[
+  {
+    "id": "gha.actions.not-floating",
+    "title": "No action pinned to a floating ref (main, master, latest)",
+    "severity": "block",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "grep", "pattern": "uses:\\s*[^\\s#]+@(main|master|latest|HEAD)\\b", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "absent" },
+    "remediation": "Pin each third-party action to a full commit SHA (or a tag from a trusted creator).",
+    "sources": [
+      { "title": "GitHub — Security hardening for GitHub Actions: Using third-party actions", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "OpenSSF Scorecard — Pinned-Dependencies", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["gha-security-review", "github-actions-templates"]
+  },
+  {
+    "id": "gha.actions.sha-pinned",
+    "title": "Third-party actions pinned to a full commit SHA",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "grep", "pattern": "uses:\\s*(?!actions/|github/|\\./)[^\\s#]+@v?\\d", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "absent" },
+    "remediation": "Replace `@vN` with `@<40-char sha> # vN` for third-party actions.",
+    "sources": [ { "title": "GitHub — Security hardening: pin to a full-length commit SHA", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["gha-security-review"]
+  },
+  {
+    "id": "gha.token.permissions-declared",
+    "title": "Workflows declare a permissions block",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "grep", "pattern": "^\\s*permissions:", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "present" },
+    "remediation": "Add top-level `permissions: contents: read` and raise per job only as needed.",
+    "sources": [
+      { "title": "GitHub — Security hardening: Restricting permissions for tokens", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "OpenSSF Scorecard — Token-Permissions", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["gha-security-review"]
+  },
+  {
+    "id": "gha.auth.no-key-file-secrets",
+    "title": "No service-account key JSON used as a secret",
+    "severity": "block",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "grep", "pattern": "credentials_json|firebaseServiceAccount|GOOGLE_APPLICATION_CREDENTIALS|AWS_SECRET_ACCESS_KEY", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "absent" },
+    "remediation": "Use OIDC: google-github-actions/auth@v3 with workload_identity_provider + service_account, or aws-actions/configure-aws-credentials with role-to-assume.",
+    "sources": [
+      { "title": "GitHub — Security hardening: Using OpenID Connect to access cloud resources", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "google-github-actions/auth README (v3 inputs)", "url": "https://github.com/google-github-actions/auth", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "OWASP Secrets Management Cheat Sheet §3.2.2", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["gha-security-review", "secrets-management"]
+  },
+  {
+    "id": "gha.auth.oidc-present",
+    "title": "Deploy job requests an OIDC token",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"], "any": ["hosting=*"] },
+    "check": { "type": "grep", "pattern": "id-token:\\s*['\"]?write", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "present" },
+    "remediation": "Add `permissions: id-token: write` to the deploy job and authenticate with OIDC.",
+    "sources": [ { "title": "google-github-actions/auth README — permissions id-token: write", "url": "https://github.com/google-github-actions/auth", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["gha-security-review"]
+  },
+  {
+    "id": "gha.triggers.no-pull-request-target",
+    "title": "No pull_request_target or workflow_run trigger without justification",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "grep", "pattern": "pull_request_target|workflow_run", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "absent" },
+    "remediation": "Use pull_request; if pull_request_target is required, never check out PR code in that job.",
+    "sources": [
+      { "title": "GitHub — Security hardening: Mitigating the risks of untrusted code checkout", "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "OpenSSF Scorecard — Dangerous-Workflow", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["gha-security-review"]
+  },
+  {
+    "id": "gha.deploy.environment-gated",
+    "title": "Production deploy job uses a GitHub environment",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"], "any": ["hosting=*"] },
+    "check": { "type": "grep", "pattern": "environment:\\s*(name:\\s*)?['\"]?(production|prod)", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "present" },
+    "remediation": "Add `environment: production` with required reviewers configured in repository settings.",
+    "sources": [ { "title": "OpenSSF Scorecard — Branch-Protection (reviewed merges)", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["deployment-pipeline-design"]
+  },
+  {
+    "id": "gha.ci.tests-run",
+    "title": "CI runs the test suite",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "grep", "pattern": "npm (run )?test|pnpm test|yarn test|pytest|vitest|jest|go test|cargo test", "include": [".github/workflows/*.yml", ".github/workflows/*.yaml"], "expect": "present" },
+    "remediation": "Add a test step to the PR check workflow.",
+    "sources": [ { "title": "OpenSSF Scorecard — CI-Tests", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["github-actions-templates"]
+  },
+  {
+    "id": "gha.branch-protection",
+    "title": "Branch protection on the default branch",
+    "severity": "warn",
+    "applies_when": { "all": ["ci=github-actions"] },
+    "check": { "type": "review", "prompt": "Run `gh api repos/{owner}/{repo}/branches/main/protection` (read-only). Record required checks, review count, force-push and deletion settings. Absent protection is a Change-tier blocker." },
+    "remediation": "Require the check workflow, one approving review, no force-push, no deletion.",
+    "sources": [ { "title": "OpenSSF Scorecard — Branch-Protection", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["github-automation"]
+  }
+]

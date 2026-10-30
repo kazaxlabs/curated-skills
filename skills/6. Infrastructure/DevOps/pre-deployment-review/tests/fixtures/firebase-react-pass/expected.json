@@ -1,0 +1,61 @@
+{
+  "exit_code": 0,
+  "facets": {
+    "runtime": [
+      "node"
+    ],
+    "framework": [
+      "react",
+      "vite",
+      "firebase-web-sdk"
+    ],
+    "hosting": [
+      "firebase"
+    ],
+    "database": [
+      "firestore"
+    ],
+    "compute": [
+      "firebase-functions"
+    ],
+    "node_version": [
+      "22",
+      "nodejs22"
+    ],
+    "ci": [
+      "github-actions"
+    ],
+    "package_manager": [
+      "npm"
+    ],
+    "test_tool": [
+      "firebase-rules-unit-testing"
+    ],
+    "emulator": [
+      "firebase-emulators"
+    ],
+    "auth": [
+      "firebase-auth"
+    ]
+  },
+  "must_pass": [
+    "core.secrets.env-not-tracked",
+    "core.secrets.gitignore-covers-env",
+    "firebase.rules.catch-all-deny",
+    "firebase.hosting.hsts",
+    "firebase.project.not-demo",
+    "firebase.functions.runtime-not-decommissioned",
+    "gha.actions.not-floating",
+    "gha.auth.no-key-file-secrets",
+    "node.gate.typecheck",
+    "node.gate.build",
+    "firebase.gates.rules-tests",
+    "core.rollback.documented",
+    "core.deploy.guard-script"
+  ],
+  "must_not_apply": [
+    "django.check-deploy",
+    "nextjs.csp.present",
+    "docker.no-secrets-in-env-arg"
+  ]
+}

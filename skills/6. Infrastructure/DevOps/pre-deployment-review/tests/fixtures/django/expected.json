@@ -1,0 +1,31 @@
+{
+  "exit_code": 0,
+  "skip_commands": true,
+  "facets": {
+    "runtime": [
+      "python"
+    ],
+    "framework": [
+      "django"
+    ],
+    "database": [
+      "postgres"
+    ],
+    "test_tool": [
+      "pytest"
+    ],
+    "auth": [
+      "django-auth"
+    ]
+  },
+  "must_pass": [
+    "django.secret-key.from-env",
+    "django.debug.not-true-literal",
+    "django.allowed-hosts.no-wildcard",
+    "django.cookies.secure"
+  ],
+  "must_not_apply": [
+    "node.lockfile.present",
+    "firebase.rules.file-exists"
+  ]
+}

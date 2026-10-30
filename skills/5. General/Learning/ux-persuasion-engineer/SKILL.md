@@ -1,6 +1,6 @@
 ---
 name: ux-persuasion-engineer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Applies choice architecture and persuasive design to UX flows to reduce friction and guide users to the intended action ethically. Use when conversion problems come from layout, sequencing or interaction design rather than copy."
 risk: safe
 source: community
 date_added: "2026-04-04"

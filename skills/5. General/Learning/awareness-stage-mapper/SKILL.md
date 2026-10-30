@@ -1,6 +1,6 @@
 ---
 name: awareness-stage-mapper
-description: "One sentence - what this skill does and when to invoke it"
+description: "Diagnoses where an audience sits on the awareness ladder, from unaware to most aware, and sets the matching language, sequencing and persuasion approach. Use before writing messaging, offers or campaigns for a new audience."
 risk: safe
 source: community
 date_added: "2026-04-04"

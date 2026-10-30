@@ -1,6 +1,6 @@
 ---
 name: pitch-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Structures sales pitches, decks and presentations so desire is built before the solution appears and the offer feels inevitable. Use when a sales, investor or product pitch needs a stronger belief progression."
 risk: safe
 source: community
 date_added: "2026-04-04"

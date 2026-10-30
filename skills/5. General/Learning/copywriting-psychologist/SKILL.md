@@ -1,6 +1,6 @@
 ---
 name: copywriting-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Writes or rewrites conversion copy using evidence-based persuasion mechanisms to build desire, overcome resistance and drive one target action. Use when copy feels generic or fails to move readers to act."
 risk: safe
 source: community
 date_added: "2026-04-04"

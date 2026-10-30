@@ -1,6 +1,6 @@
 ---
-name: and
-description: Comprehensive command center that uses the ask me portal to suggest features, harden code, run simulations, audit security, and sync progress.
+name: and-antigravity
+description: (Antigravity variant of /and, uses default_api:ask_question) Comprehensive command center that uses the ask me portal to suggest features, harden code, run simulations, audit security, and sync progress.
 ---
 # The `/and` Workflow
 

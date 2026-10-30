@@ -43,7 +43,7 @@ These folders carry their own licence, which takes precedence over `LICENSE-CONT
 | `7. Security/Forensic/internal-comms` | Apache-2.0 (LICENSE.txt) |
 | `7. Security/Other/loki-mode` | MIT (LICENSE) |
 | `7. Security/Other/skill-creator` | Apache-2.0 (LICENSE.txt) |
-| `blender-skills/img2threejs` | Apache-2.0 (LICENSE) |
+| `4. Development/3D-Blender/img2threejs` | Apache-2.0 (LICENSE) |
 
 ## Copyleft and undeclared licences
 

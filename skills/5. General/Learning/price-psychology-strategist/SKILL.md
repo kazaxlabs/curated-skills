@@ -1,6 +1,6 @@
 ---
 name: price-psychology-strategist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Applies behavioural economics to how prices are structured, presented and framed: anchors, tiers, decoys and value perception. Use when designing or testing pricing pages, packages or quotes."
 risk: safe
 source: community
 date_added: "2026-04-04"

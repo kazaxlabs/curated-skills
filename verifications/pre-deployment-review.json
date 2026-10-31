@@ -1,0 +1,56 @@
+{
+  "skill": "pre-deployment-review",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T04:53:14.009Z",
+  "cli": "2.1.314 (Claude Code)",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": true,
+    "noFire": true,
+    "value": null,
+    "clean": true
+  },
+  "evalExit": 0,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.4972242,
+    "overallScore": 1,
+    "meanDelta": 0,
+    "cases": [
+      {
+        "name": "no-trigger-hosting-question",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0
+      },
+      {
+        "name": "trigger-deploy-readiness",
+        "tags": [
+          "trigger"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0,
+        "firedRuns": 3
+      }
+    ]
+  },
+  "verdict": "trigger-only"
+}

@@ -1,35 +1,141 @@
 {
-  "$comment": "Core manifest (plan D1, D3, D14). Only skills listed here are installed globally. 'provisional' members must earn a Verification within 60 days of cutover or return to the Archive; 'verified' members need a Verification younger than 120 days. Demand evidence: Skill-tool invocations in Claude Code transcripts 2026-06-16..2026-10-28. The 'basis' counts are the first tally (546 transcripts, run 2026-10-28); re-run scripts/verify/usage-report.mjs --core core.json for current counts (2026-10-31: 586 transcripts, all 22 demand entries still meet the rule).",
+  "$comment": "Core manifest (plan D1, D3, D14). Only skills listed here are installed globally. 'provisional' members must earn a Verification within 60 days of cutover or return to the Archive; 'verified' members need a Verification younger than 120 days. Demand evidence: Skill-tool invocations in Claude Code transcripts 2026-06-16..2026-10-28. The 'basis' counts are the first tally (546 transcripts, run 2026-10-28); re-run scripts/verify/usage-report.mjs --core core.json for current counts (2026-10-31: 586 transcripts, all 22 demand entries still meet the rule). Verification state lives here and in verifications/*.json only, not in SKILL.md frontmatter (avoids drift and content-hash churn).",
   "cutover": null,
   "rules": {
     "provisionalDays": 60,
     "verifiedMaxAgeDays": 120,
-    "demand": { "minInvocations": 3, "minProjects": 2, "windowDays": 120 }
+    "demand": {
+      "minInvocations": 3,
+      "minProjects": 2,
+      "windowDays": 120
+    }
   },
   "skills": [
-    { "name": "skill-router", "status": "provisional", "basis": "demand: 28 invocations, 6 projects" },
-    { "name": "grill-me", "status": "provisional", "basis": "demand: 17 invocations, 7 projects (plus 4 under the old folder name)" },
-    { "name": "planner", "status": "provisional", "basis": "demand: 16 invocations, 5 projects" },
-    { "name": "grill-with-docs", "status": "provisional", "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)" },
-    { "name": "multi-agent-brainstorming", "status": "provisional", "basis": "demand: 9 invocations, 4 projects" },
-    { "name": "brainstorming", "status": "provisional", "basis": "demand: 8 invocations, 4 projects" },
-    { "name": "scroll-experience", "status": "provisional", "basis": "demand: 7 invocations, 3 projects" },
-    { "name": "ux-flow", "status": "provisional", "basis": "demand: 6 invocations, 3 projects" },
-    { "name": "product-design", "status": "provisional", "basis": "demand: 5 invocations, 2 projects" },
-    { "name": "content-strategy", "status": "provisional", "basis": "demand: 5 invocations, 3 projects" },
-    { "name": "pricing-strategy", "status": "provisional", "basis": "demand: 5 invocations, 2 projects" },
-    { "name": "accessibility-compliance-accessibility-audit", "status": "provisional", "basis": "demand: 5 invocations, 2 projects" },
-    { "name": "minimalist-ui", "status": "provisional", "basis": "demand: 5 invocations, 3 projects" },
-    { "name": "startup-analyst", "status": "provisional", "basis": "demand: 4 invocations, 3 projects" },
-    { "name": "idea-os", "status": "provisional", "basis": "demand: 4 invocations, 2 projects" },
-    { "name": "multi-agent-task-orchestrator", "status": "provisional", "basis": "demand: 4 invocations, 3 projects" },
-    { "name": "spec-to-code-compliance", "status": "provisional", "basis": "demand: 4 invocations, 2 projects" },
-    { "name": "ui-visual-validator", "status": "provisional", "basis": "demand: 3 invocations, 3 projects" },
-    { "name": "agents-md", "status": "provisional", "basis": "demand: 3 invocations, 3 projects" },
-    { "name": "french-canadian", "status": "provisional", "basis": "demand: 3 invocations, 2 projects" },
-    { "name": "enhance-prompt", "status": "provisional", "basis": "demand: 3 invocations, 2 projects" },
-    { "name": "product-manager", "status": "provisional", "basis": "demand: 3 invocations, 2 projects" },
-    { "name": "handoff", "status": "provisional", "basis": "nominated: collab workflow tool" },
-    { "name": "pre-deployment-review", "status": "provisional", "basis": "nominated: user-authored gate skill" }
+    {
+      "name": "skill-router",
+      "status": "provisional",
+      "basis": "demand: 28 invocations, 6 projects"
+    },
+    {
+      "name": "grill-me",
+      "status": "verified",
+      "basis": "demand: 17 invocations, 7 projects (plus 4 under the old folder name)",
+      "verified": "2026-10-31",
+      "record": "verifications/grill-me.json",
+      "result": "trigger 3/3, no false fire 0/6, value delta +1.0 (judged case, 3 runs per arm)"
+    },
+    {
+      "name": "planner",
+      "status": "provisional",
+      "basis": "demand: 16 invocations, 5 projects"
+    },
+    {
+      "name": "grill-with-docs",
+      "status": "provisional",
+      "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)"
+    },
+    {
+      "name": "multi-agent-brainstorming",
+      "status": "provisional",
+      "basis": "demand: 9 invocations, 4 projects"
+    },
+    {
+      "name": "brainstorming",
+      "status": "provisional",
+      "basis": "demand: 8 invocations, 4 projects"
+    },
+    {
+      "name": "scroll-experience",
+      "status": "provisional",
+      "basis": "demand: 7 invocations, 3 projects"
+    },
+    {
+      "name": "ux-flow",
+      "status": "provisional",
+      "basis": "demand: 6 invocations, 3 projects"
+    },
+    {
+      "name": "product-design",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 2 projects"
+    },
+    {
+      "name": "content-strategy",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 3 projects"
+    },
+    {
+      "name": "pricing-strategy",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 2 projects"
+    },
+    {
+      "name": "accessibility-compliance-accessibility-audit",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 2 projects"
+    },
+    {
+      "name": "minimalist-ui",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 3 projects"
+    },
+    {
+      "name": "startup-analyst",
+      "status": "provisional",
+      "basis": "demand: 4 invocations, 3 projects"
+    },
+    {
+      "name": "idea-os",
+      "status": "provisional",
+      "basis": "demand: 4 invocations, 2 projects"
+    },
+    {
+      "name": "multi-agent-task-orchestrator",
+      "status": "provisional",
+      "basis": "demand: 4 invocations, 3 projects"
+    },
+    {
+      "name": "spec-to-code-compliance",
+      "status": "provisional",
+      "basis": "demand: 4 invocations, 2 projects"
+    },
+    {
+      "name": "ui-visual-validator",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 3 projects"
+    },
+    {
+      "name": "agents-md",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 3 projects"
+    },
+    {
+      "name": "french-canadian",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 2 projects"
+    },
+    {
+      "name": "enhance-prompt",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 2 projects"
+    },
+    {
+      "name": "product-manager",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 2 projects"
+    },
+    {
+      "name": "handoff",
+      "status": "provisional",
+      "basis": "nominated: collab workflow tool"
+    },
+    {
+      "name": "pre-deployment-review",
+      "status": "provisional",
+      "basis": "nominated: user-authored gate skill",
+      "lastCheck": "2026-10-31",
+      "record": "verifications/pre-deployment-review.json",
+      "result": "trigger-only: trigger 3/3, no false fire 0/6; value untested (needs a fixture project and Bash)"
+    }
   ]
 }

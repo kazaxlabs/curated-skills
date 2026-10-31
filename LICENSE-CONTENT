@@ -8,7 +8,11 @@ https://creativecommons.org/licenses/by/4.0/
 A more specific notice always takes precedence. In order:
 1. A LICENSE, LICENSE.txt, NOTICE or COPYING file inside a skill's own folder.
 2. A `license:` field in a skill's SKILL.md frontmatter.
-3. The upstream licence recorded for that skill in the source attribution ledger named in NOTICE.md.
+3. A licence statement in the skill's own text (for example "This skill is licensed under ..." or
+   "Adapted from ... (licence name)").
+4. The upstream licence recorded for that skill in the source attribution ledger named in NOTICE.md.
+
+Content whose upstream licence is non-commercial or share-alike is not kept in this repository.
 
 Most skills marked `source: community` were collected from the community catalogue credited in
 NOTICE.md, which publishes its non-code content under CC BY 4.0 with the same precedence rule.

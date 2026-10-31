@@ -61,12 +61,25 @@ do not copy code from them into closed-source work without reading their terms.
 | `3. Data-AI/LLM-NLP/buywhere-product-catalog` | not declared |
 | `3. Data-AI/Database/django-perf-review` | "LICENSE" (file not present) |
 
+## Licences stated in a skill's own text
+
+| Skill folder | Licence stated |
+| :--- | :--- |
+| `6. Infrastructure/Other/terraform-skill` | Apache-2.0 |
+| `7. Security/Forensic/skill-audit` | MIT (adapted from aptratcn/skill-audit) |
+| `3. Data-AI/Other/humanize-chinese` | adapted from voidborne-d/humanize-chinese; licence not stated |
+
 ## Removed for licence reasons (2026-10-30)
 
 - `docx-official`, `pdf-official`, `pptx-official`, `xlsx-official`: their `LICENSE.txt` reads
   "© 2025 Anthropic, PBC. All rights reserved." They are source-available, not redistributable here.
 - `blender-skills/hunyuan3d-2.1`: Tencent Hunyuan 3D 2.1 Community License, which excludes the EU, the
   UK and South Korea and adds an acceptable-use policy. Not an open licence; not redistributed here.
+- `vscode-extension-guide-en` (removed 2026-10-31): its text says it is adapted from aktsmm/agent-skills
+  under CC BY-NC-SA 4.0, a non-commercial licence.
+- `django-access-review` (removed 2026-10-31): its text says it includes OWASP Cheat Sheet Series material
+  under CC BY-SA 4.0, a share-alike licence.
+- `fix-review` (removed 2026-10-31): its source is trailofbits/skills, licensed CC BY-SA 4.0 (share-alike).
 
 ## Other third-party code
 

@@ -64,9 +64,11 @@ function Install-DirectoryLink {
     if (Test-Path $DestinationPath) {
         $item = Get-Item $DestinationPath -Force
         if ($item.LinkType -eq "Junction" -or $item.LinkType -eq "SymbolicLink") {
-            [System.IO.Directory]::Delete($DestinationPath)
+            [System.IO.Directory]::Delete($DestinationPath)   # removes the link only, not its target
         } else {
-            Remove-Item -Recurse -Force $DestinationPath
+            # A real folder may hold the user's own skills: never delete it.
+            Write-Host "  [SKIP] ${Label}: $DestinationPath is a real folder, not a link. Refusing to delete it; move it aside yourself to replace it." -ForegroundColor Red
+            return
         }
     }
 

@@ -1,0 +1,57 @@
+{
+  "skill": "product-design",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T05:09:18.224Z",
+  "cli": "2.1.314 (Claude Code)",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": false,
+    "noFire": true,
+    "value": false,
+    "clean": true
+  },
+  "evalExit": 1,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.5055505,
+    "overallScore": 0.5,
+    "meanDelta": -0.16666666666666666,
+    "cases": [
+      {
+        "name": "no-trigger-px-to-rem",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0
+      },
+      {
+        "name": "trigger-ui-critique",
+        "tags": [
+          "trigger",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 0,
+        "scoreWithout": 0.3333333333333333,
+        "delta": -0.3333333333333333,
+        "firedRuns": 2
+      }
+    ]
+  },
+  "verdict": "fail"
+}

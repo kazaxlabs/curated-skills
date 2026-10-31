@@ -38,12 +38,26 @@ node scripts/verify/run-eval.mjs grill-me --max-cost-usd 3 --concurrency 3
 node scripts/verify/run-eval.mjs grill-me --rescore .verify/runs/<run-folder>
 ```
 
-Pilot results, 2026-10-31 (CLI 2.1.314; agent claude-sonnet-5-5, judge claude-haiku-5-5; 3 runs per arm):
+## Results, 2026-10-31
 
-| Skill | Trigger | False fire | Value delta | Verdict | Cost |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| grill-me | 3/3 | 0/6 | +1.0 | pass | $0.34 |
-| pre-deployment-review | 3/3 | 0/6 | untested | trigger-only | $0.50 |
+All 24 provisional Core skills. CLI 2.1.314; agent claude-sonnet-5-5; judge claude-haiku-5-5; 3 runs per arm;
+one suite run per skill (grill-me: final of three). Value = judged `value` case score with / without the skill.
+Per-skill details are in `core.json` (`result`) and `verifications/<skill>.json`.
 
-grill-me's judged rubric was corrected once (v1 counted question marks; see the grader's "Rubric history").
-Under rubric v2 the with-skill arm passed 5 of 6 judged runs across two suite runs, the without arm 0 of 6.
+| Verdict | Count | Skills |
+| :--- | ---: | :--- |
+| pass | 14 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit, minimalist-ui, spec-to-code-compliance, agents-md |
+| fail: never or not always fired | 5 | skill-router 0/3, planner 0/3, product-manager 0/3, ui-visual-validator 0/3, handoff 2/3 (value +0.67) |
+| fail: fired, no measured value | 4 | startup-analyst, scroll-experience, content-strategy (0 / 0), product-design (0 / 0.33) |
+| trigger-only | 1 | pre-deployment-review (value case needs a fixture project and Bash) |
+
+No skill fired on any near-miss (0 false fires in 6 runs each). Spend: $11.88 total at Claude Code's list-price
+estimate (pilots $1.92, 22-skill batches $9.96).
+
+Caveats:
+- One suite run per skill (N = 3 per arm). Deltas of 0.33 rest on a single run's difference; treat them as weak.
+- The judge returns votes without reasons, so a failed judged case cannot always be explained from the record.
+- Rubrics were written by agents from each SKILL.md and are reviews until the user's blind samples confirm them.
+- The users' transcripts show the five trigger failures are mostly invoked by name (typed `/skill`), so the
+  auto-trigger requirement may be the wrong test for them; a requirement change is the user's decision (D6a).
+- grill-me's judged rubric was corrected once (v1 counted question marks; see the grader's "Rubric history").

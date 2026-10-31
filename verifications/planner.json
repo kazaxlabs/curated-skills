@@ -1,0 +1,57 @@
+{
+  "skill": "planner",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T05:16:50.175Z",
+  "cli": "2.1.314 (Claude Code)",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": false,
+    "noFire": true,
+    "value": false,
+    "clean": true
+  },
+  "evalExit": 1,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.4245227,
+    "overallScore": 0.5,
+    "meanDelta": 0,
+    "cases": [
+      {
+        "name": "no-trigger-commit-message",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0
+      },
+      {
+        "name": "trigger-ship-cli",
+        "tags": [
+          "trigger",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 0,
+        "scoreWithout": 0,
+        "delta": 0,
+        "firedRuns": 0
+      }
+    ]
+  },
+  "verdict": "fail"
+}

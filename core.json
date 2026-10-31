@@ -14,7 +14,10 @@
     {
       "name": "skill-router",
       "status": "provisional",
-      "basis": "demand: 28 invocations, 6 projects"
+      "basis": "demand: 28 invocations, 6 projects",
+      "record": "verifications/skill-router.json",
+      "result": "fail: trigger 0/3, false fire 0/6, value with 0 / without 0 (delta 0), $0.33",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "grill-me",
@@ -22,112 +25,175 @@
       "basis": "demand: 17 invocations, 7 projects (plus 4 under the old folder name)",
       "verified": "2026-10-31",
       "record": "verifications/grill-me.json",
-      "result": "trigger 3/3, no false fire 0/6, value delta +1.0 (judged case, 3 runs per arm)"
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.34"
     },
     {
       "name": "planner",
       "status": "provisional",
-      "basis": "demand: 16 invocations, 5 projects"
+      "basis": "demand: 16 invocations, 5 projects",
+      "record": "verifications/planner.json",
+      "result": "fail: trigger 0/3, false fire 0/6, value with 0 / without 0 (delta 0), $0.42",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "grill-with-docs",
-      "status": "provisional",
-      "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)"
+      "status": "verified",
+      "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)",
+      "record": "verifications/grill-with-docs.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.38",
+      "verified": "2026-10-31"
     },
     {
       "name": "multi-agent-brainstorming",
-      "status": "provisional",
-      "basis": "demand: 9 invocations, 4 projects"
+      "status": "verified",
+      "basis": "demand: 9 invocations, 4 projects",
+      "record": "verifications/multi-agent-brainstorming.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.61",
+      "verified": "2026-10-31"
     },
     {
       "name": "brainstorming",
-      "status": "provisional",
-      "basis": "demand: 8 invocations, 4 projects"
+      "status": "verified",
+      "basis": "demand: 8 invocations, 4 projects",
+      "record": "verifications/brainstorming.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.39",
+      "verified": "2026-10-31"
     },
     {
       "name": "scroll-experience",
       "status": "provisional",
-      "basis": "demand: 7 invocations, 3 projects"
+      "basis": "demand: 7 invocations, 3 projects",
+      "record": "verifications/scroll-experience.json",
+      "result": "fail: trigger 3/3, false fire 0/6, value with 0 / without 0 (delta 0), $0.57",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "ux-flow",
-      "status": "provisional",
-      "basis": "demand: 6 invocations, 3 projects"
+      "status": "verified",
+      "basis": "demand: 6 invocations, 3 projects",
+      "record": "verifications/ux-flow.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.46",
+      "verified": "2026-10-31"
     },
     {
       "name": "product-design",
       "status": "provisional",
-      "basis": "demand: 5 invocations, 2 projects"
+      "basis": "demand: 5 invocations, 2 projects",
+      "record": "verifications/product-design.json",
+      "result": "fail: trigger 2/3, false fire 0/6, value with 0 / without 0.33 (delta -0.33), $0.51",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "content-strategy",
       "status": "provisional",
-      "basis": "demand: 5 invocations, 3 projects"
+      "basis": "demand: 5 invocations, 3 projects",
+      "record": "verifications/content-strategy.json",
+      "result": "fail: trigger 3/3, false fire 0/6, value with 0 / without 0 (delta 0), $0.5",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "pricing-strategy",
-      "status": "provisional",
-      "basis": "demand: 5 invocations, 2 projects"
+      "status": "verified",
+      "basis": "demand: 5 invocations, 2 projects",
+      "record": "verifications/pricing-strategy.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.44",
+      "verified": "2026-10-31"
     },
     {
       "name": "accessibility-compliance-accessibility-audit",
-      "status": "provisional",
-      "basis": "demand: 5 invocations, 2 projects"
+      "status": "verified",
+      "basis": "demand: 5 invocations, 2 projects",
+      "record": "verifications/accessibility-compliance-accessibility-audit.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0.67 (delta 0.33), $0.51",
+      "verified": "2026-10-31"
     },
     {
       "name": "minimalist-ui",
-      "status": "provisional",
-      "basis": "demand: 5 invocations, 3 projects"
+      "status": "verified",
+      "basis": "demand: 5 invocations, 3 projects",
+      "record": "verifications/minimalist-ui.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.52",
+      "verified": "2026-10-31"
     },
     {
       "name": "startup-analyst",
       "status": "provisional",
-      "basis": "demand: 4 invocations, 3 projects"
+      "basis": "demand: 4 invocations, 3 projects",
+      "record": "verifications/startup-analyst.json",
+      "result": "fail: trigger 3/3, false fire 0/6, value with 0 / without 0 (delta 0), $0.5",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "idea-os",
-      "status": "provisional",
-      "basis": "demand: 4 invocations, 2 projects"
+      "status": "verified",
+      "basis": "demand: 4 invocations, 2 projects",
+      "record": "verifications/idea-os.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.55",
+      "verified": "2026-10-31"
     },
     {
       "name": "multi-agent-task-orchestrator",
-      "status": "provisional",
-      "basis": "demand: 4 invocations, 3 projects"
+      "status": "verified",
+      "basis": "demand: 4 invocations, 3 projects",
+      "record": "verifications/multi-agent-task-orchestrator.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.48",
+      "verified": "2026-10-31"
     },
     {
       "name": "spec-to-code-compliance",
-      "status": "provisional",
-      "basis": "demand: 4 invocations, 2 projects"
+      "status": "verified",
+      "basis": "demand: 4 invocations, 2 projects",
+      "record": "verifications/spec-to-code-compliance.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.53",
+      "verified": "2026-10-31"
     },
     {
       "name": "ui-visual-validator",
       "status": "provisional",
-      "basis": "demand: 3 invocations, 3 projects"
+      "basis": "demand: 3 invocations, 3 projects",
+      "record": "verifications/ui-visual-validator.json",
+      "result": "fail: trigger 0/3, false fire 0/6, value with 0.67 / without 0.67 (delta 0), $0.36",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "agents-md",
-      "status": "provisional",
-      "basis": "demand: 3 invocations, 3 projects"
+      "status": "verified",
+      "basis": "demand: 3 invocations, 3 projects",
+      "record": "verifications/agents-md.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.38",
+      "verified": "2026-10-31"
     },
     {
       "name": "french-canadian",
-      "status": "provisional",
-      "basis": "demand: 3 invocations, 2 projects"
+      "status": "verified",
+      "basis": "demand: 3 invocations, 2 projects",
+      "record": "verifications/french-canadian.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.34",
+      "verified": "2026-10-31"
     },
     {
       "name": "enhance-prompt",
-      "status": "provisional",
-      "basis": "demand: 3 invocations, 2 projects"
+      "status": "verified",
+      "basis": "demand: 3 invocations, 2 projects",
+      "record": "verifications/enhance-prompt.json",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.4",
+      "verified": "2026-10-31"
     },
     {
       "name": "product-manager",
       "status": "provisional",
-      "basis": "demand: 3 invocations, 2 projects"
+      "basis": "demand: 3 invocations, 2 projects",
+      "record": "verifications/product-manager.json",
+      "result": "fail: trigger 0/3, false fire 0/6, value with 0 / without 0 (delta 0), $0.4",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "handoff",
       "status": "provisional",
-      "basis": "nominated: collab workflow tool"
+      "basis": "nominated: collab workflow tool",
+      "record": "verifications/handoff.json",
+      "result": "fail: trigger 2/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.36",
+      "lastCheck": "2026-10-31"
     },
     {
       "name": "pre-deployment-review",
@@ -135,7 +201,7 @@
       "basis": "nominated: user-authored gate skill",
       "lastCheck": "2026-10-31",
       "record": "verifications/pre-deployment-review.json",
-      "result": "trigger-only: trigger 3/3, no false fire 0/6; value untested (needs a fixture project and Bash)"
+      "result": "trigger-only: trigger 3/3, false fire 0/6, value with 1 / without 1 (delta 0), $0.5"
     }
   ]
 }

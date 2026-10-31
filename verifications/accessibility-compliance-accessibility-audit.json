@@ -1,0 +1,57 @@
+{
+  "skill": "accessibility-compliance-accessibility-audit",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T05:29:19.792Z",
+  "cli": "2.1.314 (Claude Code)",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": true,
+    "noFire": true,
+    "value": true,
+    "clean": true
+  },
+  "evalExit": 0,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.5082287,
+    "overallScore": 1,
+    "meanDelta": 0.16666666666666669,
+    "cases": [
+      {
+        "name": "no-trigger-lang-attribute",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0
+      },
+      {
+        "name": "trigger-quote-form-audit",
+        "tags": [
+          "trigger",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 0.6666666666666666,
+        "delta": 0.33333333333333337,
+        "firedRuns": 3
+      }
+    ]
+  },
+  "verdict": "pass"
+}

@@ -1,12 +1,12 @@
 ---
-description: A sign-off request for three UI goals with a CSS diff and a written screenshot description. The skill should fire. The run has no screenshots or browser, so the written description is the only visual evidence; the value rubric checks that each goal is judged from that evidence rather than from the code.
-tags: [trigger, value]
+description: Explicit invocation (the user types /ui-visual-validator). A sign-off request for three UI goals with a CSS diff and a written screenshot description. The skill should fire. The run has no screenshots or browser, so the written description is the only visual evidence; the value rubric checks that each goal is judged from that evidence rather than from the code.
+tags: [explicit, value]
 runs: 3
 max_turns: 8
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-Can you verify this UI change visually and sign it off before I merge? The ticket has three goals:
+/ui-visual-validator Can you verify this UI change visually and sign it off before I merge? The ticket has three goals:
 
 1. The "Get a quote" button text meets WCAG AA contrast.
 2. When an FAQ item is opened, its chevron flips to point up.

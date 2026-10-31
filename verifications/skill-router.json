@@ -1,7 +1,7 @@
 {
   "skill": "skill-router",
   "kind": "eval",
-  "checkedAt": "2026-10-31T05:15:37.738Z",
+  "checkedAt": "2026-10-31T05:54:36.666Z",
   "cli": "2.1.314 (Claude Code)",
   "models": {
     "agent": "claude-sonnet-5-5",
@@ -16,7 +16,7 @@
     "loads": true
   },
   "requirements": {
-    "trigger": false,
+    "trigger": true,
     "noFire": true,
     "value": false,
     "clean": true
@@ -24,10 +24,22 @@
   "evalExit": 1,
   "eval": {
     "partial": false,
-    "costUsd": 0.3311738,
+    "costUsd": 0.38315180000000004,
     "overallScore": 0.5,
     "meanDelta": 0,
     "cases": [
+      {
+        "name": "explicit-where-to-start",
+        "tags": [
+          "explicit",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 0,
+        "scoreWithout": 0,
+        "delta": 0,
+        "invocableRuns": 3
+      },
       {
         "name": "no-trigger-stack-trace",
         "tags": [
@@ -38,18 +50,6 @@
         "scoreWith": 1,
         "scoreWithout": 1,
         "delta": 0
-      },
-      {
-        "name": "trigger-where-to-start",
-        "tags": [
-          "trigger",
-          "value"
-        ],
-        "runsPerArm": 3,
-        "scoreWith": 0,
-        "scoreWithout": 0,
-        "delta": 0,
-        "firedRuns": 0
       }
     ]
   },

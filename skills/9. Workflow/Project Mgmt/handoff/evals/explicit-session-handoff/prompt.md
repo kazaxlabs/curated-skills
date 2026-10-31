@@ -1,12 +1,12 @@
 ---
-description: A user ends a session and asks for a handoff doc a fresh agent can pick up. Runs cannot write files, so the prompt asks for the document in the reply and the rubric checks that reply (suggested-skills section, redaction, artifacts referenced by path); the skill's save-to-OS-temp-dir step is not tested.
-tags: [trigger, value]
+description: Explicit invocation (the user types /handoff). A user ends a session and asks for a handoff doc a fresh agent can pick up. Runs cannot write files, so the prompt asks for the document in the reply and the rubric checks that reply (suggested-skills section, redaction, artifacts referenced by path); the skill's save-to-OS-temp-dir step is not tested.
+tags: [explicit, value]
 runs: 3
 max_turns: 8
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-We're stopping here for today. Turn this session into a handoff document so a fresh agent can pick it up tomorrow; the next session will focus on getting the owner notification email working. I'll save the file myself, so put the whole document in your reply.
+/handoff We're stopping here for today. Turn this session into a handoff document so a fresh agent can pick it up tomorrow; the next session will focus on getting the owner notification email working. I'll save the file myself, so put the whole document in your reply.
 
 Where we are:
 - Project: the quote-request form for a small landscaping company in Laval, moving off a hosted form service onto a Firebase Cloud Function that stores each lead in Firestore.

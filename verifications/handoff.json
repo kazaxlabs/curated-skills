@@ -1,7 +1,7 @@
 {
   "skill": "handoff",
   "kind": "eval",
-  "checkedAt": "2026-10-31T05:37:14.668Z",
+  "checkedAt": "2026-10-31T05:59:28.799Z",
   "cli": "2.1.314 (Claude Code)",
   "models": {
     "agent": "claude-sonnet-5-5",
@@ -16,7 +16,7 @@
     "loads": true
   },
   "requirements": {
-    "trigger": false,
+    "trigger": true,
     "noFire": true,
     "value": true,
     "clean": true
@@ -24,10 +24,22 @@
   "evalExit": 1,
   "eval": {
     "partial": false,
-    "costUsd": 0.3639087,
+    "costUsd": 0.3694207,
     "overallScore": 0.8333333333333333,
     "meanDelta": 0.3333333333333333,
     "cases": [
+      {
+        "name": "explicit-session-handoff",
+        "tags": [
+          "explicit",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 0.6666666666666666,
+        "scoreWithout": 0,
+        "delta": 0.6666666666666666,
+        "invocableRuns": 3
+      },
       {
         "name": "no-trigger-slack-update",
         "tags": [
@@ -38,20 +50,8 @@
         "scoreWith": 1,
         "scoreWithout": 1,
         "delta": 0
-      },
-      {
-        "name": "trigger-session-handoff",
-        "tags": [
-          "trigger",
-          "value"
-        ],
-        "runsPerArm": 3,
-        "scoreWith": 0.6666666666666666,
-        "scoreWithout": 0,
-        "delta": 0.6666666666666666,
-        "firedRuns": 2
       }
     ]
   },
-  "verdict": "fail"
+  "verdict": "pass"
 }

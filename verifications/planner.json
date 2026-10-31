@@ -1,7 +1,7 @@
 {
   "skill": "planner",
   "kind": "eval",
-  "checkedAt": "2026-10-31T05:16:50.175Z",
+  "checkedAt": "2026-10-31T05:55:59.994Z",
   "cli": "2.1.314 (Claude Code)",
   "models": {
     "agent": "claude-sonnet-5-5",
@@ -16,18 +16,30 @@
     "loads": true
   },
   "requirements": {
-    "trigger": false,
+    "trigger": true,
     "noFire": true,
-    "value": false,
+    "value": true,
     "clean": true
   },
-  "evalExit": 1,
+  "evalExit": 0,
   "eval": {
     "partial": false,
-    "costUsd": 0.4245227,
-    "overallScore": 0.5,
-    "meanDelta": 0,
+    "costUsd": 0.4802967,
+    "overallScore": 1,
+    "meanDelta": 0.5,
     "cases": [
+      {
+        "name": "explicit-ship-cli",
+        "tags": [
+          "explicit",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 0,
+        "delta": 1,
+        "invocableRuns": 3
+      },
       {
         "name": "no-trigger-commit-message",
         "tags": [
@@ -38,20 +50,8 @@
         "scoreWith": 1,
         "scoreWithout": 1,
         "delta": 0
-      },
-      {
-        "name": "trigger-ship-cli",
-        "tags": [
-          "trigger",
-          "value"
-        ],
-        "runsPerArm": 3,
-        "scoreWith": 0,
-        "scoreWithout": 0,
-        "delta": 0,
-        "firedRuns": 0
       }
     ]
   },
-  "verdict": "fail"
+  "verdict": "pass"
 }

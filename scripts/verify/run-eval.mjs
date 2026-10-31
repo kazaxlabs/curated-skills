@@ -12,7 +12,8 @@
 // - Writes verifications/<skill>.json: gate verdicts and scores only; no prompts, outputs or client names (D10/U5).
 //
 // Requirement set (plan D3/D6a):
-//   R1 trigger  every grader named `fired` passed in every WITH run;
+//   R1 trigger  every grader named `fired` passed in every WITH run; for name-invoked skills, every `invocable`
+//               grader of an `explicit` case ('/<skill> ...' prompt) passed in every WITH run;
 //   R2 noFire   every grader named `not-fired` passed in every run of both arms;
 //   R3 value    every case tagged `value` has delta > 0;
 //   R4 clean    no run ended on an error and the result is not partial.
@@ -86,9 +87,16 @@ if (existsSync(resultJson)) {
   const graderPass = (run, g) => (run.graders ?? []).filter((x) => x.name === g).every((x) => x.passed);
   const has = (c, g) => allRuns(c).some((run) => (run.graders ?? []).some((x) => x.name === g));
   const firedCases = cases.filter((c) => has(c, 'fired'));
+  // Name-invoked skills (core.json invocation: "name"): the case types '/<skill> ...' and its `invocable` grader
+  // confirms the command was available in the run; Claude Code expands it without a Skill tool call.
+  const explicitCases = cases.filter((c) => tagsOf(c.name).includes('explicit') && has(c, 'invocable'));
   const noFireCases = cases.filter((c) => has(c, 'not-fired'));
   const valueCases = cases.filter((c) => tagsOf(c.name).includes('value'));
-  req.trigger = firedCases.length ? firedCases.every((c) => runsOf(c, 'with').every((run) => graderPass(run, 'fired'))) : null;
+  const triggerChecks = [
+    ...firedCases.map((c) => runsOf(c, 'with').every((run) => graderPass(run, 'fired'))),
+    ...explicitCases.map((c) => runsOf(c, 'with').every((run) => graderPass(run, 'invocable'))),
+  ];
+  req.trigger = triggerChecks.length ? triggerChecks.every(Boolean) : null;
   req.noFire = noFireCases.length ? noFireCases.every((c) => allRuns(c).every((run) => graderPass(run, 'not-fired'))) : null;
   req.value = valueCases.length ? valueCases.every((c) => (c.aggregates?.delta ?? 0) > 0) : null;
   req.clean = !r.partial && cases.length > 0 && cases.every((c) => allRuns(c).every((run) => !run.error));
@@ -99,6 +107,7 @@ if (existsSync(resultJson)) {
       name: c.name, tags: tagsOf(c.name), runsPerArm: runsOf(c, 'with').length,
       scoreWith: c.aggregates?.score ?? null, scoreWithout: c.aggregates?.scoreWithout ?? null, delta: c.aggregates?.delta ?? null,
       ...(has(c, 'fired') ? { firedRuns: runsOf(c, 'with').filter((run) => graderPass(run, 'fired')).length } : {}),
+      ...(has(c, 'invocable') ? { invocableRuns: runsOf(c, 'with').filter((run) => graderPass(run, 'invocable')).length } : {}),
     })),
   };
 }

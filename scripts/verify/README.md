@@ -46,18 +46,24 @@ Per-skill details are in `core.json` (`result`) and `verifications/<skill>.json`
 
 | Verdict | Count | Skills |
 | :--- | ---: | :--- |
-| pass | 14 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit, minimalist-ui, spec-to-code-compliance, agents-md |
-| fail: never or not always fired | 5 | skill-router 0/3, planner 0/3, product-manager 0/3, ui-visual-validator 0/3, handoff 2/3 (value +0.67) |
-| fail: fired, no measured value | 4 | startup-analyst, scroll-experience, content-strategy (0 / 0), product-design (0 / 0.33) |
+| pass | 17 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit, minimalist-ui, spec-to-code-compliance, agents-md; name-invoked: planner, handoff, ui-visual-validator |
+| fail: no measured value | 6 | startup-analyst, scroll-experience, content-strategy (0 / 0), product-design (0 / 0.33); name-invoked: skill-router, product-manager (0 / 0) |
 | trigger-only | 1 | pre-deployment-review (value case needs a fixture project and Bash) |
 
-No skill fired on any near-miss (0 false fires in 6 runs each). Spend: $11.88 total at Claude Code's list-price
-estimate (pilots $1.92, 22-skill batches $9.96).
+No skill fired on any near-miss (0 false fires in 6 runs each). Spend: $13.98 total at Claude Code's list-price
+estimate (pilots $1.92, 22-skill batches $9.96, name-invoked re-run $2.10).
+
+Invocation rule (user decision, 2026-10-31): skills the user invokes by name (`invocation: "name"` in `core.json`)
+are tested with an explicit `/<skill> ...` case. Claude Code expands the command directly, so there is no Skill tool
+call to detect; an `invocable` regex grader on the run trace confirms the command was registered in every with-skill
+run, and the value case does the rest. A probe (planner, 1 run per arm) showed the expanded command was followed and
+the without arm reported the command missing and still ran cleanly.
+skill-router's value cannot show in isolated eval runs: it routes to the user's installed skills, and runs load none.
 
 Caveats:
 - One suite run per skill (N = 3 per arm). Deltas of 0.33 rest on a single run's difference; treat them as weak.
 - The judge returns votes without reasons, so a failed judged case cannot always be explained from the record.
 - Rubrics were written by agents from each SKILL.md and are reviews until the user's blind samples confirm them.
-- The users' transcripts show the five trigger failures are mostly invoked by name (typed `/skill`), so the
-  auto-trigger requirement may be the wrong test for them; a requirement change is the user's decision (D6a).
+- The five name-invoked skills were first tested for auto-triggering (0/3, 0/3, 0/3, 0/3, 2/3); those results are in
+  git history. The user's transcripts show each is typed as `/skill` at least as often as it is auto-invoked.
 - grill-me's judged rubric was corrected once (v1 counted question marks; see the grader's "Rubric history").

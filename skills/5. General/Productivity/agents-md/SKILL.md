@@ -59,17 +59,6 @@ Per-file commands are faster and cheaper than full project builds. Always includ
 | Test | `pnpm jest path/to/file.test.ts` |
 ```
 
-### Commit Attribution
-Always include this section. Agents should use their own identity:
-```markdown
-## Commit Attribution
-AI commits MUST include:
-```
-Co-Authored-By: (the agent model's name and attribution byline)
-```
-Example: `Co-Authored-By: Claude Sonnet 4 <noreply@example.com>`
-```
-
 ### Key Conventions
 Project-specific patterns agents must follow. Keep brief.
 
@@ -102,12 +91,6 @@ Omit these:
 ## Package Manager
 Use **pnpm**: `pnpm install`, `pnpm dev`
 
-## Commit Attribution
-AI commits MUST include:
-```
-Co-Authored-By: (the agent model's name and attribution byline)
-```
-
 ## File-Scoped Commands
 | Task | Command |
 |------|---------|
@@ -128,3 +111,5 @@ Co-Authored-By: (the agent model's name and attribution byline)
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+<!-- Modified 2026-10-31 by kazaxlabs (Curated_Skills): removed the AI commit attribution (Co-Authored-By) rule. -->

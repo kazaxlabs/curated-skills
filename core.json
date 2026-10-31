@@ -182,7 +182,7 @@
       "status": "verified",
       "basis": "demand: 3 invocations, 3 projects",
       "record": "verifications/agents-md.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.38",
+      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.37; re-verified after removing the Co-Authored-By rule (rubric v2)",
       "verified": "2026-10-31",
       "invocation": "auto"
     },

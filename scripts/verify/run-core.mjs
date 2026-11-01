@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // run-core.mjs — run run-eval.mjs for Core skills in sequence under an overall spend ceiling (plan 5.2).
 //
-// Usage: node scripts/verify/run-core.mjs [--only a,b,c] [--skip-verified] [--budget-usd 20]
+// Usage: node scripts/verify/run-core.mjs [--only a,b,c] [--skip-passed] [--budget-usd 20]
 //          [--per-skill-usd 3] [--concurrency 3]
 // Before each skill it checks the running total; it stops when the next skill could push the total past
 // --budget-usd (worst case: --per-skill-usd). Writes a summary table to .verify/batch-<stamp>.json.
@@ -21,7 +21,8 @@ const concurrency = opt('--concurrency', '3');
 
 let skills = core.skills.map((s) => s.name);
 if (only) skills = skills.filter((s) => only.includes(s));
-if (args.includes('--skip-verified')) skills = skills.filter((s) => core.skills.find((c) => c.name === s).status !== 'verified');
+// --skip-passed skips every skill that has left `provisional` (`passed-review`, or `verified` after the owner's blind sample).
+if (args.includes('--skip-passed')) skills = skills.filter((s) => core.skills.find((c) => c.name === s).status === 'provisional');
 
 const latestRun = (skill) => {
   const dir = join(repoRoot, '.verify', 'runs');

@@ -1,5 +1,5 @@
 {
-  "$comment": "Core manifest (plan D1, D3, D14). Only skills listed here are installed globally. 'provisional' members must earn a Verification within 60 days of cutover or return to the Archive; 'verified' members need a Verification younger than 120 days. Demand evidence: Skill-tool invocations in Claude Code transcripts 2026-06-16..2026-10-28. The 'basis' counts are the first tally (546 transcripts, run 2026-10-28); re-run scripts/verify/usage-report.mjs --core core.json for current counts (2026-10-31: 586 transcripts, all 22 demand entries still meet the rule). Verification state lives here and in verifications/*.json only, not in SKILL.md frontmatter (avoids drift and content-hash churn).",
+  "$comment": "Core manifest (plan D1, D3, D14). Only skills listed here are installed globally. Status ladder: 'provisional' members must earn a Verification within 60 days of cutover or return to the Archive; 'passed-review' means scripts/verify/run-eval.mjs passed every requirement, but its value verdict rests on an LLM judge, which is a review, not a gate (AGENTS.md §3); only the owner's blind sample of the judged cases can promote a member to 'verified' (relabelled 2026-10-31: the 17 former 'verified' entries had no blind sample). 'passed-review' and 'verified' members need a Verification younger than verifiedMaxAgeDays. Demand evidence: Skill-tool invocations in Claude Code transcripts 2026-06-16..2026-10-28. The 'basis' counts are the first tally (546 transcripts, run 2026-10-28); re-run scripts/verify/usage-report.mjs --core core.json for current counts (2026-10-31: 586 transcripts, all 22 demand entries still meet the rule). Verification state lives here and in verifications/*.json only, not in SKILL.md frontmatter (avoids drift and content-hash churn).",
   "cutover": null,
   "rules": {
     "provisionalDays": 60,
@@ -26,47 +26,47 @@
     },
     {
       "name": "grill-me",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 17 invocations, 7 projects (plus 4 under the old folder name)",
-      "verified": "2026-10-31",
+      "passedReview": "2026-10-31",
       "record": "verifications/grill-me.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.34",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.34",
       "invocation": "auto"
     },
     {
       "name": "planner",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 16 invocations, 5 projects",
       "record": "verifications/planner.json",
-      "result": "pass: invocable 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.48",
+      "result": "passed-review: invocable 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.48",
       "invocation": "name",
-      "verified": "2026-10-31"
+      "passedReview": "2026-10-31"
     },
     {
       "name": "grill-with-docs",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)",
       "record": "verifications/grill-with-docs.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.38",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.38",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "multi-agent-brainstorming",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 9 invocations, 4 projects",
       "record": "verifications/multi-agent-brainstorming.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.61",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.61",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "brainstorming",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 8 invocations, 4 projects",
       "record": "verifications/brainstorming.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.39",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.39",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
@@ -80,11 +80,11 @@
     },
     {
       "name": "ux-flow",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 6 invocations, 3 projects",
       "record": "verifications/ux-flow.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.46",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.46",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
@@ -107,29 +107,29 @@
     },
     {
       "name": "pricing-strategy",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 5 invocations, 2 projects",
       "record": "verifications/pricing-strategy.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.44",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.44",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "accessibility-compliance-accessibility-audit",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 5 invocations, 2 projects",
       "record": "verifications/accessibility-compliance-accessibility-audit.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0.67 (delta 0.33), $0.51",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0.67 (delta 0.33), $0.51",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "minimalist-ui",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 5 invocations, 3 projects",
       "record": "verifications/minimalist-ui.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.52",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.52",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
@@ -143,65 +143,65 @@
     },
     {
       "name": "idea-os",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 4 invocations, 2 projects",
       "record": "verifications/idea-os.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.55",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.55",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "multi-agent-task-orchestrator",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 4 invocations, 3 projects",
       "record": "verifications/multi-agent-task-orchestrator.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.48",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.48",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "spec-to-code-compliance",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 4 invocations, 2 projects",
       "record": "verifications/spec-to-code-compliance.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.53",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.53",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "ui-visual-validator",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 3 invocations, 3 projects",
       "record": "verifications/ui-visual-validator.json",
-      "result": "pass: invocable 3/3, false fire 0/6, value with 1 / without 0.67 (delta 0.33), $0.42",
+      "result": "passed-review: invocable 3/3, false fire 0/6, value with 1 / without 0.67 (delta 0.33), $0.42",
       "invocation": "name",
-      "verified": "2026-10-31"
+      "passedReview": "2026-10-31"
     },
     {
       "name": "agents-md",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 3 invocations, 3 projects",
       "record": "verifications/agents-md.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.37; re-verified after removing the Co-Authored-By rule (rubric v2)",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 0.33 / without 0 (delta 0.33), $0.37; re-run after removing the Co-Authored-By rule (rubric v2)",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "french-canadian",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 3 invocations, 2 projects",
       "record": "verifications/french-canadian.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.34",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.34",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
       "name": "enhance-prompt",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "demand: 3 invocations, 2 projects",
       "record": "verifications/enhance-prompt.json",
-      "result": "pass: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.4",
-      "verified": "2026-10-31",
+      "result": "passed-review: trigger 3/3, false fire 0/6, value with 1 / without 0 (delta 1), $0.4",
+      "passedReview": "2026-10-31",
       "invocation": "auto"
     },
     {
@@ -215,12 +215,12 @@
     },
     {
       "name": "handoff",
-      "status": "verified",
+      "status": "passed-review",
       "basis": "nominated: collab workflow tool",
       "record": "verifications/handoff.json",
-      "result": "pass: invocable 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.37",
+      "result": "passed-review: invocable 3/3, false fire 0/6, value with 0.67 / without 0 (delta 0.67), $0.37",
       "invocation": "name",
-      "verified": "2026-10-31"
+      "passedReview": "2026-10-31"
     },
     {
       "name": "pre-deployment-review",

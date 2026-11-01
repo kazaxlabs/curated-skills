@@ -24,8 +24,9 @@ the user blind-grades a sample of about one in five (D6b).
 | R3 value | Every case tagged `value` scores higher with the skill than without (delta > 0). |
 | R4 clean | No run ended on an error, and the result is not partial. |
 
-Verdicts: `pass` (static gate + R1–R4), `trigger-only` (no `value` case yet, rest true), `incomplete` (R4 false),
-`fail` (anything else). `claude plugin eval`'s own `--threshold` is recorded but does not decide the verdict.
+Verdicts: `passed-review` (static gate + R1–R4), `trigger-only` (no `value` case yet, rest true), `incomplete` (R4 false),
+`fail` (anything else). The runner never writes `verified`: R3 rests on an LLM judge, which is a review. A skill moves
+from `passed-review` to `verified` in `core.json` only after the owner's blind sample of its judged cases agrees. `claude plugin eval`'s own `--threshold` is recorded but does not decide the verdict.
 Eval runs are isolated by Claude Code: no user skills, settings, CLAUDE.md or MCP servers load in either arm.
 
 Typical runs:
@@ -46,7 +47,7 @@ Per-skill details are in `core.json` (`result`) and `verifications/<skill>.json`
 
 | Verdict | Count | Skills |
 | :--- | ---: | :--- |
-| pass | 17 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit, minimalist-ui, spec-to-code-compliance, agents-md; name-invoked: planner, handoff, ui-visual-validator |
+| passed-review | 17 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit, minimalist-ui, spec-to-code-compliance, agents-md; name-invoked: planner, handoff, ui-visual-validator |
 | fail: no measured value | 6 | startup-analyst, scroll-experience, content-strategy (0 / 0), product-design (0 / 0.33); name-invoked: skill-router, product-manager (0 / 0) |
 | trigger-only | 1 | pre-deployment-review (value case needs a fixture project and Bash) |
 

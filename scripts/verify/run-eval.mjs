@@ -17,9 +17,13 @@
 //   R2 noFire   every grader named `not-fired` passed in every run of both arms;
 //   R3 value    every case tagged `value` has delta > 0;
 //   R4 clean    no run ended on an error and the result is not partial.
-// Verdict: pass = static gate + R1..R4 all true; trigger-only = R3 untested (no `value` case) and the rest true;
-//          incomplete = R4 false; fail = anything else. The eval's --threshold is recorded for information only.
-// Exit codes: 0 pass, 3 trigger-only, 2 incomplete, 1 fail.
+// Verdict: passed-review = static gate + R1..R4 all true; trigger-only = R3 untested (no `value` case) and the rest
+//          true; incomplete = R4 false; fail = anything else. The eval's --threshold is recorded for information only.
+//          The top verdict is `passed-review`, never `verified`: R3 rests on an LLM judge, and a judge is a review
+//          (AGENTS.md §3). Only the owner's blind sample is the gate that can promote a skill to `verified` in
+//          core.json; this runner never writes that label (relabelled from `pass`, 2026-10-31).
+// --rescore keeps the record's checkedAt (when the eval ran) if it rescores the same run, and adds rescoredAt.
+// Exit codes: 0 passed-review, 3 trigger-only, 2 incomplete, 1 fail.
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -115,9 +119,13 @@ const others = [req.trigger, req.noFire].filter((v) => v !== null);
 const verdict = staticResult.static !== 'pass' ? 'fail'
   : !req.clean ? 'incomplete'
   : !others.length || !others.every(Boolean) || req.value === false ? 'fail'
-  : req.value === null ? 'trigger-only' : 'pass';
+  : req.value === null ? 'trigger-only' : 'passed-review';
+const recordPath = join(repoRoot, 'verifications', `${name}.json`);
+const previous = existsSync(recordPath) ? JSON.parse(readFileSync(recordPath, 'utf8')) : null;
+const sameRun = rescore && previous && summary && previous.eval?.costUsd === summary.costUsd;
 const record = {
-  skill: name, kind: 'eval', checkedAt: new Date().toISOString(), cli: meta.cli,
+  skill: name, kind: 'eval', checkedAt: sameRun ? previous.checkedAt : new Date().toISOString(),
+  ...(rescore ? { rescoredAt: new Date().toISOString() } : {}), cli: meta.cli,
   models: { agent: meta.model, judge: meta.judge }, maxCostUsd: meta.maxCostUsd, evalThresholdInfo: meta.threshold,
   static: staticResult.static, staticGates: Object.fromEntries(Object.entries(staticResult.gates ?? {}).map(([k, g]) => [k, g.ok])),
   requirements: req, evalExit: meta.evalExit, eval: summary, verdict,
@@ -126,4 +134,4 @@ mkdirSync(join(repoRoot, 'verifications'), { recursive: true });
 writeFileSync(join(repoRoot, 'verifications', `${name}.json`), JSON.stringify(record, null, 2) + '\n');
 console.log(`requirements: ${JSON.stringify(req)}`);
 console.log(`verdict: ${verdict} -> verifications/${name}.json; run files: ${runDir}`);
-process.exit({ pass: 0, 'trigger-only': 3, incomplete: 2 }[verdict] ?? 1);
+process.exit({ 'passed-review': 0, 'trigger-only': 3, incomplete: 2 }[verdict] ?? 1);

@@ -2,6 +2,7 @@
   "skill": "spec-to-code-compliance",
   "kind": "eval",
   "checkedAt": "2026-10-31T05:33:07.867Z",
+  "rescoredAt": "2026-11-01T00:38:48.321Z",
   "cli": "2.1.314 (Claude Code)",
   "models": {
     "agent": "claude-sonnet-5-5",
@@ -53,5 +54,5 @@
       }
     ]
   },
-  "verdict": "pass"
+  "verdict": "passed-review"
 }

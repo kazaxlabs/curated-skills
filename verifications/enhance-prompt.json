@@ -2,6 +2,7 @@
   "skill": "enhance-prompt",
   "kind": "eval",
   "checkedAt": "2026-10-31T05:36:28.380Z",
+  "rescoredAt": "2026-11-01T00:38:41.898Z",
   "cli": "2.1.314 (Claude Code)",
   "models": {
     "agent": "claude-sonnet-5-5",
@@ -53,5 +54,5 @@
       }
     ]
   },
-  "verdict": "pass"
+  "verdict": "passed-review"
 }

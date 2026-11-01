@@ -108,6 +108,10 @@ The ordering rules that apply regardless of which stages run:
 - **A stage that cannot run says so.** If a gate requires interaction and the session is
   non-interactive (CI, subagent, headless), do not silently skip it and do not block:
   proceed under a stated written assumption and flag it for review.
+- **Plans mark each step's state.** Write steps as `- [ ] ID`, `- [~] ID` (in progress) or
+  `- [x] ID` (done, with its gate result) so progress is counted, not estimated. On the
+  owner's machine a private tracker (`~/.brain`) reads these markers; its `AGENTS.md`
+  says how a session reports to it.
 
 ---
 

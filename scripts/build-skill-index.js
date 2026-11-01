@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // ==============================================================================
 // build-skill-index.js
-// Scans all SKILL.md files in skills/ and builds a compressed BM25/TF-IDF sparse
+// Scans the git-tracked SKILL.md files in skills/ and builds a compressed BM25/TF-IDF sparse
 // vector index at skills/_index/skills-index.json, the Archive search path for
 // collab-mcp's search_skills. Each entry carries tier 'core' (listed in core.json,
 // installed by scripts/install-core.mjs) or 'archive' (searchable, never installed).
@@ -12,10 +12,10 @@
 //        node scripts/build-skill-index.js --check   # exit 1 if the index is stale
 // ==============================================================================
 
+import { execFileSync } from 'node:child_process';
 import {
   existsSync,
   mkdirSync,
-  readdirSync,
   readFileSync,
   writeFileSync,
 } from 'node:fs';
@@ -154,22 +154,12 @@ function summarize(description, body, fallbackName) {
   return (lastSpace > 120 ? cut.slice(0, lastSpace) : cut) + '...';
 }
 
-const skillFiles = [];
-function walkSkills(dir) {
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name === '_index' || entry.name === '.git' || entry.name === 'node_modules') {
-      continue;
-    }
-    const full = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      walkSkills(full);
-    } else if (entry.name === 'SKILL.md' || entry.name === 'skill.md') {
-      skillFiles.push(full);
-    }
-  }
-}
-
-walkSkills(skillsRoot);
+// Index only files git tracks. Ignored or untracked folders (client material, vendor leftovers) must never
+// reach this public index, and a checkout's stray files must not make --check disagree with CI.
+const skillFiles = execFileSync('git', ['ls-files', '-z', '--', 'skills'], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+  .split('\0')
+  .filter((f) => /(^|\/)(SKILL|skill)\.md$/.test(f) && !f.startsWith('skills/_index/') && existsSync(join(repoRoot, f)))
+  .map((f) => join(repoRoot, f));
 // Sort on forward-slash paths so the order (and the index bytes) match on Windows and in CI.
 const fwd = (p) => p.replace(/\\/g, '/');
 skillFiles.sort((a, b) => (fwd(a) < fwd(b) ? -1 : 1));

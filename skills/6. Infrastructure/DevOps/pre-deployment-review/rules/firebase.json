@@ -1,0 +1,205 @@
+[
+  {
+    "id": "firebase.rules.file-exists",
+    "title": "firestore.rules exists",
+    "severity": "block",
+    "applies_when": { "any": ["database=firestore"] },
+    "check": { "type": "file_exists", "paths": ["firestore.rules"] },
+    "remediation": "Add firestore.rules and reference it from firebase.json.",
+    "sources": [ { "title": "Firebase launch checklist — Cloud Firestore: configure Security Rules", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.rules.catch-all-deny",
+    "title": "Firestore rules end with a catch-all deny",
+    "severity": "block",
+    "applies_when": { "any": ["database=firestore"] },
+    "check": { "type": "grep", "pattern": "match\\s*/\\{[a-zA-Z_]+=\\*\\*\\}\\s*\\{\\s*allow\\s+read,\\s*write:\\s*if\\s+false", "flags": "s", "include": ["firestore.rules"], "expect": "present" },
+    "remediation": "Append `match /{document=**} { allow read, write: if false; }` as the last block.",
+    "sources": [ { "title": "Firebase launch checklist — Cloud Firestore: configure Security Rules", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.rules.no-open-write",
+    "title": "No rule grants write to any signed-in user",
+    "severity": "warn",
+    "applies_when": { "any": ["database=firestore"] },
+    "check": { "type": "grep", "pattern": "allow\\s+(write|read,\\s*write|create|update|delete)[^;]*:\\s*if\\s+request\\.auth\\s*!=\\s*null\\s*;", "include": ["firestore.rules"], "expect": "absent" },
+    "remediation": "Scope writes to the owner or an allowlist document, never to `request.auth != null` alone.",
+    "sources": [ { "title": "Firebase launch checklist — configure Security Rules to prevent unintended data access", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.storage.rules-exist",
+    "title": "storage.rules exists when Storage is configured",
+    "severity": "block",
+    "applies_when": { "all": ["storage=firebase-storage"] },
+    "check": { "type": "file_exists", "paths": ["storage.rules"] },
+    "remediation": "Add storage.rules with a catch-all deny.",
+    "sources": [ { "title": "Firebase launch checklist — Cloud Storage: configure Security Rules", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.project.not-demo",
+    "title": ".firebaserc default project is not a demo id",
+    "severity": "block",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "\"default\"\\s*:\\s*\"(demo-|your-project|my-project|example)", "include": [".firebaserc"], "expect": "absent" },
+    "remediation": "Point `projects.default` at the real project id; keep `demo-*` only under an emulator alias.",
+    "sources": [ { "title": "Firebase launch checklist — separate projects for dev, test, prod", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.project.separate-environments",
+    "title": "Separate project aliases for non-production and production",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "review", "prompt": "Confirm .firebaserc or deploy scripts target distinct Firebase projects for dev/test vs production, and that production has a lien or Prod environment tag." },
+    "remediation": "Create a separate production project; add a project lien.",
+    "sources": [ { "title": "Firebase launch checklist — Project and app best practices", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.hosting.hsts",
+    "title": "Hosting sets Strict-Transport-Security",
+    "severity": "block",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "Strict-Transport-Security", "include": ["firebase.json"], "expect": "present" },
+    "remediation": "hosting.headers: { key: Strict-Transport-Security, value: max-age=63072000; includeSubDomains; preload }",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet — HSTS", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.hosting.nosniff",
+    "title": "Hosting sets X-Content-Type-Options: nosniff",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "X-Content-Type-Options", "include": ["firebase.json"], "expect": "present" },
+    "remediation": "hosting.headers: { key: X-Content-Type-Options, value: nosniff }",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.hosting.framing",
+    "title": "Hosting restricts framing (frame-ancestors or X-Frame-Options)",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "frame-ancestors|X-Frame-Options", "include": ["firebase.json"], "expect": "present" },
+    "remediation": "Prefer CSP `frame-ancestors 'none'`; X-Frame-Options: DENY as fallback.",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.hosting.referrer-policy",
+    "title": "Hosting sets Referrer-Policy",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "Referrer-Policy", "include": ["firebase.json"], "expect": "present" },
+    "remediation": "hosting.headers: { key: Referrer-Policy, value: strict-origin-when-cross-origin }",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.hosting.permissions-policy",
+    "title": "Hosting sets Permissions-Policy",
+    "severity": "info",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "Permissions-Policy", "include": ["firebase.json"], "expect": "present" },
+    "remediation": "hosting.headers: { key: Permissions-Policy, value: geolocation=(), camera=(), microphone=() }",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.hosting.csp-admin",
+    "title": "A Content-Security-Policy covers the admin surface",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "grep", "pattern": "Content-Security-Policy", "include": ["firebase.json"], "expect": "present" },
+    "remediation": "Add a CSP header on the admin route source in hosting.headers.",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase", "frontend-security-coder"]
+  },
+  {
+    "id": "firebase.functions.runtime-not-decommissioned",
+    "title": "Functions runtime is not deprecated or decommissioned",
+    "severity": "block",
+    "applies_when": { "all": ["compute=firebase-functions"] },
+    "check": { "type": "grep", "pattern": "\"runtime\"\\s*:\\s*\"nodejs(6|8|10|12|14|16|18|20)\"|\"node\"\\s*:\\s*\"(6|8|10|12|14|16|18|20)(\\.|\")", "include": ["firebase.json", "functions/package.json", "**/functions/package.json"], "expect": "absent" },
+    "remediation": "Set runtime to nodejs22 (supported until 2027-04-30 per the table fetched 2026-10-27) or newer; re-fetch the runtime-support page before trusting these dates.",
+    "sources": [
+      { "title": "Cloud Run functions runtime support (Node 20 deprecated 2026-04-30, decommission 2026-10-30)", "url": "https://docs.cloud.google.com/functions/docs/runtime-support", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "Firebase manage-functions: firebase.json runtime wins over engines", "url": "https://firebase.google.com/docs/functions/manage-functions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.emulators.configured",
+    "title": "Emulator suite is configured for local testing",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "facet", "facet": "emulator", "expect": "present" },
+    "remediation": "Add an emulators block to firebase.json and test rules and functions there before deploying.",
+    "sources": [ { "title": "Firebase launch checklist — test in the Local Emulator Suite", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.rules.tests-present",
+    "title": "Rules unit tests exist",
+    "severity": "warn",
+    "applies_when": { "any": ["database=firestore"] },
+    "check": { "type": "facet", "facet": "test_tool", "value": "firebase-rules-unit-testing", "expect": "present" },
+    "remediation": "Add @firebase/rules-unit-testing and a `test:rules` script run under `firebase emulators:exec`.",
+    "sources": [ { "title": "Firebase launch checklist — test in the Local Emulator Suite", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.gates.rules-tests",
+    "title": "Rules tests pass on the emulator",
+    "severity": "block",
+    "applies_when": { "all": ["script=test:rules"] },
+    "check": { "type": "command", "cmd": ["npm", "run", "test:rules"], "requires_script": "test:rules", "expect_exit": 0, "mutating": false },
+    "remediation": "Fix the failing rules test before deploying; declare whether the tests were written this session.",
+    "sources": [ { "title": "Firebase launch checklist — test in the Local Emulator Suite", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.auth.providers-reviewed",
+    "title": "Unused auth providers disabled; anonymous auth off unless required",
+    "severity": "warn",
+    "applies_when": { "any": ["auth=firebase-auth"] },
+    "check": { "type": "review", "prompt": "List enabled sign-in providers and authorized domains in the console (no CLI listing exists). Confirm anonymous auth is disabled unless the app needs it and the production domain is authorized." },
+    "remediation": "Disable unused providers; add the production domain to authorized domains.",
+    "sources": [ { "title": "Firebase launch checklist — Authentication", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.appcheck.enforced",
+    "title": "App Check enforced for every supported service",
+    "severity": "info",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "review", "prompt": "Check whether App Check is enforced for Firestore, Storage, Functions and Auth. Record enforcement state per service." },
+    "remediation": "Enable and enforce App Check; this is a Change-tier action.",
+    "sources": [ { "title": "Firebase launch checklist — enforce App Check", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  },
+  {
+    "id": "firebase.billing.budget-alerts",
+    "title": "Budget alerts configured on the billing account",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "review", "prompt": "Confirm a budget with alert thresholds exists for the billing account (budgets notify, they do not cap spend)." },
+    "remediation": "Create a budget alert; consider a spend cap function. Change-tier.",
+    "sources": [ { "title": "Firebase launch checklist — Pricing plan limits and budget alerts", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase", "cost-optimization"]
+  },
+  {
+    "id": "firebase.apikeys.restricted",
+    "title": "API keys restricted to the APIs they need",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=firebase"] },
+    "check": { "type": "review", "prompt": "Inspect API key restrictions in the Cloud console: application restrictions (HTTP referrers) and API restrictions set for the web key." },
+    "remediation": "Restrict the browser key by referrer and by API.",
+    "sources": [ { "title": "Firebase launch checklist — restrict API keys", "url": "https://firebase.google.com/support/guides/launch-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["firebase"]
+  }
+]

@@ -1,6 +1,6 @@
 ---
 name: brand-perception-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Diagnoses what a brand's visual, verbal and behavioural identity signals to its audience and prescribes changes that close the gap with the intended perception. Use when repositioning a brand or when trust or status perception is off."
 risk: safe
 source: community
 date_added: "2026-04-04"

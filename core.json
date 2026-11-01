@@ -1,0 +1,235 @@
+{
+  "$comment": "Core manifest (plan D1, D3, D14). Only skills listed here are installed globally. Status ladder: 'provisional' members must earn a Verification within 60 days of cutover or return to the Archive; 'passed-review' means scripts/verify/run-eval.mjs passed every requirement, but its value verdict rests on an LLM judge, which is a review, not a gate (AGENTS.md §3); only the owner's blind sample of the judged cases can promote a member to 'verified' (relabelled 2026-10-31: the 17 former 'verified' entries had no blind sample; under requirement set v2, which adds a 2-of-3 with-arm floor to the value requirement, 3 of them returned to 'provisional'). 'passed-review' and 'verified' members need a Verification younger than verifiedMaxAgeDays. Demand evidence: Skill-tool invocations in Claude Code transcripts 2026-06-16..2026-10-28. The 'basis' counts are the first tally (546 transcripts, run 2026-10-28); re-run scripts/verify/usage-report.mjs --core core.json for current counts (2026-10-31: 586 transcripts, all 22 demand entries still meet the rule). Verification state lives here and in verifications/*.json only, not in SKILL.md frontmatter (avoids drift and content-hash churn).",
+  "cutover": null,
+  "rules": {
+    "provisionalDays": 60,
+    "verifiedMaxAgeDays": 120,
+    "demand": {
+      "minInvocations": 3,
+      "minProjects": 2,
+      "windowDays": 120
+    },
+    "invocation": {
+      "auto": "R1: the skill fires on its own in every run of its should-trigger case.",
+      "name": "R1: the explicit '/<skill>' case runs with the command available in every with-skill run. For skills the user invokes by name (user decision 2026-10-31); auto-trigger results stay in git history as information."
+    }
+  },
+  "skills": [
+    {
+      "name": "skill-router",
+      "status": "provisional",
+      "basis": "demand: 28 invocations, 6 projects",
+      "record": "verifications/skill-router.json",
+      "result": "fail: invocable 3/3, false fire 0/3, value with 0 / without 0 (delta 0), $0.38",
+      "lastCheck": "2026-10-31",
+      "invocation": "name"
+    },
+    {
+      "name": "grill-me",
+      "status": "passed-review",
+      "basis": "demand: 17 invocations, 7 projects (plus 4 under the old folder name)",
+      "passedReview": "2026-10-31",
+      "record": "verifications/grill-me.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.34",
+      "invocation": "auto"
+    },
+    {
+      "name": "planner",
+      "status": "passed-review",
+      "basis": "demand: 16 invocations, 5 projects",
+      "record": "verifications/planner.json",
+      "result": "passed-review: invocable 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.48",
+      "invocation": "name",
+      "passedReview": "2026-10-31"
+    },
+    {
+      "name": "grill-with-docs",
+      "status": "passed-review",
+      "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)",
+      "record": "verifications/grill-with-docs.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.38",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "multi-agent-brainstorming",
+      "status": "passed-review",
+      "basis": "demand: 9 invocations, 4 projects",
+      "record": "verifications/multi-agent-brainstorming.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.61",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "brainstorming",
+      "status": "passed-review",
+      "basis": "demand: 8 invocations, 4 projects",
+      "record": "verifications/brainstorming.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.39",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "scroll-experience",
+      "status": "provisional",
+      "basis": "demand: 7 invocations, 3 projects",
+      "record": "verifications/scroll-experience.json",
+      "result": "fail: trigger 3/3, false fire 0/3, value with 0 / without 0 (delta 0), $0.57",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "ux-flow",
+      "status": "passed-review",
+      "basis": "demand: 6 invocations, 3 projects",
+      "record": "verifications/ux-flow.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.46",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "product-design",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 2 projects",
+      "record": "verifications/product-design.json",
+      "result": "fail: trigger 2/3, false fire 0/3, value with 0 / without 0.33 (delta -0.33), $0.51",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "content-strategy",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 3 projects",
+      "record": "verifications/content-strategy.json",
+      "result": "fail: trigger 3/3, false fire 0/3, value with 0 / without 0 (delta 0), $0.5",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "pricing-strategy",
+      "status": "passed-review",
+      "basis": "demand: 5 invocations, 2 projects",
+      "record": "verifications/pricing-strategy.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 0.67 / without 0 (delta 0.67), $0.44",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "accessibility-compliance-accessibility-audit",
+      "status": "passed-review",
+      "basis": "demand: 5 invocations, 2 projects",
+      "record": "verifications/accessibility-compliance-accessibility-audit.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0.67 (delta 0.33), $0.51",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "minimalist-ui",
+      "status": "provisional",
+      "basis": "demand: 5 invocations, 3 projects",
+      "record": "verifications/minimalist-ui.json",
+      "result": "fail: trigger 3/3, false fire 0/3, value with 0.33 / without 0 (delta 0.33), with arm passed 1/3 (below the 2-of-3 floor, requirement set v2), $0.52",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "startup-analyst",
+      "status": "provisional",
+      "basis": "demand: 4 invocations, 3 projects",
+      "record": "verifications/startup-analyst.json",
+      "result": "fail: trigger 3/3, false fire 0/3, value with 0 / without 0 (delta 0), $0.5",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "idea-os",
+      "status": "passed-review",
+      "basis": "demand: 4 invocations, 2 projects",
+      "record": "verifications/idea-os.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.55",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "multi-agent-task-orchestrator",
+      "status": "passed-review",
+      "basis": "demand: 4 invocations, 3 projects",
+      "record": "verifications/multi-agent-task-orchestrator.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 0.67 / without 0 (delta 0.67), $0.48",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "spec-to-code-compliance",
+      "status": "provisional",
+      "basis": "demand: 4 invocations, 2 projects",
+      "record": "verifications/spec-to-code-compliance.json",
+      "result": "fail: trigger 3/3, false fire 0/3, value with 0.33 / without 0 (delta 0.33), with arm passed 1/3 (below the 2-of-3 floor, requirement set v2), $0.53",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "ui-visual-validator",
+      "status": "passed-review",
+      "basis": "demand: 3 invocations, 3 projects",
+      "record": "verifications/ui-visual-validator.json",
+      "result": "passed-review: invocable 3/3, false fire 0/3, value with 1 / without 0.67 (delta 0.33), $0.42",
+      "invocation": "name",
+      "passedReview": "2026-10-31"
+    },
+    {
+      "name": "agents-md",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 3 projects",
+      "record": "verifications/agents-md.json",
+      "result": "fail: trigger 3/3, false fire 0/3, value with 0.33 / without 0 (delta 0.33), with arm passed 1/3 (below the 2-of-3 floor, requirement set v2), $0.37; re-run after removing the Co-Authored-By rule (rubric v2)",
+      "lastCheck": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "french-canadian",
+      "status": "passed-review",
+      "basis": "demand: 3 invocations, 2 projects",
+      "record": "verifications/french-canadian.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.34",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "enhance-prompt",
+      "status": "passed-review",
+      "basis": "demand: 3 invocations, 2 projects",
+      "record": "verifications/enhance-prompt.json",
+      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.4",
+      "passedReview": "2026-10-31",
+      "invocation": "auto"
+    },
+    {
+      "name": "product-manager",
+      "status": "provisional",
+      "basis": "demand: 3 invocations, 2 projects",
+      "record": "verifications/product-manager.json",
+      "result": "fail: invocable 3/3, false fire 0/3, value with 0 / without 0 (delta 0), $0.44",
+      "lastCheck": "2026-10-31",
+      "invocation": "name"
+    },
+    {
+      "name": "handoff",
+      "status": "passed-review",
+      "basis": "nominated: collab workflow tool",
+      "record": "verifications/handoff.json",
+      "result": "passed-review: invocable 3/3, false fire 0/3, value with 0.67 / without 0 (delta 0.67), $0.37",
+      "invocation": "name",
+      "passedReview": "2026-10-31"
+    },
+    {
+      "name": "pre-deployment-review",
+      "status": "provisional",
+      "basis": "nominated: user-authored gate skill",
+      "lastCheck": "2026-10-31",
+      "record": "verifications/pre-deployment-review.json",
+      "result": "trigger-only: trigger 3/3, false fire 0/3, value with 1 / without 1 (delta 0), $0.5",
+      "invocation": "auto"
+    }
+  ]
+}

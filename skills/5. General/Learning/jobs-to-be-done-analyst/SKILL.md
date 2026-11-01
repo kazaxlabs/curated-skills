@@ -1,6 +1,6 @@
 ---
 name: jobs-to-be-done-analyst
-description: "One sentence - what this skill does and when to invoke it"
+description: "Uncovers the functional, emotional and social jobs a customer hires a product or service to do, and the progress they are trying to make. Use when anchoring positioning, product messaging or feature priorities in real customer motivation."
 risk: safe
 source: community
 date_added: "2026-04-04"

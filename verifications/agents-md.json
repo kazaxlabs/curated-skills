@@ -1,0 +1,61 @@
+{
+  "skill": "agents-md",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T06:29:24.321Z",
+  "rescoredAt": "2026-11-01T00:41:00.568Z",
+  "cli": "2.1.314 (Claude Code)",
+  "requirementSet": "v2 2026-10-31",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": true,
+    "noFire": true,
+    "value": false,
+    "clean": true
+  },
+  "evalExit": 1,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.3675653,
+    "overallScore": 0.6666666666666666,
+    "meanDelta": 0.16666666666666666,
+    "cases": [
+      {
+        "name": "no-trigger-lockfile-name",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0,
+        "falseFireRuns": 0
+      },
+      {
+        "name": "trigger-nextjs-repo",
+        "tags": [
+          "trigger",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 0.3333333333333333,
+        "scoreWithout": 0,
+        "delta": 0.3333333333333333,
+        "firedRuns": 3,
+        "withPassedRuns": 1
+      }
+    ]
+  },
+  "verdict": "fail"
+}

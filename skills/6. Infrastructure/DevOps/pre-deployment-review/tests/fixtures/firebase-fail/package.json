@@ -1,0 +1,10 @@
+{
+  "name": "fx-firebase-fail",
+  "dependencies": {
+    "react": "^19.0.0",
+    "firebase": "^11.0.0"
+  },
+  "scripts": {
+    "build": "node -e \"process.exit(1)\""
+  }
+}

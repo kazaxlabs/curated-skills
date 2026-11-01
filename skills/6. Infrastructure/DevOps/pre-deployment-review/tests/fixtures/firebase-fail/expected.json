@@ -1,0 +1,29 @@
+{
+  "exit_code": 1,
+  "facets": {
+    "hosting": [
+      "firebase"
+    ],
+    "env_file": [
+      ".env"
+    ],
+    "ci": [
+      "github-actions"
+    ]
+  },
+  "must_fail": [
+    "core.secrets.env-not-tracked",
+    "core.secrets.gitignore-covers-env",
+    "firebase.rules.catch-all-deny",
+    "firebase.rules.no-open-write",
+    "firebase.project.not-demo",
+    "firebase.functions.runtime-not-decommissioned",
+    "firebase.hosting.hsts",
+    "gha.actions.not-floating",
+    "gha.auth.no-key-file-secrets",
+    "gha.token.permissions-declared",
+    "node.lockfile.present",
+    "core.secrets.placeholder-sweep",
+    "node.gate.build"
+  ]
+}

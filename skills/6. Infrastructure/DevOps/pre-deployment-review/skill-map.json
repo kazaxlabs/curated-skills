@@ -1,0 +1,988 @@
+{
+  "generated_at": "2026-10-28T00:17:22.466Z",
+  "skills_dir": "C:\\Curated_Skills\\skills",
+  "skills_scanned": 1523,
+  "note": "Skills are hypotheses for REVIEW items, never authorities (AGENTS.md §9). Load only the entries for facets present in the stack profile.",
+  "map": {
+    "hosting=firebase": [
+      {
+        "skill": "firebase",
+        "path": "7. Security/Protection/firebase/SKILL.md",
+        "score": 4
+      }
+    ],
+    "database=firestore": [
+      {
+        "skill": "firebase",
+        "path": "7. Security/Protection/firebase/SKILL.md",
+        "score": 4
+      }
+    ],
+    "auth=firebase-auth": [
+      {
+        "skill": "firebase",
+        "path": "7. Security/Protection/firebase/SKILL.md",
+        "score": 4
+      }
+    ],
+    "compute=firebase-functions": [
+      {
+        "skill": "firebase",
+        "path": "7. Security/Protection/firebase/SKILL.md",
+        "score": 4
+      }
+    ],
+    "hosting=vercel": [
+      {
+        "skill": "vercel-deployment",
+        "path": "6. Infrastructure/DevOps/vercel-deployment/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "vercel-ai-sdk-expert",
+        "path": "3. Data-AI/Data Engineering/vercel-ai-sdk-expert/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "react-best-practices",
+        "path": "3. Data-AI/Other/react-best-practices/SKILL.md",
+        "score": 2
+      },
+      {
+        "skill": "vercel-automation",
+        "path": "9. Workflow/Git/vercel-automation/SKILL.md",
+        "score": 2
+      }
+    ],
+    "hosting=cloudflare-workers": [
+      {
+        "skill": "cloudflare-workers-expert",
+        "path": "5. General/Other/cloudflare-workers-expert/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "hono",
+        "path": "4. Development/Frontend/hono/SKILL.md",
+        "score": 1
+      }
+    ],
+    "hosting=aws-serverless-framework": [
+      {
+        "skill": "aws-serverless",
+        "path": "6. Infrastructure/Cloud/aws-serverless/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "devops-deploy",
+        "path": "6. Infrastructure/Cloud/devops-deploy/SKILL.md",
+        "score": 2
+      },
+      {
+        "skill": "apify-actorization",
+        "path": "5. General/Productivity/apify-actorization/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "database-design",
+        "path": "3. Data-AI/Database/database-design/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "drizzle-orm-expert",
+        "path": "3. Data-AI/Database/drizzle-orm-expert/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "gcp-cloud-run",
+        "path": "6. Infrastructure/Cloud/gcp-cloud-run/SKILL.md",
+        "score": 1
+      }
+    ],
+    "hosting=app-engine": [
+      {
+        "skill": "gcp-data-pipelines",
+        "path": "gcp-data-pipelines/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "gcp-pipeline-orchestration",
+        "path": "gcp-pipeline-orchestration/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "gcp-pipeline-resource-provisioning",
+        "path": "gcp-pipeline-resource-provisioning/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "discovering-gcp-data-assets",
+        "path": "discovering-gcp-data-assets/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "gcp-cloud-run",
+        "path": "6. Infrastructure/Cloud/gcp-cloud-run/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "gcp-dataflow",
+        "path": "gcp-dataflow/SKILL.md",
+        "score": 4
+      }
+    ],
+    "framework=nextjs": [
+      {
+        "skill": "nextjs-best-practices",
+        "path": "3. Data-AI/Other/nextjs-best-practices/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "nextjs-app-router-patterns",
+        "path": "4. Development/Frontend/nextjs-app-router-patterns/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "nextjs-supabase-auth",
+        "path": "7. Security/Protection/nextjs-supabase-auth/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "react-nextjs-development",
+        "path": "4. Development/Frontend/react-nextjs-development/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "react-best-practices",
+        "path": "3. Data-AI/Other/react-best-practices/SKILL.md",
+        "score": 2
+      },
+      {
+        "skill": "vercel-deployment",
+        "path": "6. Infrastructure/DevOps/vercel-deployment/SKILL.md",
+        "score": 2
+      }
+    ],
+    "framework=react": [
+      {
+        "skill": "react-best-practices",
+        "path": "3. Data-AI/Other/react-best-practices/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "fp-react",
+        "path": "3. Data-AI/Other/fp-react/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "fp-ts-react",
+        "path": "3. Data-AI/Other/fp-ts-react/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "react-component-performance",
+        "path": "4. Development/Frontend/react-component-performance/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "react-flow-node-ts",
+        "path": "4. Development/Frontend/react-flow-node-ts/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "react-modernization",
+        "path": "4. Development/Frontend/react-modernization/SKILL.md",
+        "score": 4
+      }
+    ],
+    "framework=vite": [
+      {
+        "skill": "wiki-vitepress",
+        "path": "5. General/Other/wiki-vitepress/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "javascript-typescript-typescript-scaffold",
+        "path": "4. Development/Frontend/javascript-typescript-typescript-scaffold/SKILL.md",
+        "score": 1
+      }
+    ],
+    "framework=express": [
+      {
+        "skill": "n8n-expression-syntax",
+        "path": "3. Data-AI/Other/n8n-expression-syntax/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "x402-express-wrapper",
+        "path": "4. Development/Mobile/x402-express-wrapper/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "algorithmic-art",
+        "path": "5. General/Other/algorithmic-art/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "backend-dev-guidelines",
+        "path": "3. Data-AI/Other/backend-dev-guidelines/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "canvas-design",
+        "path": "5. General/Other/canvas-design/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "cc-skill-backend-patterns",
+        "path": "3. Data-AI/Database/cc-skill-backend-patterns/SKILL.md",
+        "score": 1
+      }
+    ],
+    "framework=hono": [
+      {
+        "skill": "hono",
+        "path": "4. Development/Frontend/hono/SKILL.md",
+        "score": 4
+      }
+    ],
+    "framework=nestjs": [
+      {
+        "skill": "nestjs-expert",
+        "path": "3. Data-AI/Other/nestjs-expert/SKILL.md",
+        "score": 4
+      }
+    ],
+    "framework=django": [
+      {
+        "skill": "django-access-review",
+        "path": "4. Development/Backend/django-access-review/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "django-perf-review",
+        "path": "3. Data-AI/Database/django-perf-review/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "django-pro",
+        "path": "6. Infrastructure/DevOps/django-pro/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "python-development-python-scaffold",
+        "path": "4. Development/Backend/python-development-python-scaffold/SKILL.md",
+        "score": 1
+      }
+    ],
+    "framework=fastapi": [
+      {
+        "skill": "fastapi-pro",
+        "path": "4. Development/Frontend/fastapi-pro/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "fastapi-router-py",
+        "path": "4. Development/Backend/fastapi-router-py/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "fastapi-templates",
+        "path": "4. Development/Frontend/fastapi-templates/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "python-fastapi-development",
+        "path": "4. Development/Backend/python-fastapi-development/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "junta-leiloeiros",
+        "path": "4. Development/Mobile/junta-leiloeiros/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "python-development-python-scaffold",
+        "path": "4. Development/Backend/python-development-python-scaffold/SKILL.md",
+        "score": 1
+      }
+    ],
+    "framework=rails": [
+      {
+        "skill": "new-rails-project",
+        "path": "5. General/Other/new-rails-project/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "skill-rails-upgrade",
+        "path": "5. General/Learning/skill-rails-upgrade/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "aegisops-ai",
+        "path": "7. Security/Forensic/aegisops-ai/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "ai-native-cli",
+        "path": "3. Data-AI/LLM-NLP/ai-native-cli/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "conductor-setup",
+        "path": "9. Workflow/Git/conductor-setup/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "pakistan-payments-stack",
+        "path": "4. Development/Frontend/pakistan-payments-stack/SKILL.md",
+        "score": 1
+      }
+    ],
+    "framework=sveltekit": [
+      {
+        "skill": "sveltekit",
+        "path": "4. Development/Frontend/sveltekit/SKILL.md",
+        "score": 8
+      }
+    ],
+    "framework=angular": [
+      {
+        "skill": "angular-best-practices",
+        "path": "5. General/Learning/angular-best-practices/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "angular",
+        "path": "1. Architecture/Patterns/angular/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "angular-migration",
+        "path": "5. General/Other/angular-migration/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "angular-state-management",
+        "path": "1. Architecture/Other/angular-state-management/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "angular-ui-patterns",
+        "path": "3. Data-AI/Other/angular-ui-patterns/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "frontend-mobile-security-xss-scan",
+        "path": "7. Security/Hacking/frontend-mobile-security-xss-scan/SKILL.md",
+        "score": 2
+      }
+    ],
+    "framework=astro": [
+      {
+        "skill": "astro",
+        "path": "7. Security/Other/astro/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "astropy",
+        "path": "3. Data-AI/Other/astropy/SKILL.md",
+        "score": 4
+      }
+    ],
+    "framework=remix": [
+      {
+        "skill": "shopify-apps",
+        "path": "4. Development/Frontend/shopify-apps/SKILL.md",
+        "score": 1
+      }
+    ],
+    "database=postgres": [
+      {
+        "skill": "postgres-best-practices",
+        "path": "3. Data-AI/Database/postgres-best-practices/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "azure-postgres-ts",
+        "path": "3. Data-AI/Database/azure-postgres-ts/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "azure-resource-manager-postgresql-dotnet",
+        "path": "3. Data-AI/Database/azure-resource-manager-postgresql-dotnet/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "claimable-postgres",
+        "path": "3. Data-AI/Machine Learning/claimable-postgres/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "neon-postgres",
+        "path": "3. Data-AI/Database/neon-postgres/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "postgresql",
+        "path": "3. Data-AI/Database/postgresql/SKILL.md",
+        "score": 4
+      }
+    ],
+    "database=prisma": [
+      {
+        "skill": "prisma-expert",
+        "path": "3. Data-AI/Database/prisma-expert/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "backend-dev-guidelines",
+        "path": "3. Data-AI/Other/backend-dev-guidelines/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "context7-auto-research",
+        "path": "4. Development/API/context7-auto-research/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "database-migration",
+        "path": "7. Security/Other/database-migration/SKILL.md",
+        "score": 1
+      }
+    ],
+    "database=drizzle": [
+      {
+        "skill": "drizzle-orm-expert",
+        "path": "3. Data-AI/Database/drizzle-orm-expert/SKILL.md",
+        "score": 4
+      }
+    ],
+    "database=mongodb": [
+      {
+        "skill": "azure-mgmt-mongodbatlas-dotnet",
+        "path": "4. Development/Backend/azure-mgmt-mongodbatlas-dotnet/SKILL.md",
+        "score": 8
+      }
+    ],
+    "database=redis": [
+      {
+        "skill": "azure-resource-manager-redis-dotnet",
+        "path": "4. Development/Tools/azure-resource-manager-redis-dotnet/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "bullmq-specialist",
+        "path": "4. Development/Backend/bullmq-specialist/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "debug-buttercup",
+        "path": "5. General/Other/debug-buttercup/SKILL.md",
+        "score": 1
+      }
+    ],
+    "database=supabase": [
+      {
+        "skill": "nextjs-supabase-auth",
+        "path": "7. Security/Protection/nextjs-supabase-auth/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "postgres-best-practices",
+        "path": "3. Data-AI/Database/postgres-best-practices/SKILL.md",
+        "score": 2
+      },
+      {
+        "skill": "supabase-automation",
+        "path": "3. Data-AI/LLM-NLP/supabase-automation/SKILL.md",
+        "score": 2
+      }
+    ],
+    "database=mysql": [
+      {
+        "skill": "azure-resource-manager-mysql-dotnet",
+        "path": "3. Data-AI/Database/azure-resource-manager-mysql-dotnet/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "database-migrations-sql-migrations",
+        "path": "7. Security/Other/database-migrations-sql-migrations/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "prisma-expert",
+        "path": "3. Data-AI/Database/prisma-expert/SKILL.md",
+        "score": 1
+      }
+    ],
+    "auth=clerk": [
+      {
+        "skill": "clerk-auth",
+        "path": "7. Security/Protection/clerk-auth/SKILL.md",
+        "score": 4
+      }
+    ],
+    "auth=supabase-auth": [
+      {
+        "skill": "nextjs-supabase-auth",
+        "path": "7. Security/Protection/nextjs-supabase-auth/SKILL.md",
+        "score": 1
+      }
+    ],
+    "auth=*": [
+      {
+        "skill": "broken-authentication",
+        "path": "7. Security/Hacking/broken-authentication/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "microsoft-azure-webjobs-extensions-authentication-events-dotnet",
+        "path": "4. Development/Tools/microsoft-azure-webjobs-extensions-authentication-events-dotnet/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "api-security-best-practices",
+        "path": "7. Security/Hacking/api-security-best-practices/SKILL.md",
+        "score": 3
+      },
+      {
+        "skill": "api-security-testing",
+        "path": "7. Security/Protection/api-security-testing/SKILL.md",
+        "score": 3
+      },
+      {
+        "skill": "cc-skill-security-review",
+        "path": "7. Security/Hacking/cc-skill-security-review/SKILL.md",
+        "score": 3
+      },
+      {
+        "skill": "auth-implementation-patterns",
+        "path": "7. Security/Protection/auth-implementation-patterns/SKILL.md",
+        "score": 2
+      }
+    ],
+    "ci=github-actions": [
+      {
+        "skill": "gha-security-review",
+        "path": "7. Security/Hacking/gha-security-review/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "devops-deploy",
+        "path": "6. Infrastructure/Cloud/devops-deploy/SKILL.md",
+        "score": 2
+      },
+      {
+        "skill": "github-actions-templates",
+        "path": "1. Architecture/Patterns/github-actions-templates/SKILL.md",
+        "score": 1
+      }
+    ],
+    "ci=gitlab-ci": [
+      {
+        "skill": "gitlab-ci-patterns",
+        "path": "6. Infrastructure/DevOps/gitlab-ci-patterns/SKILL.md",
+        "score": 1
+      }
+    ],
+    "ci=circleci": [
+      {
+        "skill": "circleci-automation",
+        "path": "8. Testing/Unit-QA/circleci-automation/SKILL.md",
+        "score": 2
+      }
+    ],
+    "iac=terraform": [
+      {
+        "skill": "terraform-aws-modules",
+        "path": "6. Infrastructure/Cloud/terraform-aws-modules/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "terraform-infrastructure",
+        "path": "6. Infrastructure/Cloud/terraform-infrastructure/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "terraform-module-library",
+        "path": "6. Infrastructure/Cloud/terraform-module-library/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "terraform-skill",
+        "path": "6. Infrastructure/Other/terraform-skill/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "terraform-specialist",
+        "path": "6. Infrastructure/DevOps/terraform-specialist/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "devops-deploy",
+        "path": "6. Infrastructure/Cloud/devops-deploy/SKILL.md",
+        "score": 2
+      }
+    ],
+    "iac=aws-cdk": [
+      {
+        "skill": "cdk-patterns",
+        "path": "6. Infrastructure/Cloud/cdk-patterns/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "cloud-architect",
+        "path": "6. Infrastructure/Cloud/cloud-architect/SKILL.md",
+        "score": 1
+      }
+    ],
+    "container=docker": [
+      {
+        "skill": "odoo-docker-deployment",
+        "path": "6. Infrastructure/Containers/odoo-docker-deployment/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "docker-expert",
+        "path": "7. Security/Protection/docker-expert/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "devops-deploy",
+        "path": "6. Infrastructure/Cloud/devops-deploy/SKILL.md",
+        "score": 2
+      },
+      {
+        "skill": "apify-actorization",
+        "path": "5. General/Productivity/apify-actorization/SKILL.md",
+        "score": 1
+      }
+    ],
+    "orchestration=kubernetes": [
+      {
+        "skill": "k8s-security-policies",
+        "path": "7. Security/Protection/k8s-security-policies/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "kubernetes-deployment",
+        "path": "6. Infrastructure/Containers/kubernetes-deployment/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "k8s-manifest-generator",
+        "path": "7. Security/Other/k8s-manifest-generator/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "kubernetes-architect",
+        "path": "6. Infrastructure/Cloud/kubernetes-architect/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "aegisops-ai",
+        "path": "7. Security/Forensic/aegisops-ai/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "cloud-devops",
+        "path": "6. Infrastructure/Cloud/cloud-devops/SKILL.md",
+        "score": 1
+      }
+    ],
+    "orchestration=helm": [
+      {
+        "skill": "helm-chart-scaffolding",
+        "path": "6. Infrastructure/Containers/helm-chart-scaffolding/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "kubernetes-deployment",
+        "path": "6. Infrastructure/Containers/kubernetes-deployment/SKILL.md",
+        "score": 2
+      }
+    ],
+    "runtime=node": [
+      {
+        "skill": "nodejs-best-practices",
+        "path": "7. Security/Protection/nodejs-best-practices/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "nodejs-backend-patterns",
+        "path": "4. Development/Frontend/nodejs-backend-patterns/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "azure-monitor-opentelemetry-ts",
+        "path": "6. Infrastructure/Cloud/azure-monitor-opentelemetry-ts/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "azure-postgres-ts",
+        "path": "3. Data-AI/Database/azure-postgres-ts/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "cc-skill-backend-patterns",
+        "path": "3. Data-AI/Database/cc-skill-backend-patterns/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "cc-skill-coding-standards",
+        "path": "4. Development/Frontend/cc-skill-coding-standards/SKILL.md",
+        "score": 1
+      }
+    ],
+    "runtime=python": [
+      {
+        "skill": "async-python-patterns",
+        "path": "4. Development/Frontend/async-python-patterns/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "biopython",
+        "path": "3. Data-AI/Other/biopython/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "dbos-python",
+        "path": "4. Development/Frontend/dbos-python/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "managing-python-dependencies",
+        "path": "managing-python-dependencies/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "n8n-code-python",
+        "path": "4. Development/Backend/n8n-code-python/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "python-development-python-scaffold",
+        "path": "4. Development/Backend/python-development-python-scaffold/SKILL.md",
+        "score": 4
+      }
+    ],
+    "runtime=go": [
+      {
+        "skill": "dbos-golang",
+        "path": "4. Development/Frontend/dbos-golang/SKILL.md",
+        "score": 8
+      },
+      {
+        "skill": "golang-pro",
+        "path": "4. Development/Backend/golang-pro/SKILL.md",
+        "score": 8
+      },
+      {
+        "skill": "grpc-golang",
+        "path": "7. Security/Other/grpc-golang/SKILL.md",
+        "score": 8
+      },
+      {
+        "skill": "temporal-golang-pro",
+        "path": "7. Security/Other/temporal-golang-pro/SKILL.md",
+        "score": 8
+      },
+      {
+        "skill": "go-concurrency-patterns",
+        "path": "4. Development/Frontend/go-concurrency-patterns/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "algolia-search",
+        "path": "4. Development/Frontend/algolia-search/SKILL.md",
+        "score": 3
+      }
+    ],
+    "runtime=ruby": [
+      {
+        "skill": "ruby-pro",
+        "path": "4. Development/Backend/ruby-pro/SKILL.md",
+        "score": 4
+      }
+    ],
+    "runtime=jvm": [
+      {
+        "skill": "azure-security-keyvault-keys-java",
+        "path": "7. Security/Protection/azure-security-keyvault-keys-java/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "azure-security-keyvault-secrets-java",
+        "path": "7. Security/Protection/azure-security-keyvault-secrets-java/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "azure-ai-agents-persistent-java",
+        "path": "3. Data-AI/LLM-NLP/azure-ai-agents-persistent-java/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "azure-ai-anomalydetector-java",
+        "path": "6. Infrastructure/Cloud/azure-ai-anomalydetector-java/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "azure-ai-contentsafety-java",
+        "path": "3. Data-AI/Other/azure-ai-contentsafety-java/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "azure-ai-formrecognizer-java",
+        "path": "3. Data-AI/Other/azure-ai-formrecognizer-java/SKILL.md",
+        "score": 4
+      }
+    ],
+    "runtime=dotnet": [
+      {
+        "skill": "azure-security-keyvault-keys-dotnet",
+        "path": "7. Security/Protection/azure-security-keyvault-keys-dotnet/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "dotnet-architect",
+        "path": "4. Development/Backend/dotnet-architect/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "dotnet-backend-patterns",
+        "path": "4. Development/Frontend/dotnet-backend-patterns/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "azure-ai-agents-persistent-dotnet",
+        "path": "3. Data-AI/LLM-NLP/azure-ai-agents-persistent-dotnet/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "azure-ai-document-intelligence-dotnet",
+        "path": "3. Data-AI/Other/azure-ai-document-intelligence-dotnet/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "azure-ai-openai-dotnet",
+        "path": "3. Data-AI/LLM-NLP/azure-ai-openai-dotnet/SKILL.md",
+        "score": 5
+      }
+    ],
+    "language=typescript": [
+      {
+        "skill": "dbos-typescript",
+        "path": "4. Development/Frontend/dbos-typescript/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "javascript-typescript-typescript-scaffold",
+        "path": "4. Development/Frontend/javascript-typescript-typescript-scaffold/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "typescript-advanced-types",
+        "path": "4. Development/Frontend/typescript-advanced-types/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "typescript-expert",
+        "path": "4. Development/Backend/typescript-expert/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "typescript-pro",
+        "path": "4. Development/Backend/typescript-pro/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "azure-ai-voicelive-ts",
+        "path": "3. Data-AI/Other/azure-ai-voicelive-ts/SKILL.md",
+        "score": 1
+      }
+    ],
+    "test_tool=playwright": [
+      {
+        "skill": "azure-microsoft-playwright-testing-ts",
+        "path": "6. Infrastructure/Cloud/azure-microsoft-playwright-testing-ts/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "azure-resource-manager-playwright-dotnet",
+        "path": "4. Development/Tools/azure-resource-manager-playwright-dotnet/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "go-playwright",
+        "path": "4. Development/Backend/go-playwright/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "playwright-java",
+        "path": "4. Development/Backend/playwright-java/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "playwright-skill",
+        "path": "5. General/Learning/playwright-skill/SKILL.md",
+        "score": 4
+      },
+      {
+        "skill": "awt-e2e-testing",
+        "path": "3. Data-AI/Machine Learning/awt-e2e-testing/SKILL.md",
+        "score": 1
+      }
+    ],
+    "test_tool=jest": [
+      {
+        "skill": "testing-patterns",
+        "path": "1. Architecture/Patterns/testing-patterns/SKILL.md",
+        "score": 1
+      }
+    ],
+    "test_tool=pytest": [
+      {
+        "skill": "python-testing-patterns",
+        "path": "4. Development/Frontend/python-testing-patterns/SKILL.md",
+        "score": 1
+      },
+      {
+        "skill": "temporal-python-testing",
+        "path": "4. Development/Mobile/temporal-python-testing/SKILL.md",
+        "score": 1
+      }
+    ],
+    "always": [
+      {
+        "skill": "deployment-engineer",
+        "path": "6. Infrastructure/DevOps/deployment-engineer/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "deployment-pipeline-design",
+        "path": "6. Infrastructure/DevOps/deployment-pipeline-design/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "deployment-procedures",
+        "path": "6. Infrastructure/DevOps/deployment-procedures/SKILL.md",
+        "score": 6
+      },
+      {
+        "skill": "azd-deployment",
+        "path": "6. Infrastructure/Cloud/azd-deployment/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "deployment-validation-config-validate",
+        "path": "6. Infrastructure/DevOps/deployment-validation-config-validate/SKILL.md",
+        "score": 5
+      },
+      {
+        "skill": "expo-deployment",
+        "path": "6. Infrastructure/DevOps/expo-deployment/SKILL.md",
+        "score": 5
+      }
+    ]
+  }
+}

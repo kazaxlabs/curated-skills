@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+*-adminsdk-*.json
+service-account*.json
+.firebase/
+firebase-export*/
+.local/

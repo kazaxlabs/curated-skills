@@ -1,6 +1,6 @@
 ---
 name: trust-calibrator
-description: "One sentence - what this skill does and when to invoke it"
+description: "Diagnoses an audience's trust barriers toward a brand or offer and prescribes the credibility signals and claim strength that overcome them. Use when overclaiming, underselling or weak proof is hurting conversion."
 risk: safe
 source: community
 date_added: "2026-04-04"

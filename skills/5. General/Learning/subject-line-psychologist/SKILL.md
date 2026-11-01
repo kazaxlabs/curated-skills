@@ -1,6 +1,6 @@
 ---
 name: subject-line-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Engineers email subject lines and notification copy for opens, matched to the audience and the message's place in a sequence. Use when writing or testing subject lines without sacrificing clarity."
 risk: safe
 source: community
 date_added: "2026-04-04"

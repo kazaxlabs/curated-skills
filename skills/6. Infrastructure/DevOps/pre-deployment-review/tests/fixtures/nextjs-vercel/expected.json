@@ -1,0 +1,41 @@
+{
+  "exit_code": 0,
+  "skip_commands": true,
+  "facets": {
+    "framework": [
+      "nextjs",
+      "react"
+    ],
+    "hosting": [
+      "vercel"
+    ],
+    "auth": [
+      "nextauth"
+    ],
+    "database": [
+      "prisma"
+    ],
+    "language": [
+      "typescript"
+    ]
+  },
+  "facets_absent": {
+    "hosting": [
+      "vercel-implied"
+    ]
+  },
+  "must_pass": [
+    "nextjs.env.no-secret-in-public-prefix",
+    "nextjs.headers.security",
+    "nextjs.error-pages.present",
+    "node.lockfile.present"
+  ],
+  "must_fail": [
+    "nextjs.csp.present",
+    "core.ci.present"
+  ],
+  "must_not_apply": [
+    "firebase.hosting.hsts",
+    "vercel.headers.security"
+  ]
+}

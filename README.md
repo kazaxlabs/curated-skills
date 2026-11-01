@@ -38,16 +38,32 @@ Curated_Skills/
 > - **Do not run `scripts/inject-global.ps1` or `scripts/inject-global.sh` from a release before this notice.** Earlier
 >   versions deleted an existing `~/.claude/skills` folder (and the Antigravity and Cursor equivalents) when it was a real
 >   folder rather than a link, including any skills you kept there. The scripts in this commit refuse to delete real
->   folders, but a safer installer that installs only a small verified core is still being built.
+>   folders. Use `scripts/install-core.mjs` (below) instead: it installs only the Core.
 > - **The copy steps below replace your own instruction files.** Copying `AGENTS.md` onto `~/.claude/CLAUDE.md`,
 >   `~/.gemini/config/GEMINI.md`, Cursor rules or Windsurf global rules overwrites whatever is there. Back yours up first,
 >   or reference this repo's file from your own instead of replacing it.
 > - Installing every skill globally loads all of their names and descriptions into every session.
 
+### Recommended: install the Core only
+
+Only the skills listed in `core.json` (about two dozen, each with a recorded check) are installed, for Claude Code
+(`~/.claude/skills`) and Antigravity (`~/.gemini/config/skills`). Every other skill stays searchable through the
+`collab` MCP `search_skills` tool and is read from `skills/` by path when a task needs it.
+
+```bash
+node scripts/install-core.mjs            # preview: lists every change, changes nothing
+node scripts/install-core.mjs --apply    # backs up to ~/.curated-skills-backup/, then installs
+node scripts/install-core.mjs --check    # exit 0 when the installed set matches core.json
+node scripts/build-skill-index.js        # rebuild the search index after adding or moving skills
+```
+
+`--apply` also removes what older installers left: per-skill links into this repo that are not in the Core, the
+per-skill command stubs in `~/.claude/commands`, and `~/.gemini/config/skills.json`. Real folders, links pointing
+elsewhere and handwritten commands are never touched. Undo with `--restore <backup file>` (the path is printed).
+
 ### Option A: Automated injector (paused)
 
-The one-click injector is not recommended until the core-only installer lands. Use the manual commands below, reading each
-step first.
+Superseded by `install-core.mjs` for skills. Do not use it.
 
 ---
 

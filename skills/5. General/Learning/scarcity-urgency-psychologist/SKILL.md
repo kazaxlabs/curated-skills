@@ -1,6 +1,6 @@
 ---
 name: scarcity-urgency-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Designs credible scarcity and urgency mechanics such as deadlines, limits and access windows that prompt action without manipulation or damaged trust. Use when a launch, offer or campaign needs a genuine reason to act now."
 risk: safe
 source: community
 date_added: "2026-04-04"

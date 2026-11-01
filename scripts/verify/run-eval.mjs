@@ -11,12 +11,17 @@
 //   no user skills, settings, CLAUDE.md or MCP servers load (code.claude.com/docs/en/plugin-evals).
 // - Writes verifications/<skill>.json: gate verdicts and scores only; no prompts, outputs or client names (D10/U5).
 //
-// Requirement set (plan D3/D6a):
+// Requirement set v2 (plan D3/D6a):
 //   R1 trigger  every grader named `fired` passed in every WITH run; for name-invoked skills, every `invocable`
 //               grader of an `explicit` case ('/<skill> ...' prompt) passed in every WITH run;
-//   R2 noFire   every grader named `not-fired` passed in every run of both arms;
-//   R3 value    every case tagged `value` has delta > 0;
+//   R2 noFire   every grader named `not-fired` passed in every WITH run (the without arm has no skill to fire,
+//               so a near-miss case contributes N = runs per arm, 3 by default, not 2N);
+//   R3 value    every case tagged `value` has delta > 0 AND its WITH arm passed (all graders) in at least
+//               2 of 3 runs (two-thirds of the runs, rounded up, if --runs is not 3);
 //   R4 clean    no run ended on an error and the result is not partial.
+// Rule change 2026-10-31 (v1 -> v2), written down before any further eval run: v1's R3 was delta > 0 alone, so a
+//   skill passed with 1 of 3 WITH runs passing; v2 adds the 2-of-3 floor. v1's R2 also counted the without arm,
+//   which reported 0/6 false fires where only 3 runs could have fired. Existing run dirs are rescored under v2 ($0).
 // Verdict: passed-review = static gate + R1..R4 all true; trigger-only = R3 untested (no `value` case) and the rest
 //          true; incomplete = R4 false; fail = anything else. The eval's --threshold is recorded for information only.
 //          The top verdict is `passed-review`, never `verified`: R3 rests on an LLM judge, and a judge is a review
@@ -81,6 +86,8 @@ const tagsOf = (caseName) => {
   const m = /^tags:\s*\[([^\]]*)\]/m.exec(readFileSync(p, 'utf8'));
   return m ? m[1].split(',').map((s) => s.trim()).filter(Boolean) : [];
 };
+const REQUIREMENT_SET = 'v2 2026-10-31';
+const VALUE_FLOOR = { passed: 2, of: 3 };
 const req = { trigger: null, noFire: null, value: null, clean: false };
 let summary = null;
 if (existsSync(resultJson)) {
@@ -101,8 +108,10 @@ if (existsSync(resultJson)) {
     ...explicitCases.map((c) => runsOf(c, 'with').every((run) => graderPass(run, 'invocable'))),
   ];
   req.trigger = triggerChecks.length ? triggerChecks.every(Boolean) : null;
-  req.noFire = noFireCases.length ? noFireCases.every((c) => allRuns(c).every((run) => graderPass(run, 'not-fired'))) : null;
-  req.value = valueCases.length ? valueCases.every((c) => (c.aggregates?.delta ?? 0) > 0) : null;
+  req.noFire = noFireCases.length ? noFireCases.every((c) => runsOf(c, 'with').every((run) => graderPass(run, 'not-fired'))) : null;
+  const withPassed = (c) => runsOf(c, 'with').filter((run) => run.passed).length;
+  const meetsFloor = (c) => runsOf(c, 'with').length > 0 && withPassed(c) * VALUE_FLOOR.of >= VALUE_FLOOR.passed * runsOf(c, 'with').length;
+  req.value = valueCases.length ? valueCases.every((c) => (c.aggregates?.delta ?? 0) > 0 && meetsFloor(c)) : null;
   req.clean = !r.partial && cases.length > 0 && cases.every((c) => allRuns(c).every((run) => !run.error));
   summary = {
     partial: Boolean(r.partial), costUsd: r.costUsd ?? null,
@@ -112,6 +121,8 @@ if (existsSync(resultJson)) {
       scoreWith: c.aggregates?.score ?? null, scoreWithout: c.aggregates?.scoreWithout ?? null, delta: c.aggregates?.delta ?? null,
       ...(has(c, 'fired') ? { firedRuns: runsOf(c, 'with').filter((run) => graderPass(run, 'fired')).length } : {}),
       ...(has(c, 'invocable') ? { invocableRuns: runsOf(c, 'with').filter((run) => graderPass(run, 'invocable')).length } : {}),
+      ...(has(c, 'not-fired') ? { falseFireRuns: runsOf(c, 'with').filter((run) => !graderPass(run, 'not-fired')).length } : {}),
+      ...(tagsOf(c.name).includes('value') ? { withPassedRuns: withPassed(c) } : {}),
     })),
   };
 }
@@ -126,7 +137,7 @@ const sameRun = rescore && previous && summary && previous.eval?.costUsd === sum
 const record = {
   skill: name, kind: 'eval', checkedAt: sameRun ? previous.checkedAt : new Date().toISOString(),
   ...(rescore ? { rescoredAt: new Date().toISOString() } : {}), cli: meta.cli,
-  models: { agent: meta.model, judge: meta.judge }, maxCostUsd: meta.maxCostUsd, evalThresholdInfo: meta.threshold,
+  requirementSet: REQUIREMENT_SET, models: { agent: meta.model, judge: meta.judge }, maxCostUsd: meta.maxCostUsd, evalThresholdInfo: meta.threshold,
   static: staticResult.static, staticGates: Object.fromEntries(Object.entries(staticResult.gates ?? {}).map(([k, g]) => [k, g.ok])),
   requirements: req, evalExit: meta.evalExit, eval: summary, verdict,
 };

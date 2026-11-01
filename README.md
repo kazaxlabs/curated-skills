@@ -2,6 +2,10 @@
 
 > **The Universal Agent Skills & Governance Library with Built-in Cross-Agent Collaboration (`collab-mcp`).**
 
+> [!WARNING]
+> Before installing, read the warning under [Global Injection](#-global-injection-one-click--terminal-commands): older
+> installer scripts deleted existing skill folders, and the copy steps overwrite your own instruction files.
+
 Curated Skills is a modular repository containing over **1,500+ production-grade skills**, universal agent governance contracts (`AGENTS.md`), and a model-agnostic Model Context Protocol server (`collab-mcp`) enabling zero-loss context sharing across heterogeneous AI coding agents (Claude Code, Google Antigravity, Cursor, Windsurf, Cline, Aider, and local LLMs).
 
 ---
@@ -29,22 +33,21 @@ Curated_Skills/
 
 ## ⚡ Global Injection: One-Click & Terminal Commands
 
-Clone and link this repository once; every AI assistant on your system inherits all 1,500+ skills, the evidence gate contract, and the collaboration MCP server.
+> [!WARNING]
+> **Read before installing (2026-10-31).**
+> - **Do not run `scripts/inject-global.ps1` or `scripts/inject-global.sh` from a release before this notice.** Earlier
+>   versions deleted an existing `~/.claude/skills` folder (and the Antigravity and Cursor equivalents) when it was a real
+>   folder rather than a link, including any skills you kept there. The scripts in this commit refuse to delete real
+>   folders, but a safer installer that installs only a small verified core is still being built.
+> - **The copy steps below replace your own instruction files.** Copying `AGENTS.md` onto `~/.claude/CLAUDE.md`,
+>   `~/.gemini/config/GEMINI.md`, Cursor rules or Windsurf global rules overwrites whatever is there. Back yours up first,
+>   or reference this repo's file from your own instead of replacing it.
+> - Installing every skill globally loads all of their names and descriptions into every session.
 
-### Option A: One-Click Automated Injector (Recommended)
+### Option A: Automated injector (paused)
 
-Run the included cross-platform injection script from within the repository root:
-
-- **Windows (PowerShell):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File .\scripts\inject-global.ps1
-  ```
-- **macOS / Linux (Bash):**
-  ```bash
-  chmod +x ./scripts/inject-global.sh && ./scripts/inject-global.sh
-  ```
-
-*The script auto-detects your installed AI tools (Claude Code, Google Antigravity, Cursor, Windsurf, Cline/Roo Code), establishes live directory junctions/symlinks, updates global agent rules, and registers `collab-mcp` across all platforms automatically.*
+The one-click injector is not recommended until the core-only installer lands. Use the manual commands below, reading each
+step first.
 
 ---
 
@@ -103,6 +106,9 @@ claude mcp add collab node "$HOME/Curated_Skills/collab-mcp/dist/index.js"
 ---
 
 ## 🔌 Platform-by-Platform Injection Guide
+
+> [!WARNING]
+> The `Copy-Item ... -Force` and `cp` commands in this guide replace existing instruction files. Back up yours first.
 
 ### 1. Claude Code (CLI)
 

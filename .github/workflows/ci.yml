@@ -39,6 +39,12 @@ jobs:
       - name: Check Skills Structure
         run: node scripts/check-structure.mjs
 
+      - name: Check Skills Index Is Current
+        run: node scripts/build-skill-index.js --check
+
+      - name: Check Core Installer Resolves Every Core Skill
+        run: node scripts/install-core.mjs --home "$RUNNER_TEMP/empty-home"
+
       - name: Validate Shell Script Syntax
         run: bash -n scripts/inject-global.sh
 

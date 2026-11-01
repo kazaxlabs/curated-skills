@@ -2,8 +2,9 @@
   "skill": "skill-router",
   "kind": "eval",
   "checkedAt": "2026-10-31T05:54:36.666Z",
-  "rescoredAt": "2026-11-01T00:38:47.855Z",
+  "rescoredAt": "2026-11-01T00:41:07.354Z",
   "cli": "2.1.314 (Claude Code)",
+  "requirementSet": "v2 2026-10-31",
   "models": {
     "agent": "claude-sonnet-5-5",
     "judge": "claude-haiku-5-5"
@@ -39,7 +40,8 @@
         "scoreWith": 0,
         "scoreWithout": 0,
         "delta": 0,
-        "invocableRuns": 3
+        "invocableRuns": 3,
+        "withPassedRuns": 0
       },
       {
         "name": "no-trigger-stack-trace",
@@ -50,7 +52,8 @@
         "runsPerArm": 3,
         "scoreWith": 1,
         "scoreWithout": 1,
-        "delta": 0
+        "delta": 0,
+        "falseFireRuns": 0
       }
     ]
   },

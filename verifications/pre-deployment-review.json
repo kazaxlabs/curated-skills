@@ -2,8 +2,9 @@
   "skill": "pre-deployment-review",
   "kind": "eval",
   "checkedAt": "2026-10-31T04:53:14.009Z",
-  "rescoredAt": "2026-11-01T00:38:46.093Z",
+  "rescoredAt": "2026-11-01T00:41:05.581Z",
   "cli": "2.1.314 (Claude Code)",
+  "requirementSet": "v2 2026-10-31",
   "models": {
     "agent": "claude-sonnet-5-5",
     "judge": "claude-haiku-5-5"
@@ -38,7 +39,8 @@
         "runsPerArm": 3,
         "scoreWith": 1,
         "scoreWithout": 1,
-        "delta": 0
+        "delta": 0,
+        "falseFireRuns": 0
       },
       {
         "name": "trigger-deploy-readiness",

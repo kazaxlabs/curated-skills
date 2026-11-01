@@ -2,8 +2,9 @@
   "skill": "french-canadian",
   "kind": "eval",
   "checkedAt": "2026-10-31T05:35:35.600Z",
-  "rescoredAt": "2026-11-01T00:38:42.601Z",
+  "rescoredAt": "2026-11-01T00:41:02.219Z",
   "cli": "2.1.314 (Claude Code)",
+  "requirementSet": "v2 2026-10-31",
   "models": {
     "agent": "claude-sonnet-5-5",
     "judge": "claude-haiku-5-5"
@@ -38,7 +39,8 @@
         "runsPerArm": 3,
         "scoreWith": 1,
         "scoreWithout": 1,
-        "delta": 0
+        "delta": 0,
+        "falseFireRuns": 0
       },
       {
         "name": "trigger-client-notice",
@@ -50,7 +52,8 @@
         "scoreWith": 1,
         "scoreWithout": 0,
         "delta": 1,
-        "firedRuns": 3
+        "firedRuns": 3,
+        "withPassedRuns": 3
       }
     ]
   },

@@ -15,17 +15,19 @@ Every case has a trigger indicator (`tool_used: Skill`) and, where judgement is 
 so the with-minus-without delta measures the skill's value. Judgement-call verdicts from the `llm` grader are reviews;
 the user blind-grades a sample of about one in five (D6b).
 
-## Requirement set (what `run-eval.mjs` decides)
+## Requirement set v2 (what `run-eval.mjs` decides)
 
 | Requirement | Rule |
 | :--- | :--- |
 | R1 trigger | Every grader named `fired` passes in every run with the skill. |
-| R2 no false fire | Every grader named `not-fired` passes in every run of both arms. |
-| R3 value | Every case tagged `value` scores higher with the skill than without (delta > 0). |
+| R2 no false fire | Every grader named `not-fired` passes in every run with the skill (the without arm cannot fire it, so N = 3 per near-miss case). |
+| R3 value | Every case tagged `value` scores higher with the skill than without (delta > 0) **and** passes in at least 2 of 3 runs with the skill. |
 | R4 clean | No run ended on an error, and the result is not partial. |
 
 Verdicts: `passed-review` (static gate + R1–R4), `trigger-only` (no `value` case yet, rest true), `incomplete` (R4 false),
-`fail` (anything else). The runner never writes `verified`: R3 rests on an LLM judge, which is a review. A skill moves
+`fail` (anything else). Rule change 2026-10-31 (v1 to v2), recorded in the runner before any further run: v1's R3 had
+no absolute floor, so a skill passed with 1 of 3 with-skill runs passing, and v1's R2 counted the without arm too.
+Records carry `requirementSet`. The runner never writes `verified`: R3 rests on an LLM judge, which is a review. A skill moves
 from `passed-review` to `verified` in `core.json` only after the owner's blind sample of its judged cases agrees. `claude plugin eval`'s own `--threshold` is recorded but does not decide the verdict.
 Eval runs are isolated by Claude Code: no user skills, settings, CLAUDE.md or MCP servers load in either arm.
 
@@ -42,16 +44,17 @@ node scripts/verify/run-eval.mjs grill-me --rescore .verify/runs/<run-folder>
 ## Results, 2026-10-31
 
 All 24 provisional Core skills. CLI 2.1.314; agent claude-sonnet-5-5; judge claude-haiku-5-5; 3 runs per arm;
-one suite run per skill (grill-me: final of three). Value = judged `value` case score with / without the skill.
+one suite run per skill (grill-me: final of three). Scored under requirement set v2 (all run dirs rescored, $0, no new runs). Value = judged `value` case score with / without the skill.
 Per-skill details are in `core.json` (`result`) and `verifications/<skill>.json`.
 
 | Verdict | Count | Skills |
 | :--- | ---: | :--- |
-| passed-review | 17 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit, minimalist-ui, spec-to-code-compliance, agents-md; name-invoked: planner, handoff, ui-visual-validator |
+| passed-review | 14 | grill-me, grill-with-docs, brainstorming, multi-agent-brainstorming, ux-flow, idea-os, pricing-strategy, multi-agent-task-orchestrator, enhance-prompt, french-canadian, accessibility-compliance-accessibility-audit; name-invoked: planner, handoff, ui-visual-validator |
+| fail: below the 2-of-3 floor (v2) | 3 | minimalist-ui, spec-to-code-compliance, agents-md (delta 0.33, with arm passed 1 of 3); passed under v1 |
 | fail: no measured value | 6 | startup-analyst, scroll-experience, content-strategy (0 / 0), product-design (0 / 0.33); name-invoked: skill-router, product-manager (0 / 0) |
 | trigger-only | 1 | pre-deployment-review (value case needs a fixture project and Bash) |
 
-No skill fired on any near-miss (0 false fires in 6 runs each). Spend: $13.98 total at Claude Code's list-price
+No skill fired on any near-miss (0 false fires in 3 with-skill runs each). Spend: $13.98 total at Claude Code's list-price
 estimate (pilots $1.92, 22-skill batches $9.96, name-invoked re-run $2.10).
 
 Invocation rule (user decision, 2026-10-31): skills the user invokes by name (`invocation: "name"` in `core.json`)

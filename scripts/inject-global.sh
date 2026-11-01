@@ -44,8 +44,12 @@ install_directory_link() {
   local label="$3"
 
   mkdir -p "$(dirname "$dest")"
-  if [[ -e "$dest" || -L "$dest" ]]; then
-    rm -rf "$dest"
+  if [[ -L "$dest" ]]; then
+    rm -f "$dest"   # removes the link only, not its target
+  elif [[ -e "$dest" ]]; then
+    # A real folder may hold the user's own skills: never delete it.
+    echo "  ✗ ${label}: $dest is a real folder, not a link. Refusing to delete it; move it aside yourself to replace it." >&2
+    return 0
   fi
 
   if ln -sfn "$src" "$dest" 2>/dev/null; then

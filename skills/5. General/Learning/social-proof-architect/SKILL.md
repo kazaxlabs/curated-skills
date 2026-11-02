@@ -1,6 +1,6 @@
 ---
 name: social-proof-architect
-description: "One sentence - what this skill does and when to invoke it"
+description: "Selects, frames and places the right type of social proof (testimonials, numbers, logos, case studies) for a specific audience's main hesitation. Use when proof exists but is weakly placed or not building trust."
 risk: safe
 source: community
 date_added: "2026-04-04"

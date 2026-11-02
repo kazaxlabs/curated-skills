@@ -1,0 +1,82 @@
+[
+  {
+    "id": "docker.no-secrets-in-env-arg",
+    "title": "Dockerfile does not bake secrets via ENV/ARG",
+    "severity": "block",
+    "applies_when": { "all": ["container=docker"] },
+    "check": { "type": "grep", "pattern": "^(ENV|ARG)\\s+\\w*(SECRET|PASSWORD|TOKEN|PRIVATE_KEY|API_KEY)\\w*\\s*=\\s*\\S+", "flags": "im", "include": ["**/Dockerfile*"], "expect": "absent" },
+    "remediation": "Inject secrets at runtime (mounted file or secret manager); never ENV/ARG literals.",
+    "sources": [ { "title": "OWASP Secrets Management Cheat Sheet §5.1 (never hardcode with Docker ENV/ARG)", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["docker-expert"]
+  },
+  {
+    "id": "docker.base-image-pinned",
+    "title": "Base image is pinned (no :latest, no untagged FROM)",
+    "severity": "warn",
+    "applies_when": { "all": ["container=docker"] },
+    "check": { "type": "grep", "pattern": "^FROM\\s+[^\\s:@]+(:latest)?\\s*(AS\\s+\\w+)?\\s*$", "flags": "im", "include": ["**/Dockerfile*"], "expect": "absent" },
+    "remediation": "FROM image:tag@sha256:<digest>.",
+    "sources": [ { "title": "OpenSSF Scorecard — Pinned-Dependencies (Dockerfiles)", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["docker-expert"]
+  },
+  {
+    "id": "docker.non-root-user",
+    "title": "Container runs as a non-root user",
+    "severity": "warn",
+    "applies_when": { "all": ["container=docker"] },
+    "check": { "type": "grep", "pattern": "^USER\\s+(?!root\\b)\\S+", "flags": "im", "include": ["**/Dockerfile*"], "expect": "present" },
+    "remediation": "Add a USER instruction after installing dependencies.",
+    "sources": [ { "title": "durable principle (least privilege)", "url": "", "tier": "model-prior", "fetched": "", "status": 0 } ],
+    "skills": ["docker-expert"]
+  },
+  {
+    "id": "terraform.no-literal-secrets",
+    "title": "No literal secret values in .tf files",
+    "severity": "block",
+    "applies_when": { "all": ["iac=terraform"] },
+    "check": { "type": "grep", "pattern": "(password|secret|token|private_key)\\s*=\\s*\"[^\"$]{6,}\"", "flags": "i", "include": ["**/*.tf", "**/*.tfvars"], "expect": "absent" },
+    "remediation": "Use variables with sensitive = true, fed from a secret manager; never commit tfvars holding secrets.",
+    "sources": [ { "title": "OWASP Secrets Management Cheat Sheet §8.1", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["terraform-specialist"]
+  },
+  {
+    "id": "terraform.remote-state",
+    "title": "Remote state backend configured",
+    "severity": "warn",
+    "applies_when": { "all": ["iac=terraform"] },
+    "check": { "type": "grep", "pattern": "backend\\s+\"(gcs|s3|azurerm|remote|http)\"", "include": ["**/*.tf"], "expect": "present" },
+    "remediation": "Configure a locked remote backend; local state must not be committed.",
+    "sources": [ { "title": "durable principle", "url": "", "tier": "model-prior", "fetched": "", "status": 0 } ],
+    "skills": ["terraform-specialist"]
+  },
+  {
+    "id": "k8s.images.not-latest",
+    "title": "Kubernetes manifests do not use :latest images",
+    "severity": "warn",
+    "applies_when": { "all": ["orchestration=kubernetes"] },
+    "check": { "type": "grep", "pattern": "image:\\s*\\S+:latest", "include": ["**/*.yaml", "**/*.yml"], "expect": "absent" },
+    "remediation": "Pin images to a tag and digest.",
+    "sources": [ { "title": "OpenSSF Scorecard — Pinned-Dependencies", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["k8s-manifest-generator", "k8s-security-policies"]
+  },
+  {
+    "id": "k8s.secrets.not-inline",
+    "title": "No Secret manifests with inline data committed",
+    "severity": "block",
+    "applies_when": { "all": ["orchestration=kubernetes"] },
+    "check": { "type": "grep", "pattern": "kind:\\s*Secret[\\s\\S]{0,400}(data|stringData):\\s*\\n\\s+\\w+:\\s*\\S+", "flags": "m", "include": ["**/*.yaml", "**/*.yml"], "expect": "absent" },
+    "remediation": "Use an external secrets operator or sealed secrets; never commit Secret data.",
+    "sources": [ { "title": "OWASP Secrets Management Cheat Sheet §8.1", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["k8s-security-policies"]
+  },
+  {
+    "id": "vercel.headers.security",
+    "title": "vercel.json sets security headers",
+    "severity": "warn",
+    "applies_when": { "all": ["hosting=vercel"], "none": ["framework=nextjs"] },
+    "check": { "type": "grep", "pattern": "Strict-Transport-Security|X-Content-Type-Options", "include": ["vercel.json"], "expect": "present" },
+    "remediation": "Add a headers array to vercel.json with HSTS, nosniff, frame-ancestors, Referrer-Policy.",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["vercel-deployment"]
+  }
+]

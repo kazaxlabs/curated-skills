@@ -13,8 +13,9 @@ import {
   listHandoffs,
   type CollabConfig,
 } from './collab.js';
+import { searchSkills } from './skills.js';
 
-const server = new McpServer({ name: 'collab-mcp', version: '0.2.0' });
+const server = new McpServer({ name: 'collab-mcp', version: '0.3.0' });
 
 type ProjectSource =
   | 'project_dir argument'
@@ -176,6 +177,64 @@ server.registerTool(
     );
     const body = lines.length > 0 ? lines.join('\n') : 'No handoff files yet.';
     return { content: [{ type: 'text', text: body + footer }] };
+  }
+);
+
+server.registerTool(
+  'search_skills',
+  {
+    description:
+      'Search all ~1,500 Curated Skills (Core and Archive) by task keywords, domain, or skill name. ' +
+      'Use it when no installed skill fits the task. Returns the top matches with tier, summary and the ' +
+      'exact SKILL.md path. Core skills are installed and also return their /<skill> command; Archive skills ' +
+      'are not installed, so read the SKILL.md at skillPath and follow it. Reads the index only; changes nothing.',
+    inputSchema: z.object({
+      query: z
+        .string()
+        .describe('Task keywords, technology stack, or skill/command name (e.g. "stripe webhook", "/planner").'),
+      category: z
+        .string()
+        .optional()
+        .describe('Optional category filter (e.g. "Architecture", "Business", "Data-AI", "Frontend", "Security").'),
+      limit: z
+        .number()
+        .int()
+        .min(1)
+        .max(25)
+        .optional()
+        .describe('Maximum number of matching skills to return (defaults to 5).'),
+    }),
+  },
+  async ({ query, category, limit }) => {
+    const { totalIndexed, matches } = searchSkills({ query, category, limit });
+    if (matches.length === 0) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `No skills matched "${query}" (searched ${totalIndexed} indexed skills).`,
+          },
+        ],
+      };
+    }
+
+    const formatted = matches
+      .map(
+        (m, idx) =>
+          `${idx + 1}. **${m.command}** (${m.name}) — [${m.category}] (score: ${m.score})\n` +
+          `   Path: \`${m.skillPath}\`\n` +
+          `   Summary: ${m.summary}`
+      )
+      .join('\n\n');
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Found ${matches.length} matching skill(s) out of ${totalIndexed} indexed:\n\n${formatted}`,
+        },
+      ],
+    };
   }
 );
 

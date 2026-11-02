@@ -20,3 +20,7 @@ fetch_transcripts.py
 *.log
 .DS_Store
 Thumbs.db
+
+# Verification harness scratch (plan 5.2)
+.verify/
+**/evals/results/

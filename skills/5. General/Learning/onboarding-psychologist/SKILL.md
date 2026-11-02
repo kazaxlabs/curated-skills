@@ -1,6 +1,6 @@
 ---
 name: onboarding-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Designs first-use experiences that create early wins, psychological investment and habit triggers to reduce drop-off. Use when product or service onboarding loses users before they reach first value."
 risk: safe
 source: community
 date_added: "2026-04-04"

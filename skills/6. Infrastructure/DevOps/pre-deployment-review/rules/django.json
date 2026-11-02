@@ -1,0 +1,52 @@
+[
+  {
+    "id": "django.check-deploy",
+    "title": "`manage.py check --deploy` reports no issues",
+    "severity": "block",
+    "applies_when": { "all": ["framework=django"] },
+    "check": { "type": "command", "cmd": ["python", "manage.py", "check", "--deploy"], "cwd_from_facet": "framework=django", "expect_exit": 0, "mutating": false },
+    "remediation": "Run against the production settings module (DJANGO_SETTINGS_MODULE) and fix every warning it prints.",
+    "sources": [ { "title": "Django deployment checklist", "url": "https://docs.djangoproject.com/en/stable/howto/deployment/checklist/", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["django-pro"]
+  },
+  {
+    "id": "django.secret-key.from-env",
+    "title": "SECRET_KEY is not a literal in settings",
+    "severity": "block",
+    "applies_when": { "all": ["framework=django"] },
+    "check": { "type": "grep", "pattern": "^\\s*SECRET_KEY\\s*=\\s*['\"][^'\"]{8,}['\"]", "include": ["**/settings.py", "**/settings/*.py"], "expect": "absent" },
+    "remediation": "SECRET_KEY = os.environ[\"SECRET_KEY\"] (fail closed when unset).",
+    "sources": [ { "title": "Django deployment checklist — SECRET_KEY", "url": "https://docs.djangoproject.com/en/stable/howto/deployment/checklist/", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["django-pro"]
+  },
+  {
+    "id": "django.debug.not-true-literal",
+    "title": "DEBUG is not hard-coded True",
+    "severity": "warn",
+    "applies_when": { "all": ["framework=django"] },
+    "check": { "type": "grep", "pattern": "^\\s*DEBUG\\s*=\\s*True", "include": ["**/settings.py", "**/settings/production.py", "**/settings/prod.py"], "expect": "absent" },
+    "remediation": "DEBUG = os.environ.get(\"DJANGO_DEBUG\", \"0\") == \"1\"; never True in production settings.",
+    "sources": [ { "title": "Django deployment checklist — DEBUG", "url": "https://docs.djangoproject.com/en/stable/howto/deployment/checklist/", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["django-pro"]
+  },
+  {
+    "id": "django.allowed-hosts.no-wildcard",
+    "title": "ALLOWED_HOSTS has no wildcard",
+    "severity": "warn",
+    "applies_when": { "all": ["framework=django"] },
+    "check": { "type": "grep", "pattern": "ALLOWED_HOSTS\\s*=\\s*\\[\\s*['\"]\\*['\"]", "include": ["**/settings.py", "**/settings/*.py"], "expect": "absent" },
+    "remediation": "List the real domains in ALLOWED_HOSTS.",
+    "sources": [ { "title": "Django deployment checklist — ALLOWED_HOSTS", "url": "https://docs.djangoproject.com/en/stable/howto/deployment/checklist/", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["django-pro"]
+  },
+  {
+    "id": "django.cookies.secure",
+    "title": "Session and CSRF cookies are marked Secure",
+    "severity": "warn",
+    "applies_when": { "all": ["framework=django"] },
+    "check": { "type": "grep", "pattern": "SESSION_COOKIE_SECURE\\s*=\\s*True|CSRF_COOKIE_SECURE\\s*=\\s*True", "include": ["**/settings.py", "**/settings/*.py"], "expect": "present" },
+    "remediation": "Set SESSION_COOKIE_SECURE = True and CSRF_COOKIE_SECURE = True once HTTPS is in place.",
+    "sources": [ { "title": "Django deployment checklist — CSRF_COOKIE_SECURE / SESSION_COOKIE_SECURE", "url": "https://docs.djangoproject.com/en/stable/howto/deployment/checklist/", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["django-pro"]
+  }
+]

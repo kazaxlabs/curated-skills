@@ -1,6 +1,6 @@
 ---
 name: loss-aversion-designer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Applies prospect theory to find where loss framing beats gain framing and writes credible cost-of-inaction messaging without fear-mongering. Use when an offer should emphasise what the audience risks by doing nothing."
 risk: safe
 source: community
 date_added: "2026-04-04"

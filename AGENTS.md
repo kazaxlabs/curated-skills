@@ -154,23 +154,25 @@ The ordering rules that apply regardless of which stages run:
 
 ## 7. Routing
 
-Load a skill when its trigger matches. Do not load skills speculatively.
+Two tiers. **Core**: the skills in `core.json`, installed for Claude Code and Antigravity by
+`scripts/install-core.mjs`; invoke them by name. Membership is evidence-gated (`core.json`
+`rules`); `provisional` members must earn a Verification within 60 days. **Archive**: every other
+skill in `skills/`; installed too only when the owner runs `install-core.mjs --all`. When no Core skill fits, or a named skill is not installed, load
+`skill-router`: it searches Core and Archive (`collab` MCP `search_skills`, or
+`node scripts/search-skills.mjs`), then loads the chosen `SKILL.md` by path and follows it.
+Do not load skills speculatively.
 
 | Trigger | Load |
 | :--- | :--- |
 | Multi-step engineering task needing a full pipeline | `planner` |
-| Scoping, task breakdown, "what should we build" | `concise-planning`, `brainstorming` |
-| System design, module boundaries, ADRs | `senior-architect`, `architecture` |
-| Writing tests, test strategy | `test-driven-development`, `testing-patterns` |
-| Readability, structure, naming | `clean-code` |
-| Lint, typecheck, build validation | `lint-and-validate` |
-| A bug with an unclear cause | `systematic-debugging` |
-| Failure paths, retries, error surfaces | `error-handling-patterns` |
-| Any task producing or changing a UI | `ui-visual-validator`, `ui-ux-pro-max` |
-| Web UI specifically | `frontend-design`, `web-design-guidelines` |
-| Pre-ship audit | `production-code-audit`, `code-reviewer` |
-| Process improvement, retrospectives | `kaizen` |
-| Any claim that work is complete | `verification-before-completion` |
+| Scoping, "what should we build", new ideas | `brainstorming`, `multi-agent-brainstorming`, `idea-os` |
+| A plan or design to stress-test with the user or against the docs | `grill-me`, `grill-with-docs` |
+| Splitting work across agents or sessions | `multi-agent-task-orchestrator`, `handoff` |
+| Checking an implementation against its spec | `spec-to-code-compliance` |
+| Any task producing or changing a UI | `ui-visual-validator`, `ux-flow`, `accessibility-compliance-accessibility-audit` |
+| Before a deploy | `pre-deployment-review` |
+| French-Canadian copy | `french-canadian` |
+| Tests, debugging, refactoring, architecture, audits | Archive via `search_skills` (e.g. `test-driven-development`, `systematic-debugging`) |
 | Substantial architecture or strategy decision needing an audit trail | `harness-and-harden` MCP server |
 
 Skills live under `skills/<category>/<subcategory>/<name>/SKILL.md`. Category folders are

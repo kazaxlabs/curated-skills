@@ -1,6 +1,6 @@
 ---
 name: headline-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Engineers headlines and titles that stop attention, open a curiosity gap and set up the next line, without vague clickbait. Use when writing or testing headline angles for ads, landing pages, emails or posts."
 risk: safe
 source: community
 date_added: "2026-04-04"

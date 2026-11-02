@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "acme-site-prod",
+    "emu": "demo-local"
+  }
+}

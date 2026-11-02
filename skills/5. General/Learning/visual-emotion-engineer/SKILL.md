@@ -1,6 +1,6 @@
 ---
 name: visual-emotion-engineer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Maps colours, typography, spacing, imagery and layout to target emotions, audiences and conversion goals. Use when visual design should reinforce a specific feeling or support persuasion."
 risk: safe
 source: community
 date_added: "2026-04-04"

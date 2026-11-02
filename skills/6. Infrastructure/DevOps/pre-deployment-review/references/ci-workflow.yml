@@ -1,0 +1,49 @@
+# Unsupervised pre-deployment review as a pull-request check.
+# Copy to .github/workflows/pre-deployment-review.yml in the target project.
+# Read-only: the runner never deploys or mutates the tree. Pin actions to SHAs.
+#
+# The skill folder must be reachable: either vendor it under tools/pre-deployment-review
+# or check out the curated-skills repository as a second checkout (shown below).
+
+name: pre-deployment-review
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write   # only for the optional PR comment step
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5           # pin to SHA in the real workflow
+      - uses: actions/checkout@v5
+        with:
+          repository: <owner>/Curated_Skills
+          path: .curated-skills
+          sparse-checkout: "skills/6. Infrastructure/DevOps/pre-deployment-review"
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Run unsupervised review (exit 1 on any block-severity failure)
+        run: >
+          node ".curated-skills/skills/6. Infrastructure/DevOps/pre-deployment-review/scripts/review.mjs" .
+          --out pre-deployment-report.md --json pre-deployment-result.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-deployment-review
+          path: |
+            pre-deployment-report.md
+            pre-deployment-result.json
+      - if: always() && github.event_name == 'pull_request'
+        name: Comment summary on the PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head -40 pre-deployment-report.md > summary.md
+          gh pr comment ${{ github.event.number }} --body-file summary.md

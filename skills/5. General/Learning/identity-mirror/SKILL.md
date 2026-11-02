@@ -1,6 +1,6 @@
 ---
 name: identity-mirror
-description: "One sentence - what this skill does and when to invoke it"
+description: "Identifies the aspirational identity a customer wants to inhabit and rewrites messaging so the brand reflects that identity back. Use when copy should feel personally resonant to an audience's self-image or in-group."
 risk: safe
 source: community
 date_added: "2026-04-04"

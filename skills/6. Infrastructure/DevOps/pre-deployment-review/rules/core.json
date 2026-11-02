@@ -1,0 +1,131 @@
+[
+  {
+    "id": "core.secrets.env-not-tracked",
+    "title": "No .env file is tracked in git",
+    "severity": "block",
+    "check": { "type": "git_untracked", "pattern": "(^|/)\\.env(\\.(local|production|development|staging))?$" },
+    "remediation": "git rm --cached <file>; add `.env` and `.env.*` (except `.env.example`) to .gitignore; rotate every value the file held.",
+    "sources": [
+      { "title": "OWASP Secrets Management Cheat Sheet §8.1, §9.2", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 },
+      { "title": "Next.js production checklist — Environment Variables", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["secrets-management"]
+  },
+  {
+    "id": "core.secrets.no-key-files-tracked",
+    "title": "No service-account key, PEM or P12 file is tracked",
+    "severity": "block",
+    "check": { "type": "git_untracked", "pattern": "(service-?account.*\\.json|adminsdk.*\\.json|credentials\\.json|\\.pem|\\.p12|\\.pfx|id_rsa)$" },
+    "remediation": "Remove from the tree, rotate the credential at the provider, and move CI to workload identity (OIDC).",
+    "sources": [
+      { "title": "OWASP Secrets Management Cheat Sheet §3.2.2, §3.3", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["secrets-management"]
+  },
+  {
+    "id": "core.secrets.gitignore-covers-env",
+    "title": ".gitignore ignores env files",
+    "severity": "block",
+    "applies_when": { "all": ["gitignore=present"] },
+    "check": { "type": "grep", "pattern": "^\\s*\\.env(\\*|\\.\\*|$)", "include": [".gitignore"], "expect": "present" },
+    "remediation": "Add `.env`, `.env.*` and `!.env.example` to .gitignore.",
+    "sources": [
+      { "title": "Next.js production checklist — Environment Variables", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": []
+  },
+  {
+    "id": "core.secrets.gitignore-present",
+    "title": "A .gitignore exists",
+    "severity": "block",
+    "check": { "type": "facet", "facet": "gitignore", "value": "present", "expect": "present" },
+    "remediation": "Create .gitignore covering env files, key files, build output and emulator exports.",
+    "sources": [ { "title": "durable principle", "url": "", "tier": "model-prior", "fetched": "", "status": 0 } ],
+    "skills": []
+  },
+  {
+    "id": "core.secrets.placeholder-sweep",
+    "title": "No placeholder secrets or test identities in source",
+    "severity": "warn",
+    "check": { "type": "grep", "pattern": "not-a-secret|local-salt|changeme|apiKey:\\s*['\"]demo|TODO:? replace|555-?01\\d\\d", "flags": "i", "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs", "**/*.py", "**/*.json", "**/*.yaml", "**/*.yml", "**/*.toml", "**/*.env.example"], "expect": "absent" },
+    "remediation": "Classify each hit as guarded (emulator/test only) or unguarded; source unguarded values from the environment and fail closed when missing.",
+    "sources": [ { "title": "OWASP Secrets Management Cheat Sheet §1, §8.1", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["secrets-management"]
+  },
+  {
+    "id": "core.env.example-present",
+    "title": "An env example file documents required variables",
+    "severity": "warn",
+    "applies_when": { "any": ["env_file=*", "hosting=*"] },
+    "check": { "type": "facet", "facet": "env_example", "expect": "present" },
+    "remediation": "Add .env.example listing every variable name (no values).",
+    "sources": [ { "title": "durable principle (12-factor config)", "url": "", "tier": "model-prior", "fetched": "", "status": 0 } ],
+    "skills": []
+  },
+  {
+    "id": "core.ci.present",
+    "title": "A CI configuration exists",
+    "severity": "warn",
+    "check": { "type": "facet", "facet": "ci", "expect": "present" },
+    "remediation": "Add a check workflow that runs typecheck, lint, tests and build on every pull request.",
+    "sources": [ { "title": "OpenSSF Scorecard — CI-Tests", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["deployment-pipeline-design", "github-actions-templates"]
+  },
+  {
+    "id": "core.contract.present",
+    "title": "A project contract or README exists",
+    "severity": "info",
+    "check": { "type": "facet", "facet": "contract", "expect": "present" },
+    "remediation": "Add README.md (and AGENTS.md / CLAUDE.md for agent sessions).",
+    "sources": [ { "title": "durable principle", "url": "", "tier": "model-prior", "fetched": "", "status": 0 } ],
+    "skills": ["agents-md", "readme"]
+  },
+  {
+    "id": "core.rollback.documented",
+    "title": "A rollback path is documented",
+    "severity": "warn",
+    "check": { "type": "grep", "pattern": "rollback|roll back", "flags": "i", "include": ["README.md", "docs/**/*.md", "DEPLOY.md", "RUNBOOK.md"], "expect": "present" },
+    "remediation": "Document the exact rollback commands (hosting rollback, redeploy of previous commit) in README or docs/.",
+    "sources": [ { "title": "NIST SP 800-218 SSDF v1.1 — PS.3 archive and protect each release (practice id: model-prior; document existence sourced)", "url": "https://csrc.nist.gov/pubs/sp/800/218/final", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["deployment-procedures"]
+  },
+  {
+    "id": "core.runtime.support-fetched",
+    "title": "Runtime versions checked against the vendor's support page this session",
+    "severity": "block",
+    "check": { "type": "review", "prompt": "Fetch the vendor runtime-support page now, record URL + HTTP status + the deprecation/decommission date for every runtime in the profile (node_version facet). Do not rely on a remembered table." },
+    "remediation": "Upgrade any runtime past its deprecation date before deploying.",
+    "sources": [ { "title": "Cloud Run functions runtime support (example of a dated table)", "url": "https://docs.cloud.google.com/functions/docs/runtime-support", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": []
+  },
+  {
+    "id": "core.auth.server-side-authorization",
+    "title": "Authorization is enforced server-side on every privileged route",
+    "severity": "block",
+    "applies_when": { "any": ["auth=*"] },
+    "check": { "type": "review", "prompt": "Open the server auth middleware and each admin/privileged route. Confirm role or permission checks run server-side, not only in UI or layout. Record file:line per route." },
+    "remediation": "Add a server-side permission check to each privileged handler; add a test per route.",
+    "sources": [ { "title": "Next.js production checklist — Server Actions: verify auth inside each action", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["auth-implementation-patterns", "api-security-best-practices"]
+  },
+  {
+    "id": "core.headers.security-headers",
+    "title": "Security response headers are configured",
+    "severity": "warn",
+    "applies_when": { "none": ["hosting=firebase", "hosting=vercel"] },
+    "check": { "type": "review", "prompt": "Locate where response headers are set (server, CDN, hosting config). Confirm HSTS, X-Content-Type-Options: nosniff, frame-ancestors or X-Frame-Options, Referrer-Policy, Permissions-Policy, and a CSP on authenticated surfaces." },
+    "remediation": "HSTS max-age=63072000; includeSubDomains; preload · nosniff · frame-ancestors 'none' · Referrer-Policy strict-origin-when-cross-origin · Permissions-Policy geolocation=(), camera=(), microphone=()",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["frontend-security-coder"]
+  },
+  {
+    "id": "core.deploy.guard-script",
+    "title": "A deploy guard refuses demo targets, dirty trees and missing env",
+    "severity": "warn",
+    "applies_when": { "any": ["hosting=*"] },
+    "check": { "type": "grep", "pattern": "git status --porcelain|Refusing|demo-", "include": ["scripts/**/*.sh", "scripts/**/*.mjs", "scripts/**/*.js", "scripts/**/*.ts", "package.json", "Makefile"], "expect": "present" },
+    "remediation": "Add scripts/deploy-guard that exits non-zero on demo project ids, dirty tree, unpushed branch, missing build-time env.",
+    "sources": [ { "title": "durable principle (fail closed)", "url": "", "tier": "model-prior", "fetched": "", "status": 0 } ],
+    "skills": ["deployment-procedures"]
+  }
+]

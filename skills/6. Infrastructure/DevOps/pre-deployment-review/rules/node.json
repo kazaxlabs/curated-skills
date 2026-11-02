@@ -1,0 +1,72 @@
+[
+  {
+    "id": "node.lockfile.present",
+    "title": "A lockfile is committed",
+    "severity": "block",
+    "applies_when": { "all": ["runtime=node"] },
+    "check": { "type": "facet", "facet": "package_manager", "expect": "present" },
+    "remediation": "Commit package-lock.json / pnpm-lock.yaml / yarn.lock and install with the frozen-lockfile command in CI.",
+    "sources": [ { "title": "OpenSSF Scorecard — Pinned-Dependencies", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nodejs-best-practices"]
+  },
+  {
+    "id": "node.engines.declared",
+    "title": "Node version is declared",
+    "severity": "warn",
+    "applies_when": { "all": ["runtime=node"] },
+    "check": { "type": "facet", "facet": "node_version", "expect": "present" },
+    "remediation": "Add `engines.node` to package.json or an .nvmrc so CI and hosting use the same runtime.",
+    "sources": [ { "title": "Firebase manage-functions (runtime set via engines or firebase.json)", "url": "https://firebase.google.com/docs/functions/manage-functions", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nodejs-best-practices"]
+  },
+  {
+    "id": "node.gate.typecheck",
+    "title": "Typecheck passes",
+    "severity": "block",
+    "applies_when": { "all": ["runtime=node", "script=typecheck"] },
+    "check": { "type": "command", "cmd": ["npm", "run", "typecheck"], "requires_script": "typecheck", "expect_exit": 0, "mutating": false },
+    "remediation": "Fix type errors; do not deploy on a red typecheck.",
+    "sources": [ { "title": "Next.js production checklist — TypeScript", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": []
+  },
+  {
+    "id": "node.gate.lint",
+    "title": "Lint passes",
+    "severity": "block",
+    "applies_when": { "all": ["runtime=node", "script=lint"] },
+    "check": { "type": "command", "cmd": ["npm", "run", "lint"], "requires_script": "lint", "expect_exit": 0, "mutating": false },
+    "remediation": "Fix lint errors.",
+    "sources": [ { "title": "OpenSSF Scorecard — SAST / CI-Tests", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["lint-and-validate"]
+  },
+  {
+    "id": "node.gate.test",
+    "title": "Unit tests pass",
+    "severity": "block",
+    "applies_when": { "all": ["runtime=node", "script=test"] },
+    "check": { "type": "command", "cmd": ["npm", "test"], "requires_script": "test", "expect_exit": 0, "mutating": false },
+    "remediation": "Fix failing tests. Declare in the report which tests were authored this session.",
+    "sources": [ { "title": "OpenSSF Scorecard — CI-Tests", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["testing-patterns"]
+  },
+  {
+    "id": "node.gate.build",
+    "title": "Production build succeeds",
+    "severity": "block",
+    "applies_when": { "all": ["runtime=node", "script=build"] },
+    "check": { "type": "command", "cmd": ["npm", "run", "build"], "requires_script": "build", "expect_exit": 0, "mutating": false },
+    "remediation": "Fix the build with production env present.",
+    "sources": [ { "title": "Next.js production checklist — run next build before going to production", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": []
+  },
+  {
+    "id": "node.audit.known-vulnerabilities",
+    "title": "No high or critical known vulnerabilities in dependencies",
+    "severity": "warn",
+    "applies_when": { "all": ["runtime=node", "package_manager=npm"] },
+    "check": { "type": "command", "cmd": ["npm", "audit", "--audit-level=high", "--omit=dev"], "expect_exit": 0, "mutating": false },
+    "remediation": "Upgrade or replace the flagged packages; record accepted risks in the backlog.",
+    "sources": [ { "title": "OpenSSF Scorecard — Vulnerabilities", "url": "https://github.com/ossf/scorecard/blob/main/docs/checks.md", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["dependency-management-deps-audit"]
+  }
+]

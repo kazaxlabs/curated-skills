@@ -1,6 +1,6 @@
 ---
 name: sequence-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Designs email nurture and multi-touch sequences using curiosity loops, reciprocity and commitment so each message prepares the next. Use when building or fixing onboarding, nurture or sales email sequences."
 risk: safe
 source: community
 date_added: "2026-04-04"

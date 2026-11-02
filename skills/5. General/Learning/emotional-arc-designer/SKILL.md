@@ -1,6 +1,6 @@
 ---
 name: emotional-arc-designer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Maps the emotional journey a reader should travel through a page, email sequence, deck or product flow, from arrival emotion to the action-ready state. Use when content needs a deliberate emotional progression instead of isolated claims."
 risk: safe
 source: community
 date_added: "2026-04-04"

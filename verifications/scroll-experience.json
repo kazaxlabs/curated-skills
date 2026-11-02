@@ -1,0 +1,61 @@
+{
+  "skill": "scroll-experience",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T05:23:16.529Z",
+  "rescoredAt": "2026-11-01T00:41:06.986Z",
+  "cli": "2.1.314 (Claude Code)",
+  "requirementSet": "v2 2026-10-31",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": true,
+    "noFire": true,
+    "value": false,
+    "clean": true
+  },
+  "evalExit": 1,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.5686431000000001,
+    "overallScore": 0.5,
+    "meanDelta": 0,
+    "cases": [
+      {
+        "name": "no-trigger-smooth-anchor",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0,
+        "falseFireRuns": 0
+      },
+      {
+        "name": "trigger-parallax-product-story",
+        "tags": [
+          "trigger",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 0,
+        "scoreWithout": 0,
+        "delta": 0,
+        "firedRuns": 3,
+        "withPassedRuns": 0
+      }
+    ]
+  },
+  "verdict": "fail"
+}

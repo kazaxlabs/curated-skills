@@ -1,6 +1,6 @@
 ---
 name: customer-psychographic-profiler
-description: "One sentence - what this skill does and when to invoke it"
+description: "Builds a deep psychographic profile of a target customer: desires, fears, identity, worldview and emotional drivers. Use before positioning, copywriting or funnel design, when a generic audience summary is not enough."
 risk: safe
 source: community
 date_added: "2026-04-04"

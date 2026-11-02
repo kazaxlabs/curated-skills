@@ -1,0 +1,61 @@
+{
+  "skill": "planner",
+  "kind": "eval",
+  "checkedAt": "2026-10-31T05:55:59.994Z",
+  "rescoredAt": "2026-11-01T00:41:05.213Z",
+  "cli": "2.1.314 (Claude Code)",
+  "requirementSet": "v2 2026-10-31",
+  "models": {
+    "agent": "claude-sonnet-5-5",
+    "judge": "claude-haiku-5-5"
+  },
+  "maxCostUsd": 3,
+  "evalThresholdInfo": 1,
+  "static": "pass",
+  "staticGates": {
+    "frontmatter": true,
+    "validate": true,
+    "loads": true
+  },
+  "requirements": {
+    "trigger": true,
+    "noFire": true,
+    "value": true,
+    "clean": true
+  },
+  "evalExit": 0,
+  "eval": {
+    "partial": false,
+    "costUsd": 0.4802967,
+    "overallScore": 1,
+    "meanDelta": 0.5,
+    "cases": [
+      {
+        "name": "explicit-ship-cli",
+        "tags": [
+          "explicit",
+          "value"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 0,
+        "delta": 1,
+        "invocableRuns": 3,
+        "withPassedRuns": 3
+      },
+      {
+        "name": "no-trigger-commit-message",
+        "tags": [
+          "trigger",
+          "near-miss"
+        ],
+        "runsPerArm": 3,
+        "scoreWith": 1,
+        "scoreWithout": 1,
+        "delta": 0,
+        "falseFireRuns": 0
+      }
+    ]
+  },
+  "verdict": "passed-review"
+}

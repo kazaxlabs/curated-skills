@@ -1,0 +1,65 @@
+[
+  {
+    "id": "nextjs.env.no-secret-in-public-prefix",
+    "title": "No secret-looking name under NEXT_PUBLIC_",
+    "severity": "block",
+    "applies_when": { "all": ["framework=nextjs"] },
+    "check": { "type": "grep", "pattern": "NEXT_PUBLIC_\\w*(SECRET|PRIVATE|TOKEN|PASSWORD|SERVICE_ACCOUNT)", "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs", ".env.example", ".env*.example"], "expect": "absent" },
+    "remediation": "Only public values may use the NEXT_PUBLIC_ prefix; move secrets to server-only env.",
+    "sources": [ { "title": "Next.js production checklist — Environment Variables", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nextjs-best-practices"]
+  },
+  {
+    "id": "nextjs.server-actions.auth-inside",
+    "title": "Server Actions verify auth inside each action",
+    "severity": "block",
+    "applies_when": { "all": ["framework=nextjs"] },
+    "check": { "type": "review", "prompt": "Open every file with 'use server'. Confirm each exported action checks authentication and authorization itself, not via layout/page/proxy alone, and that DB access sits in a server-only data access layer." },
+    "remediation": "Add an auth check at the top of each action; mark the DAL module `server-only`.",
+    "sources": [ { "title": "Next.js production checklist — Security: Server Actions", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nextjs-best-practices", "nextjs-app-router-patterns"]
+  },
+  {
+    "id": "nextjs.csp.present",
+    "title": "A Content-Security-Policy is configured",
+    "severity": "warn",
+    "applies_when": { "all": ["framework=nextjs"] },
+    "check": { "type": "grep", "pattern": "Content-Security-Policy", "include": ["next.config.*", "middleware.ts", "middleware.js", "proxy.ts", "src/middleware.ts", "vercel.json"], "expect": "present" },
+    "remediation": "Add a CSP via headers() in next.config or a nonce-based CSP in middleware.",
+    "sources": [
+      { "title": "Next.js production checklist — Content Security Policy", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 },
+      { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 }
+    ],
+    "skills": ["nextjs-best-practices"]
+  },
+  {
+    "id": "nextjs.headers.security",
+    "title": "Security headers configured in next.config or hosting config",
+    "severity": "warn",
+    "applies_when": { "all": ["framework=nextjs"] },
+    "check": { "type": "grep", "pattern": "Strict-Transport-Security|X-Content-Type-Options|frame-ancestors|X-Frame-Options", "include": ["next.config.*", "vercel.json", "middleware.ts", "proxy.ts"], "expect": "present" },
+    "remediation": "Add HSTS, nosniff, frame-ancestors, Referrer-Policy, Permissions-Policy via headers().",
+    "sources": [ { "title": "OWASP HTTP Headers Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html", "tier": "standards", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nextjs-best-practices"]
+  },
+  {
+    "id": "nextjs.error-pages.present",
+    "title": "Custom error and not-found pages exist",
+    "severity": "info",
+    "applies_when": { "all": ["framework=nextjs"] },
+    "check": { "type": "file_exists", "paths": ["app/error.tsx", "app/global-error.tsx", "src/app/error.tsx", "src/app/global-error.tsx", "pages/_error.tsx", "pages/500.tsx"] },
+    "remediation": "Add app/global-error.tsx and app/not-found.tsx.",
+    "sources": [ { "title": "Next.js production checklist — Error Handling, Global Error UI", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nextjs-best-practices"]
+  },
+  {
+    "id": "nextjs.metadata.robots",
+    "title": "robots and sitemap configured; admin routes noindex",
+    "severity": "info",
+    "applies_when": { "all": ["framework=nextjs"] },
+    "check": { "type": "file_exists", "paths": ["app/robots.ts", "app/robots.txt", "src/app/robots.ts", "public/robots.txt"] },
+    "remediation": "Add app/robots.ts and app/sitemap.ts; set robots noindex metadata on admin routes.",
+    "sources": [ { "title": "Next.js production checklist — Sitemaps and Robots", "url": "https://nextjs.org/docs/app/guides/production-checklist", "tier": "vendor", "fetched": "2026-10-27", "status": 200 } ],
+    "skills": ["nextjs-best-practices", "seo-technical"]
+  }
+]

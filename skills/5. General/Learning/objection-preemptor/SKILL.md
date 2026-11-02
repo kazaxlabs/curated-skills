@@ -1,6 +1,6 @@
 ---
 name: objection-preemptor
-description: "One sentence - what this skill does and when to invoke it"
+description: "Surfaces the doubts and resistance a specific customer will have before they arise and neutralises them in the copy or pitch. Use when a funnel, sales page or pitch keeps losing people on the same objections."
 risk: safe
 source: community
 date_added: "2026-04-04"

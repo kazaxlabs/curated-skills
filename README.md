@@ -54,6 +54,8 @@ Only the skills listed in `core.json` (about two dozen, each with a recorded che
 node scripts/install-core.mjs            # preview: lists every change, changes nothing
 node scripts/install-core.mjs --apply    # backs up to ~/.curated-skills-backup/, then installs
 node scripts/install-core.mjs --check    # exit 0 when the installed set matches core.json
+node scripts/install-core.mjs --all --apply  # install the whole library instead (every skill in the / menu)
+node scripts/search-skills.mjs "stripe tips"  # search Core + Archive from a shell
 node scripts/build-skill-index.js        # rebuild the search index after adding or moving skills
 ```
 

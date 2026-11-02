@@ -8,7 +8,8 @@
 //   node scripts/install-core.mjs --apply            # back up, then make the changes
 //   node scripts/install-core.mjs --check            # exit 1 unless the installed state matches core.json
 //   node scripts/install-core.mjs --restore <file>   # put back what an --apply removed, from its backup file
-//   --home <dir>                                     # user home to act on (default: os.homedir()); for scratch tests
+//   --all                                            # with any mode: install every skill in the library, not just the Core
+//   --home <dir>                                    # user home to act on (default: os.homedir()); for scratch tests
 //
 // Targets (under --home):
 //   .claude/skills/             Claude Code: one link per Core skill
@@ -23,8 +24,9 @@
 // Exit: 0 ok, 1 --check mismatch or unresolved Core skill, 2 bad arguments.
 
 import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, readlinkSync, rmdirSync, statSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { homedir } from 'node:os';
-import { join, resolve, sep } from 'node:path';
+import { dirname, join, resolve, sep } from 'node:path';
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i === -1 ? d : args[i + 1]; };
@@ -63,7 +65,13 @@ const byName = new Map();
 })(skillsRoot);
 const unresolved = core.filter((n) => !byName.has(n));
 if (unresolved.length) { console.error(`Core skills with no folder in ${skillsRoot}: ${unresolved.join(', ')}`); process.exit(1); }
-const want = new Map(core.map((n) => [n, byName.get(n)]));
+// --all: the owner's choice to install the whole library (every git-tracked skill, linked by folder name), so the
+// slash menu can word-match any skill. Core membership still records which skills are verified.
+const want = args.includes('--all')
+  ? new Map(execFileSync('git', ['ls-files', '-z', '--', 'skills'], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+    .split('\0').filter((f) => /\/SKILL\.md$/.test(f) && !f.startsWith('skills/_index/'))
+    .map((f) => { const dir = join(repoRoot, dirname(f)); return [dir.split(sep).at(-1), dir]; }))
+  : new Map(core.map((n) => [n, byName.get(n)]));
 
 // ---------- plan ----------
 const actions = [];   // { kind, path, to?, note }
@@ -125,7 +133,7 @@ if (mode === 'check') {
   const stubs = pending.filter((a) => a.quiet).length;
   if (stubs) console.log(`pending: ${stubs} generated command stub(s)`);
   for (const n of notes) console.log(`note: ${n}`);
-  console.log(pending.length ? `install-core --check: ${pending.length} change(s) pending` : `install-core --check: ok (${want.size} Core skills installed)`);
+  console.log(pending.length ? `install-core --check: ${pending.length} change(s) pending` : `install-core --check: ok (${want.size} ${args.includes('--all') ? 'library' : 'Core'} skills installed)`);
   process.exit(pending.length ? 1 : 0);
 }
 

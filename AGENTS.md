@@ -153,9 +153,10 @@ The ordering rules that apply regardless of which stages run:
 Two tiers. **Core**: the skills in `core.json`, installed for Claude Code and Antigravity by
 `scripts/install-core.mjs`; invoke them by name. Membership is evidence-gated (`core.json`
 `rules`); `provisional` members must earn a Verification within 60 days. **Archive**: every other
-skill in `skills/`, not installed. When no Core skill fits, call the `collab` MCP `search_skills`
-tool (or search `skills/_index/skills-index.json`), then read the returned `SKILL.md` by path and
-follow it. Do not load skills speculatively.
+skill in `skills/`; installed too only when the owner runs `install-core.mjs --all`. When no Core skill fits, or a named skill is not installed, load
+`skill-router`: it searches Core and Archive (`collab` MCP `search_skills`, or
+`node scripts/search-skills.mjs`), then loads the chosen `SKILL.md` by path and follows it.
+Do not load skills speculatively.
 
 | Trigger | Load |
 | :--- | :--- |

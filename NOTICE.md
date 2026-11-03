@@ -81,6 +81,74 @@ do not copy code from them into closed-source work without reading their terms.
   under CC BY-SA 4.0, a share-alike licence.
 - `fix-review` (removed 2026-10-31): its source is trailofbits/skills, licensed CC BY-SA 4.0 (share-alike).
 
+## mattpocock/skills (MIT)
+
+Imported 2026-11-03 from https://github.com/mattpocock/skills at commit `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`, byte for byte
+(`SKILL.md` and every tracked file in each skill folder, including `agents/openai.yaml`). Scanned before import:
+hygiene.mjs, detect-secrets 1.5.0 and Cisco skill-scanner 2.3.2 (rules) found nothing beyond one false positive; a
+Claude Haiku 5.5 review rated all 39 upstream skills benign. Not imported yet (name already used here, or shadows a
+Claude Code built-in): grill-me, grill-with-docs, handoff, improve-codebase-architecture, prototype,
+setup-matt-pocock-skills, tdd, triage, code-review.
+
+| Skill folder here | Upstream path |
+| :--- | :--- |
+| `5. General/Learning/ask-matt` | `skills/engineering/ask-matt` |
+| `1. Architecture/Patterns/codebase-design` | `skills/engineering/codebase-design` |
+| `4. Development/Tools/diagnosing-bugs` | `skills/engineering/diagnosing-bugs` |
+| `1. Architecture/Analysis/domain-modeling` | `skills/engineering/domain-modeling` |
+| `4. Development/Tools/implement-spec` | `skills/engineering/implement-spec` |
+| `4. Development/Tools/implement` | `skills/engineering/implement` |
+| `9. Workflow/Git/pr` | `skills/engineering/pr` |
+| `5. General/Learning/research` | `skills/engineering/research` |
+| `9. Workflow/Project Mgmt/retro` | `skills/engineering/retro` |
+| `9. Workflow/Project Mgmt/to-spec` | `skills/engineering/to-spec` |
+| `9. Workflow/Project Mgmt/to-tickets` | `skills/engineering/to-tickets` |
+| `1. Architecture/Analysis/wayfinder` | `skills/engineering/wayfinder` |
+| `5. General/Other/wizard` | `skills/engineering/wizard` |
+| `5. General/Productivity/chief-of-staff` | `skills/in-progress/chief-of-staff` (upstream marks it in progress) |
+| `9. Workflow/Project Mgmt/claude-handoff` | `skills/in-progress/claude-handoff` (upstream marks it in progress) |
+| `5. General/Productivity/loop-me` | `skills/in-progress/loop-me` (upstream marks it in progress) |
+| `4. Development/Tools/setup-ts-deep-modules` | `skills/in-progress/setup-ts-deep-modules` (upstream marks it in progress) |
+| `1. Architecture/Agents/software-factory` | `skills/in-progress/software-factory` (upstream marks it in progress) |
+| `5. General/Communication/writing-beats` | `skills/in-progress/writing-beats` (upstream marks it in progress) |
+| `5. General/Communication/writing-fragments` | `skills/in-progress/writing-fragments` (upstream marks it in progress) |
+| `5. General/Communication/writing-shape` | `skills/in-progress/writing-shape` (upstream marks it in progress) |
+| `9. Workflow/Git/git-guardrails-claude-code` | `skills/misc/git-guardrails-claude-code` |
+| `4. Development/Tools/migrate-to-shoehorn` | `skills/misc/migrate-to-shoehorn` |
+| `5. General/Learning/scaffold-exercises` | `skills/misc/scaffold-exercises` |
+| `9. Workflow/Git/setup-pre-commit` | `skills/misc/setup-pre-commit` |
+| `9. Workflow/Project Mgmt/grilling` | `skills/productivity/grilling` |
+| `5. General/Learning/teach` | `skills/productivity/teach` |
+| `9. Workflow/Project Mgmt/to-questionnaire` | `skills/productivity/to-questionnaire` |
+| `5. General/Productivity/wait-what` | `skills/productivity/wait-what` |
+| `5. General/Communication/writing-for-agents` | `skills/productivity/writing-for-agents` |
+
+Licence (upstream `LICENSE`, reproduced as MIT requires):
+
+```
+MIT License
+
+Copyright (c) 2026 Matt Pocock
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
 ## Other third-party code
 
 Code files that keep their own copyright headers (for example vendored scripts inside a skill)

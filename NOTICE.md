@@ -86,9 +86,21 @@ do not copy code from them into closed-source work without reading their terms.
 Imported 2026-11-03 from https://github.com/mattpocock/skills at commit `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`, byte for byte
 (`SKILL.md` and every tracked file in each skill folder, including `agents/openai.yaml`). Scanned before import:
 hygiene.mjs, detect-secrets 1.5.0 and Cisco skill-scanner 2.3.2 (rules) found nothing beyond one false positive; a
-Claude Haiku 5.5 review rated all 39 upstream skills benign. Not imported yet (name already used here, or shadows a
-Claude Code built-in): grill-me, grill-with-docs, handoff, improve-codebase-architecture, prototype,
-setup-matt-pocock-skills, tdd, triage, code-review.
+Claude Haiku 5.5 review rated all 39 upstream skills benign. On the owner's instruction (2026-11-02) the remaining 9 were also imported. They replace earlier copies with
+the same names, three of them Core skills (see `core.json`), and `code-review` shares its name with a Claude Code
+built-in command:
+
+| Skill folder here | Upstream path | Note |
+| :--- | :--- | :--- |
+| `9. Workflow/Project Mgmt/grill-me` | `skills/productivity/grill-me` | replaced an earlier, unattributed copy (7 file(s)) |
+| `9. Workflow/Project Mgmt/grill-with-docs` | `skills/engineering/grill-with-docs` | replaced an earlier, unattributed copy (9 file(s)) |
+| `9. Workflow/Project Mgmt/handoff` | `skills/productivity/handoff` | replaced an earlier, unattributed copy (7 file(s)) |
+| `1. Architecture/Analysis/improve-codebase-architecture` | `skills/engineering/improve-codebase-architecture` | replaced an earlier, unattributed copy (4 file(s)) |
+| `4. Development/Tools/prototype` | `skills/engineering/prototype` | replaced an earlier, unattributed copy (3 file(s)) |
+| `5. General/Learning/setup-matt-pocock-skills` | `skills/engineering/setup-matt-pocock-skills` | replaced an earlier, unattributed copy (6 file(s)) |
+| `4. Development/Tools/tdd` | `skills/engineering/tdd` | replaced an earlier, unattributed copy (6 file(s)) |
+| `9. Workflow/Project Mgmt/triage` | `skills/engineering/triage` | replaced an earlier, unattributed copy (3 file(s)) |
+| `4. Development/Tools/code-review` | `skills/engineering/code-review` | new |
 
 | Skill folder here | Upstream path |
 | :--- | :--- |

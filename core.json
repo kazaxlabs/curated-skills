@@ -26,12 +26,11 @@
     },
     {
       "name": "grill-me",
-      "status": "passed-review",
+      "status": "provisional",
       "basis": "demand: 17 invocations, 7 projects (plus 4 under the old folder name)",
-      "passedReview": "2026-10-31",
       "record": "verifications/grill-me.json",
-      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.34",
-      "invocation": "auto"
+      "invocation": "name",
+      "replaced": "2026-11-02: replaced by mattpocock/skills 4ae2317 on the owner's instruction, without a side-by-side Verification; the earlier result (passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.34) applied to the previous text and stays in verifications/grill-me.json. Upstream marks it manual-only (disable-model-invocation)."
     },
     {
       "name": "planner",
@@ -44,12 +43,11 @@
     },
     {
       "name": "grill-with-docs",
-      "status": "passed-review",
+      "status": "provisional",
       "basis": "demand: 10 invocations, 3 projects (plus 8 under the old folder name)",
       "record": "verifications/grill-with-docs.json",
-      "result": "passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.38",
-      "passedReview": "2026-10-31",
-      "invocation": "auto"
+      "invocation": "name",
+      "replaced": "2026-11-02: replaced by mattpocock/skills 4ae2317 on the owner's instruction, without a side-by-side Verification; the earlier result (passed-review: trigger 3/3, false fire 0/3, value with 1 / without 0 (delta 1), $0.38) applied to the previous text and stays in verifications/grill-with-docs.json. Upstream marks it manual-only (disable-model-invocation)."
     },
     {
       "name": "multi-agent-brainstorming",
@@ -215,12 +213,11 @@
     },
     {
       "name": "handoff",
-      "status": "passed-review",
+      "status": "provisional",
       "basis": "nominated: collab workflow tool",
       "record": "verifications/handoff.json",
-      "result": "passed-review: invocable 3/3, false fire 0/3, value with 0.67 / without 0 (delta 0.67), $0.37",
       "invocation": "name",
-      "passedReview": "2026-10-31"
+      "replaced": "2026-11-02: replaced by mattpocock/skills 4ae2317 on the owner's instruction, without a side-by-side Verification; the earlier result (passed-review: invocable 3/3, false fire 0/3, value with 0.67 / without 0 (delta 0.67), $0.37) applied to the previous text and stays in verifications/handoff.json. Upstream marks it manual-only (disable-model-invocation)."
     },
     {
       "name": "pre-deployment-review",

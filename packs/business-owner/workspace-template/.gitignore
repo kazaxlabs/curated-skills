@@ -1,0 +1,16 @@
+# Fichiers techniques propres à chaque appareil : jamais versionnés.
+.claude/cache/
+.claude/settings.local.json
+CLAUDE.local.md
+node_modules/
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Les secrets ne vont jamais dans ce dépôt.
+.env
+.env.*
+
+# Le dossier .claude/ (rôles, crochets, compétences installées) est versionné :
+# les sessions infonuagiques en ont besoin.
+!.claude/

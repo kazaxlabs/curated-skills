@@ -1,0 +1,102 @@
+{
+  "pack": "business-owner",
+  "version": 1,
+  "targets": {
+    "claudeai": "One ZIP per skill, uploaded by hand in claude.ai (Customize > Skills). Kept to a lean high-value set: each one is a manual upload for the owner.",
+    "workspace": "Installed into the owner's private workspace repo at .claude/skills by scripts/install-pack.mjs, then committed.",
+    "computer": "Installed into ~/.claude/skills on the owner's computer by scripts/install-pack.mjs."
+  },
+  "defaults": {
+    "exclude": ["evals/"]
+  },
+  "skills": [
+    { "name": "business-profile-intake", "group": "harness", "source": "skills/2. Business/Strategy/business-profile-intake", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "evidence-gate", "group": "harness", "source": "skills/5. General/Productivity/evidence-gate", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "plain-language-summary", "group": "harness", "source": "skills/5. General/Communication/plain-language-summary", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "decision-log", "group": "harness", "source": "skills/1. Architecture/Decision Making/decision-log", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "meeting-minutes", "group": "productivity", "source": "skills/5. General/Productivity/meeting-minutes", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "local-seo-service-business", "group": "foundations", "source": "skills/2. Business/Marketing/local-seo-service-business", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "skills-francization", "group": "harness", "source": "skills/5. General/Tools/skills-francization", "targets": ["workspace", "computer"] },
+    { "name": "project-folder", "group": "productivity", "source": "skills/9. Workflow/Project Mgmt/project-folder", "targets": ["workspace", "computer"] },
+    { "name": "document-search", "group": "productivity", "source": "skills/5. General/Productivity/document-search", "targets": ["workspace", "computer"] },
+    { "name": "work-plan-files", "group": "productivity", "source": "skills/9. Workflow/Project Mgmt/work-plan-files", "targets": ["workspace", "computer"] },
+    { "name": "context-in-files", "group": "productivity", "source": "skills/5. General/Productivity/context-in-files", "targets": ["workspace", "computer"] },
+    { "name": "handoff-note", "group": "productivity", "source": "skills/9. Workflow/Project Mgmt/handoff-note", "targets": ["workspace", "computer"] },
+
+    { "name": "product-marketing-context", "group": "foundations", "source": "skills/2. Business/Marketing/product-marketing-context", "targets": ["workspace", "computer"] },
+    {
+      "name": "content-strategy", "group": "foundations", "source": "skills/5. General/Other/content-strategy", "targets": ["workspace", "computer"],
+      "transforms": [
+        { "type": "strip-link", "target": "../../../tools/integrations/sanity.md", "why": "dead link to the upstream repo's tools/ folder, absent here" },
+        { "type": "strip-link", "target": "../../../tools/integrations/contentful.md", "why": "dead link to the upstream repo's tools/ folder, absent here" },
+        { "type": "strip-link", "target": "../../../tools/integrations/strapi.md", "why": "dead link to the upstream repo's tools/ folder, absent here" }
+      ]
+    },
+    { "name": "pricing-strategy", "group": "foundations", "source": "skills/2. Business/Sales/pricing-strategy", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "competitive-landscape", "group": "foundations", "source": "skills/2. Business/Strategy/competitive-landscape", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "customer-psychographic-profiler", "group": "foundations", "source": "skills/2. Business/Sales/customer-psychographic-profiler", "targets": ["workspace", "computer"] },
+    { "name": "jobs-to-be-done-analyst", "group": "foundations", "source": "skills/5. General/Learning/jobs-to-be-done-analyst", "targets": ["workspace", "computer"] },
+    { "name": "seo-plan", "group": "foundations", "source": "skills/1. Architecture/Analysis/seo-plan", "targets": ["workspace", "computer"] },
+    { "name": "marketing-psychology", "group": "foundations", "source": "skills/2. Business/Marketing/marketing-psychology", "targets": ["workspace", "computer"] },
+    { "name": "page-cro", "group": "foundations", "source": "skills/5. General/Other/page-cro", "targets": ["workspace", "computer"] },
+    { "name": "form-cro", "group": "foundations", "source": "skills/5. General/Other/form-cro", "targets": ["workspace", "computer"] },
+    { "name": "referral-program", "group": "foundations", "source": "skills/3. Data-AI/Other/referral-program", "targets": ["workspace", "computer"] },
+    { "name": "trust-calibrator", "group": "foundations", "source": "skills/7. Security/Other/trust-calibrator", "targets": ["workspace", "computer"] },
+    { "name": "social-proof-architect", "group": "foundations", "source": "skills/5. General/Learning/social-proof-architect", "targets": ["workspace", "computer"] },
+    { "name": "price-psychology-strategist", "group": "foundations", "source": "skills/5. General/Learning/price-psychology-strategist", "targets": ["workspace", "computer"] },
+    { "name": "kotler-macro-analyzer", "group": "foundations", "source": "skills/2. Business/Marketing/kotler-macro-analyzer", "targets": ["workspace", "computer"] },
+    { "name": "osterwalder-canvas-architect", "group": "foundations", "source": "skills/2. Business/Strategy/osterwalder-canvas-architect", "targets": ["workspace", "computer"] },
+    { "name": "lead-magnets", "group": "foundations", "source": "skills/5. General/Communication/lead-magnets", "targets": ["workspace", "computer"] },
+    { "name": "ad-creative", "group": "copywriting", "source": "skills/8. Testing/Other/ad-creative", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "sales-enablement", "group": "foundations", "source": "skills/2. Business/Sales/sales-enablement", "targets": ["workspace", "computer"] },
+    { "name": "objection-preemptor", "group": "copywriting", "source": "skills/5. General/Learning/objection-preemptor", "targets": ["workspace", "computer"] },
+    { "name": "pitch-psychologist", "group": "copywriting", "source": "skills/5. General/Learning/pitch-psychologist", "targets": ["workspace", "computer"] },
+
+    { "name": "copywriting", "group": "copywriting", "source": "skills/2. Business/Marketing/copywriting", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "copy-editing", "group": "copywriting", "source": "skills/2. Business/Marketing/copy-editing", "targets": ["workspace", "computer"] },
+    { "name": "french-canadian", "group": "copywriting", "source": "skills/5. General/Communication/french-canadian", "targets": ["workspace", "computer"] },
+    { "name": "headline-psychologist", "group": "copywriting", "source": "skills/5. General/Learning/headline-psychologist", "targets": ["workspace", "computer"] },
+    { "name": "subject-line-psychologist", "group": "copywriting", "source": "skills/5. General/Learning/subject-line-psychologist", "targets": ["workspace", "computer"] },
+    { "name": "emotional-arc-designer", "group": "copywriting", "source": "skills/5. General/Learning/emotional-arc-designer", "targets": ["workspace", "computer"] },
+    { "name": "social-post-writer-seo", "group": "copywriting", "source": "skills/2. Business/Marketing/social-post-writer-seo", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "avoid-ai-writing", "group": "copywriting", "source": "skills/3. Data-AI/Other/avoid-ai-writing", "targets": ["claudeai", "workspace", "computer"] },
+    {
+      "name": "the-humanizer", "group": "copywriting", "source": "skills/2. Business/Marketing/the-humanizer", "targets": ["workspace", "computer"],
+      "transforms": [
+        { "type": "remove-section", "heading": "## Auto-Improvement Loop (Run After Every Review)", "why": "SPEC 4.1: Step 6 makes the skill rewrite its own file after every review; removed in the packaged copy only." }
+      ]
+    },
+    { "name": "professional-proofreader", "group": "copywriting", "source": "skills/5. General/Productivity/professional-proofreader", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "beautiful-prose", "group": "copywriting", "source": "skills/3. Data-AI/Other/beautiful-prose", "targets": ["workspace", "computer"] },
+
+    { "name": "theme-factory", "group": "generation", "source": "skills/5. General/Learning/theme-factory", "targets": ["workspace", "computer"] },
+    { "name": "doc-coauthoring", "group": "generation", "source": "skills/8. Testing/Other/doc-coauthoring", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "frontend-slides", "group": "generation", "source": "skills/4. Development/Frontend/frontend-slides", "targets": ["workspace", "computer"] },
+    { "name": "canvas-design", "group": "generation", "source": "skills/5. General/Other/canvas-design", "targets": ["workspace"] },
+
+    { "name": "revops", "group": "automation", "source": "skills/2. Business/Marketing/revops", "targets": ["workspace", "computer"] },
+    { "name": "email-sequence", "group": "automation", "source": "skills/2. Business/Marketing/email-sequence", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "sales-automator", "group": "automation", "source": "skills/2. Business/Marketing/sales-automator", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "zapier-make-patterns", "group": "automation", "source": "skills/1. Architecture/Patterns/zapier-make-patterns", "targets": ["workspace", "computer"] },
+    { "name": "n8n-workflow-patterns", "group": "automation", "source": "skills/1. Architecture/Patterns/n8n-workflow-patterns", "targets": ["workspace", "computer"] },
+
+    { "name": "internal-comms-anthropic", "group": "productivity", "source": "skills/5. General/Learning/internal-comms-anthropic", "targets": ["workspace", "computer"] },
+    { "name": "brainstorming", "group": "productivity", "source": "skills/1. Architecture/Patterns/brainstorming", "targets": ["workspace", "computer"] },
+    { "name": "multi-agent-brainstorming", "group": "productivity", "source": "skills/9. Workflow/Git/multi-agent-brainstorming", "targets": ["workspace", "computer"] },
+    { "name": "bulletmind", "group": "productivity", "source": "skills/5. General/Other/bulletmind", "targets": ["workspace", "computer"] },
+    { "name": "ask-questions-if-underspecified", "group": "harness", "source": "skills/5. General/Other/ask-questions-if-underspecified", "targets": ["workspace", "computer"] },
+    { "name": "rich-elicitation", "group": "harness", "source": "skills/5. General/Other/rich-elicitation", "targets": ["workspace", "computer"] },
+    { "name": "to-questionnaire", "group": "productivity", "source": "skills/9. Workflow/Project Mgmt/to-questionnaire", "targets": ["workspace", "computer"] },
+    { "name": "grilling", "group": "harness", "source": "skills/9. Workflow/Project Mgmt/grilling", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "research", "group": "harness", "source": "skills/5. General/Learning/research", "targets": ["workspace", "computer"] },
+
+    { "name": "data-storytelling", "group": "bi", "source": "skills/3. Data-AI/Other/data-storytelling", "targets": ["claudeai", "workspace", "computer"] },
+    { "name": "kpi-dashboard-design", "group": "bi", "source": "skills/1. Architecture/Decision Making/kpi-dashboard-design", "targets": ["workspace", "computer"] },
+    { "name": "business-analyst", "group": "bi", "source": "skills/3. Data-AI/Other/business-analyst", "targets": ["workspace", "computer"] },
+    { "name": "startup-financial-modeling", "group": "bi", "source": "skills/2. Business/Strategy/startup-financial-modeling", "targets": ["workspace", "computer"] },
+    { "name": "startup-metrics-framework", "group": "bi", "source": "skills/2. Business/Strategy/startup-metrics-framework", "targets": ["workspace", "computer"] },
+    { "name": "market-sizing-analysis", "group": "bi", "source": "skills/2. Business/Strategy/market-sizing-analysis", "targets": ["workspace", "computer"] },
+
+    { "name": "skill-router", "group": "harness", "source": "skills/5. General/Learning/skill-router", "targets": ["computer"] }
+  ]
+}

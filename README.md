@@ -8,6 +8,8 @@
 
 Curated Skills is a modular repository containing over **1,500+ production-grade skills**, universal agent governance contracts (`AGENTS.md`), and a model-agnostic Model Context Protocol server (`collab-mcp`) enabling zero-loss context sharing across heterogeneous AI coding agents (Claude Code, Google Antigravity, Cursor, Windsurf, Cline, Aider, and local LLMs).
 
+**Small-business owners:** the business-owner pack (skills with French names, claude.ai ZIPs, a workspace template) lives in [`packs/business-owner/`](packs/business-owner/).
+
 ---
 
 ## 🏛️ Repository Layout

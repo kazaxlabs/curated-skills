@@ -45,6 +45,12 @@ jobs:
       - name: Check Core Installer Resolves Every Core Skill
         run: node scripts/install-core.mjs --home "$RUNNER_TEMP/empty-home"
 
+      - name: Validate Business-Owner Pack
+        run: node scripts/validate-pack.mjs --strict
+
+      - name: Test Business-Owner Workspace Template
+        run: node packs/business-owner/tests/workspace/run.mjs
+
       - name: Validate Shell Script Syntax
         run: bash -n scripts/inject-global.sh
 

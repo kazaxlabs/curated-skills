@@ -1,0 +1,363 @@
+{
+  "business-profile-intake": {
+    "nom": "profil-entreprise",
+    "description": "Mène une entrevue avec le propriétaire, une fois par entreprise, projet ou dossier, et rédige le fichier profil-entreprise.md : services, territoire desservi, clientèle, offres et fourchettes de prix, ton, limites de conformité et comptes détenus (noms seulement, jamais de mot de passe). À utiliser au démarrage, quand aucun profil n'existe encore ou quand l'entreprise change.",
+    "gdt": "non verifie"
+  },
+  "evidence-gate": {
+    "nom": "verification-des-faits",
+    "description": "Avant une réponse qui repose sur des faits, dresse la liste des affirmations importantes et indique pour chacune si elle est sourcée (page ouverte pendant la séance), mesurée ou supposée. N'invente aucun chiffre, prix ni date et commence par ce qui n'a pas pu être établi. À utiliser avant un conseil, une recommandation ou tout texte qui sera publié ou envoyé.",
+    "gdt": "non verifie"
+  },
+  "plain-language-summary": {
+    "nom": "resume-en-langage-clair",
+    "description": "Ajoute la conclusion « En clair : » en deux à quatre phrases simples, sans jargon, à toute réponse qui change quelque chose, et réécrit en langage clair un texte technique, juridique ou administratif. À utiliser après un changement, une explication technique ou quand un texte est difficile à comprendre.",
+    "gdt": "non verifie"
+  },
+  "decision-log": {
+    "nom": "registre-des-decisions",
+    "description": "Inscrit chaque décision réglée dans registre-des-decisions.md (à la racine ou dans le dossier du projet) : date, décision, raison, options écartées, qui a décidé et date de révision. Consulte le registre avant de rouvrir une question déjà tranchée. À utiliser chaque fois que le propriétaire tranche une question, sans lui demander la permission d'écrire.",
+    "gdt": "non verifie"
+  },
+  "meeting-minutes": {
+    "nom": "compte-rendu-de-reunion",
+    "description": "Rédige le compte rendu d'une réunion à partir d'une transcription ou de notes : sujets abordés, décisions, actions avec responsable et échéance. Les décisions sont aussi ajoutées au registre des décisions et les clients sont désignés par leur numéro de dossier. À utiliser après une réunion, un appel ou une rencontre de chantier.",
+    "gdt": "verifie",
+    "gdt_terme": "compte rendu",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8871623/compte-rendu"
+  },
+  "local-seo-service-business": {
+    "nom": "referencement-local",
+    "description": "Améliore la visibilité locale d'une entreprise de services : fiche d'établissement Google complète, demandes d'avis à de vrais clients avec leur consentement, pages par secteur desservi et cohérence du nom, de l'adresse et du téléphone dans les annuaires. Ne cite un fait qu'avec sa source. À utiliser pour planifier ou vérifier la présence locale en ligne.",
+    "gdt": "non verifie"
+  },
+  "skills-francization": {
+    "nom": "francisation-des-competences",
+    "description": "Après chaque installation ou mise à jour du dépôt curated-skills, installe les compétences du pack sous leur nom français (dossier, nom et description), propose un nom pour celles qui n'en ont pas encore et le fait confirmer par le propriétaire, puis consigne le tout dans noms-appliques.json. Ne touche jamais aux compétences qu'il n'a pas installées. À utiliser à l'installation et à chaque mise à jour.",
+    "gdt": "non verifie"
+  },
+  "project-folder": {
+    "nom": "dossier-de-projet",
+    "description": "Crée le dossier projets/nom-du-projet/ avec la structure standard (README, registre des décisions, tâches, sources, livrables, notes) et lance l'entrevue de profil si le projet n'en a pas. À utiliser au début d'un nouveau projet, d'un nouveau client d'affaires ou d'un nouveau mandat.",
+    "gdt": "non verifie"
+  },
+  "document-search": {
+    "nom": "recherche-documentaire",
+    "description": "Retrouve un document de l'entreprise : lit d'abord connaissances/INDEX.md, puis lance la recherche par mots-clés de l'espace de travail quand l'index ne suffit pas, et tient l'index à jour quand un document est ajouté. À utiliser quand le propriétaire cherche une information déjà notée, un contrat, une soumission ou une note.",
+    "gdt": "non verifie"
+  },
+  "work-plan-files": {
+    "nom": "plan-de-travail",
+    "description": "Tient le plan de travail d'un projet dans trois fichiers : taches.md (étapes et état), constats.md (ce qu'on a appris) et avancement.md (journal). Relit le plan avant chaque décision et le met à jour après chaque étape. À utiliser pour toute tâche de trois étapes ou plus, ou qui s'étale sur plusieurs séances.",
+    "gdt": "non verifie"
+  },
+  "context-in-files": {
+    "nom": "gestion-du-contexte",
+    "description": "Déplace le contenu long (résultats de recherche, documents, données) dans des fichiers et garde memoire/etat-en-cours.md à jour après chaque étape, pour que rien ne se perde quand la conversation est résumée. À utiliser pendant les longues séances de travail et chaque fois qu'un résultat volumineux arrive.",
+    "gdt": "non verifie"
+  },
+  "handoff-note": {
+    "nom": "note-de-passation",
+    "description": "Rédige la note de passation dans memoire/passation.md (où en sont les choses, prochaine étape, questions ouvertes) et ajoute une ligne au journal memoire/journal.md, dans l'espace de travail et non dans un dossier temporaire. À utiliser à la fin d'une séance ou avant de confier la suite à une autre séance.",
+    "gdt": "non verifie"
+  },
+  "product-marketing-context": {
+    "nom": "fiche-de-positionnement",
+    "description": "Crée ou met à jour la fiche de positionnement que les autres compétences de marketing consultent : offre, clientèle cible, problèmes, concurrence, différenciation, objections, vocabulaire des clients, ton et preuves. À utiliser au début d'un projet de marketing pour éviter de tout réexpliquer à chaque tâche.",
+    "gdt": "non verifie"
+  },
+  "content-strategy": {
+    "nom": "strategie-de-contenu",
+    "description": "Planifie la stratégie de contenu : thèmes prioritaires, regroupements de sujets, calendrier éditorial et types de contenu pour attirer des visiteurs et générer des demandes. À utiliser pour décider quoi publier, dans quel ordre et pourquoi.",
+    "gdt": "non verifie"
+  },
+  "pricing-strategy": {
+    "nom": "strategie-de-prix",
+    "description": "Conçoit la stratégie de prix et l'organisation des offres en fonction de la valeur perçue, de la disposition à payer des clients et des objectifs de l'entreprise. À utiliser pour fixer ou revoir des prix, des forfaits ou des options.",
+    "gdt": "verifie",
+    "gdt_terme": "stratégie de prix",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8428970/strategie-de-prix"
+  },
+  "competitive-landscape": {
+    "nom": "analyse-concurrentielle",
+    "description": "Analyse la concurrence avec des cadres reconnus (cinq forces de Porter, carte de positionnement) pour repérer les possibilités de se démarquer et préciser le positionnement. À utiliser avant de fixer une offre, un prix ou un message face aux concurrents.",
+    "gdt": "verifie",
+    "gdt_terme": "analyse concurrentielle",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/507668/analyse-concurrentielle"
+  },
+  "customer-psychographic-profiler": {
+    "nom": "profil-psychographique-client",
+    "description": "Établit le profil psychographique d'un client type : désirs, craintes, identité, valeurs et motivations émotionnelles. À utiliser avant le positionnement, la rédaction ou la conception d'un parcours de vente, quand une simple description de l'auditoire ne suffit pas.",
+    "gdt": "non verifie"
+  },
+  "jobs-to-be-done-analyst": {
+    "nom": "analyse-des-motivations-d-achat",
+    "description": "Dégage les raisons fonctionnelles, émotionnelles et sociales pour lesquelles un client achète un produit ou un service, et le progrès qu'il cherche à faire. À utiliser pour ancrer le positionnement, les messages ou les priorités dans les vraies motivations des clients.",
+    "gdt": "non verifie"
+  },
+  "seo-plan": {
+    "nom": "plan-de-referencement-naturel",
+    "description": "Élabore un plan de référencement naturel pour un site nouveau ou existant : analyse des concurrents, structure des pages, stratégie de contenu et feuille de route par étapes, avec un modèle propre aux entreprises de services locales. À utiliser pour planifier le référencement, et non pour une vérification ponctuelle.",
+    "gdt": "non verifie"
+  },
+  "marketing-psychology": {
+    "nom": "psychologie-du-consommateur",
+    "description": "Applique les sciences du comportement et les modèles mentaux aux décisions de marketing, classés selon leur effet probable et leur facilité d'application. À utiliser pour améliorer une offre, une page ou un message en tenant compte de la façon dont les clients décident.",
+    "gdt": "non verifie"
+  },
+  "page-cro": {
+    "nom": "optimisation-de-la-conversion-des-pages",
+    "description": "Analyse une page web (accueil, service, page de destination) et propose des améliorations pour qu'un plus grand nombre de visiteurs passent à l'action. À utiliser quand une page reçoit des visites mais génère peu de demandes.",
+    "gdt": "non verifie"
+  },
+  "form-cro": {
+    "nom": "optimisation-des-formulaires",
+    "description": "Améliore les formulaires de contact, de demande de soumission ou de prise de rendez-vous pour réduire l'abandon et augmenter les demandes reçues. À utiliser quand un formulaire est long, peu rempli ou souvent abandonné.",
+    "gdt": "non verifie"
+  },
+  "referral-program": {
+    "nom": "programme-de-recommandation",
+    "description": "Conçoit un programme de recommandation ou d'affiliation : moments propices, mécanisme de partage, récompenses et suivi. Les chiffres de référence de la compétence sont des hypothèses à vérifier. À utiliser pour transformer des clients satisfaits en source de nouveaux clients.",
+    "gdt": "non verifie"
+  },
+  "trust-calibrator": {
+    "nom": "diagnostic-de-credibilite",
+    "description": "Diagnostique les freins à la confiance d'un auditoire envers une entreprise ou une offre et prescrit les signaux de crédibilité et la force des affirmations qui conviennent. À utiliser quand un texte promet trop, pas assez, ou manque de preuves.",
+    "gdt": "non verifie"
+  },
+  "social-proof-architect": {
+    "nom": "strategie-de-preuve-sociale",
+    "description": "Choisit, formule et place la bonne preuve sociale (témoignages réels, réalisations, chiffres vérifiés) selon la principale hésitation de l'auditoire. À utiliser quand les preuves existent mais sont mal placées ou peu convaincantes.",
+    "gdt": "non verifie"
+  },
+  "price-psychology-strategist": {
+    "nom": "psychologie-des-prix",
+    "description": "Applique l'économie comportementale à la présentation des prix : prix de référence, gammes, options et perception de la valeur. À utiliser pour concevoir ou revoir une grille de prix, des forfaits ou la présentation d'une soumission.",
+    "gdt": "non verifie"
+  },
+  "kotler-macro-analyzer": {
+    "nom": "diagnostic-strategique",
+    "description": "Réalise un diagnostic stratégique : analyse PESTEL de l'environnement (politique, économique, social, technologique, environnemental, légal) puis synthèse forces, faiblesses, possibilités et menaces. Les données de marché doivent être sourcées. À utiliser avant une planification annuelle ou l'entrée dans un nouveau marché.",
+    "gdt": "non verifie"
+  },
+  "osterwalder-canvas-architect": {
+    "nom": "canevas-de-modele-d-affaires",
+    "description": "Construit et vérifie un canevas de modèle d'affaires en neuf blocs, en commençant par l'adéquation entre la proposition de valeur et les segments de clientèle, puis en contrôlant la cohérence des coûts et des revenus. À utiliser pour concevoir une nouvelle offre ou réexaminer le modèle de l'entreprise.",
+    "gdt": "verifie",
+    "gdt_terme": "canevas de modèle d'affaires",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/26542159/canevas-de-modele-daffaires"
+  },
+  "lead-magnets": {
+    "nom": "aimant-a-prospects",
+    "description": "Planifie un contenu gratuit offert en échange des coordonnées d'un prospect (liste de vérification, guide, gabarit) : choix du format, contenu, page d'inscription et suivi. Les taux de référence de la compétence sont des hypothèses à vérifier. À utiliser pour obtenir des demandes ou des abonnements à l'infolettre.",
+    "gdt": "non verifie"
+  },
+  "ad-creative": {
+    "nom": "creation-publicitaire",
+    "description": "Rédige et décline des annonces publicitaires (titres, descriptions, textes principaux) pour Google, Meta et d'autres plateformes, et propose de nouvelles variantes à partir des résultats obtenus. À utiliser pour lancer une campagne ou renouveler des annonces qui s'essoufflent.",
+    "gdt": "non verifie"
+  },
+  "sales-enablement": {
+    "nom": "materiel-d-aide-a-la-vente",
+    "description": "Prépare le matériel d'aide à la vente : présentations, fiches d'une page, réponses aux objections, scénarios de démonstration et modèles de proposition. À utiliser quand il faut des documents qui aident à conclure une vente.",
+    "gdt": "non verifie"
+  },
+  "objection-preemptor": {
+    "nom": "traitement-des-objections",
+    "description": "Repère les doutes et les résistances d'un client type avant qu'ils se manifestent et y répond dans le texte ou l'argumentaire. À utiliser quand des prospects décrochent toujours sur les mêmes objections.",
+    "gdt": "non verifie"
+  },
+  "pitch-psychologist": {
+    "nom": "argumentaire-de-vente",
+    "description": "Structure un argumentaire de vente ou une présentation pour que l'intérêt se construise avant la solution et que l'offre paraisse évidente. À utiliser pour préparer une rencontre de vente, une présentation à un partenaire ou à un prêteur.",
+    "gdt": "verifie",
+    "gdt_terme": "argumentaire de vente",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8874859/argumentaire-de-vente"
+  },
+  "copywriting": {
+    "nom": "redaction-publicitaire",
+    "description": "Rédige des textes de marketing axés sur la conversion pour les pages web et les courriels, après confirmation du mandat et sans rien inventer (aucun chiffre, avis ni promesse sans fondement). À utiliser pour écrire ou réécrire une page, une annonce ou un courriel promotionnel.",
+    "gdt": "non verifie"
+  },
+  "copy-editing": {
+    "nom": "revision-de-textes-publicitaires",
+    "description": "Révise un texte de marketing existant en plusieurs passes ciblées (clarté, ton, preuves, appel à l'action) tout en conservant le message principal. À utiliser quand un texte existe déjà et doit être amélioré plutôt que réécrit.",
+    "gdt": "non verifie"
+  },
+  "french-canadian": {
+    "nom": "redaction-en-francais-quebecois",
+    "description": "Rédige en français québécois naturel et professionnel, avec le vocabulaire d'ici (courriel, magasiner, fin de semaine), et signale avec tact les anglicismes. À utiliser pour un message aux clients, une publication ou tout texte destiné à un public québécois.",
+    "gdt": "non verifie"
+  },
+  "headline-psychologist": {
+    "nom": "redaction-de-titres",
+    "description": "Rédige des titres qui captent l'attention et donnent envie de lire la suite, sans piège à clics. À utiliser pour les titres d'annonces, de pages web, de courriels ou de publications.",
+    "gdt": "non verifie"
+  },
+  "subject-line-psychologist": {
+    "nom": "objets-de-courriel",
+    "description": "Rédige l'objet des courriels et le texte des notifications pour qu'ils soient ouverts, selon l'auditoire et la place du message dans une séquence, sans sacrifier la clarté. À utiliser pour écrire ou tester des objets de courriel.",
+    "gdt": "non verifie"
+  },
+  "emotional-arc-designer": {
+    "nom": "parcours-emotionnel",
+    "description": "Trace le parcours émotionnel que le lecteur doit suivre dans une page, une séquence de courriels ou une présentation, de son état d'arrivée jusqu'à la décision. À utiliser quand un contenu doit progresser de façon délibérée plutôt qu'aligner des arguments isolés.",
+    "gdt": "non verifie"
+  },
+  "social-post-writer-seo": {
+    "nom": "publications-medias-sociaux",
+    "description": "Rédige des publications claires et engageantes pour Facebook, Instagram et LinkedIn, adaptées à chaque plateforme. À utiliser pour préparer les publications de la semaine, annoncer une réalisation ou une offre.",
+    "gdt": "non verifie"
+  },
+  "avoid-ai-writing": {
+    "nom": "epuration-du-style",
+    "description": "Relit un texte et retire les tournures typiques des textes générés par l'IA (formules creuses, répétitions, structures mécaniques), puis propose une version plus naturelle. À utiliser avant de publier ou d'envoyer un texte rédigé avec l'aide de l'IA.",
+    "gdt": "non verifie"
+  },
+  "the-humanizer": {
+    "nom": "revue-et-reecriture-de-contenu",
+    "description": "Évalue un texte (article, publication, courriel, message) pour repérer les marques d'écriture artificielle, lui attribue une note, puis le réécrit dans une voix authentique selon le type de contenu détecté. À utiliser pour une révision approfondie d'un contenu important avant sa diffusion.",
+    "gdt": "non verifie"
+  },
+  "professional-proofreader": {
+    "nom": "correction-linguistique",
+    "description": "Corrige l'orthographe, la grammaire et la lisibilité d'un texte ou d'un document en respectant la voix de l'auteur, et peut enregistrer une version corrigée du fichier. À utiliser avant d'envoyer, d'imprimer ou de publier un texte.",
+    "gdt": "non verifie"
+  },
+  "beautiful-prose": {
+    "nom": "prose-anglaise-soignee",
+    "description": "Applique un contrat de style strict pour une prose anglaise nette, concrète et sans tics d'IA. À utiliser seulement pour un texte en anglais qui doit être particulièrement soigné.",
+    "gdt": "non verifie"
+  },
+  "theme-factory": {
+    "nom": "theme-graphique",
+    "description": "Propose des thèmes graphiques prêts à l'emploi (palettes de couleurs et paires de polices) et les applique à un document, une présentation ou une page. À utiliser pour donner une apparence cohérente et professionnelle à un livrable.",
+    "gdt": "non verifie"
+  },
+  "doc-coauthoring": {
+    "nom": "redaction-collaborative",
+    "description": "Guide la rédaction d'un document important en trois étapes : collecte du contexte, structure et amélioration section par section, puis test de lecture par un lecteur sans contexte. À utiliser pour une proposition, une procédure, un plan ou tout document que d'autres devront comprendre.",
+    "gdt": "non verifie"
+  },
+  "frontend-slides": {
+    "nom": "diaporama-html",
+    "description": "Crée une présentation (diaporama) en HTML, avec animations, à partir de zéro ou d'un fichier PowerPoint existant. La conversion d'un fichier PowerPoint demande Python. À utiliser pour une présentation à un client, à un partenaire ou à l'équipe.",
+    "gdt": "non verifie"
+  },
+  "canvas-design": {
+    "nom": "creation-visuelle",
+    "description": "Crée des visuels (affiches, illustrations) en PNG ou en PDF à partir d'une démarche esthétique définie au préalable. À utiliser pour un visuel original qui n'est pas une photo des travaux de l'entreprise.",
+    "gdt": "non verifie"
+  },
+  "revops": {
+    "nom": "cycle-de-vie-des-prospects",
+    "description": "Définit les règles du cycle de vie des prospects : étapes, pointage, attribution, passage du marketing à la vente et automatisations dans le logiciel de gestion de la relation client. À utiliser quand des demandes se perdent ou que le suivi des prospects manque de structure.",
+    "gdt": "non verifie"
+  },
+  "email-sequence": {
+    "nom": "sequence-de-courriels",
+    "description": "Conçoit une séquence de courriels (bienvenue, suivi de soumission, relance, fidélisation) : nombre d'envois, délais, contenu et objectif de chaque message. Les envois commerciaux doivent respecter la Loi canadienne anti-pourriel. À utiliser pour automatiser le suivi des prospects et des clients.",
+    "gdt": "non verifie"
+  },
+  "sales-automator": {
+    "nom": "prospection-commerciale",
+    "description": "Rédige des courriels de prospection, des relances, des modèles de proposition et de soumission, des études de cas et des scripts d'appel avec réponses aux objections. À utiliser pour préparer le suivi commercial ou une démarche de prospection, en respectant la Loi canadienne anti-pourriel.",
+    "gdt": "non verifie"
+  },
+  "zapier-make-patterns": {
+    "nom": "automatisation-sans-code",
+    "description": "Conseille sur l'automatisation sans code avec Zapier ou Make : choix des déclencheurs et des actions, structure des scénarios, pièges courants et limites. Les comptes et les connexions sont créés par le propriétaire. À utiliser pour relier des applications et éliminer une tâche répétitive.",
+    "gdt": "non verifie"
+  },
+  "n8n-workflow-patterns": {
+    "nom": "flux-de-travail-n8n",
+    "description": "Propose des modèles éprouvés pour bâtir des flux de travail automatisés dans n8n (réception de formulaires, intégrations, tâches planifiées). Le compte et les connexions sont créés par le propriétaire. À utiliser pour choisir la structure d'une automatisation avant de la construire.",
+    "gdt": "non verifie"
+  },
+  "internal-comms-anthropic": {
+    "nom": "communication-interne",
+    "description": "Rédige les communications internes : bilans hebdomadaires (progrès, plans, problèmes), bulletins d'entreprise, réponses aux questions fréquentes, rapports d'étape et avis d'incident. À utiliser pour informer les associés ou l'équipe de façon brève et claire.",
+    "gdt": "non verifie"
+  },
+  "brainstorming": {
+    "nom": "seance-de-creativite",
+    "description": "Transforme une idée encore floue en conception validée, une question à la fois : objectifs, contraintes, hypothèses explicites, deux ou trois options comparées, puis décisions consignées. À utiliser avant de lancer une nouvelle offre, un nouveau processus ou un outil.",
+    "gdt": "verifie",
+    "gdt_terme": "séance de créativité (terme privilégié de la fiche « séance de réflexion »)",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8368386/seance-de-reflexion"
+  },
+  "multi-agent-brainstorming": {
+    "nom": "revue-de-conception",
+    "description": "Soumet une conception à une revue structurée par des rôles distincts (concepteur, critique, gardien des contraintes, représentant du client) pour faire ressortir les hypothèses cachées et les risques. À utiliser avant d'engager des sommes ou du temps importants dans un projet.",
+    "gdt": "non verifie"
+  },
+  "bulletmind": {
+    "nom": "synthese-en-liste-a-puces",
+    "description": "Transforme un texte, des notes ou une discussion en liste à puces hiérarchisée, claire et concise. À utiliser pour résumer un document, préparer des notes ou structurer une réflexion.",
+    "gdt": "non verifie"
+  },
+  "ask-questions-if-underspecified": {
+    "nom": "questions-de-clarification",
+    "description": "Pose le minimum de questions nécessaires, avec des choix et une option recommandée, avant d'entreprendre une tâche dont l'objectif, la portée ou les contraintes sont flous. À utiliser quand une demande peut s'interpréter de plusieurs façons.",
+    "gdt": "non verifie"
+  },
+  "rich-elicitation": {
+    "nom": "recueil-des-besoins",
+    "description": "Recueille les besoins en une à trois rondes de questions quand plusieurs aspects d'une demande restent ouverts (auditoire, ton, format, portée), puis énonce les hypothèses restantes. À utiliser pour un texte, un plan ou un livrable dont la forme n'est pas encore décidée.",
+    "gdt": "non verifie"
+  },
+  "to-questionnaire": {
+    "nom": "questionnaire-de-decouverte",
+    "description": "Transforme une question que le propriétaire ne peut pas trancher seul en questionnaire à remplir par la bonne personne (comptable, fournisseur, associé), les questions les plus importantes en premier. À utiliser quand une décision dépend de l'information d'un tiers.",
+    "gdt": "non verifie"
+  },
+  "grilling": {
+    "nom": "examen-critique",
+    "description": "Soumet un plan, une décision ou une idée à un examen critique par rondes de questions numérotées, chacune avec une réponse recommandée, jusqu'à ce que toutes les branches soient réglées. À utiliser pour éprouver un plan avant de s'engager.",
+    "gdt": "non verifie"
+  },
+  "research": {
+    "nom": "note-de-recherche",
+    "description": "Fait la recherche d'une question auprès de sources primaires (sites officiels, documentation, textes de loi) et consigne les résultats dans une note en Markdown où chaque affirmation cite sa source. À utiliser pour vérifier une règle, une exigence ou un fait avant de décider.",
+    "gdt": "non verifie"
+  },
+  "data-storytelling": {
+    "nom": "mise-en-recit-des-donnees",
+    "description": "Transforme des chiffres en un récit clair qui mène à une décision : message principal, contexte, constat, recommandation et prochaine étape. À utiliser pour un bilan mensuel, un rapport aux associés ou une présentation à un prêteur.",
+    "gdt": "non verifie"
+  },
+  "kpi-dashboard-design": {
+    "nom": "tableau-de-bord",
+    "description": "Conçoit un tableau de bord de gestion : choix de cinq à sept indicateurs clés, cibles, comparaisons et disposition, du sommaire jusqu'au détail. À utiliser pour suivre la performance de l'entreprise d'un coup d'œil.",
+    "gdt": "verifie",
+    "gdt_terme": "tableau de bord",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8365450/tableau-de-bord"
+  },
+  "business-analyst": {
+    "nom": "analyse-d-affaires",
+    "description": "Analyse les données de l'entreprise pour en tirer des constats et des recommandations : indicateurs, rentabilité, segments de clientèle, entonnoir de vente et scénarios. À utiliser pour répondre à une question d'affaires à partir de chiffres réels.",
+    "gdt": "non verifie"
+  },
+  "startup-financial-modeling": {
+    "nom": "previsions-financieres",
+    "description": "Établit des prévisions financières : revenus, structure de coûts, flux de trésorerie, embauches et trois scénarios (prudent, probable, optimiste). Les hypothèses sont nommées et aucun chiffre n'est inventé. À utiliser pour un budget, une demande de financement ou une décision d'investissement.",
+    "gdt": "verifie",
+    "gdt_terme": "prévisions financières",
+    "gdt_source": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8399289/previsions-financieres"
+  },
+  "startup-metrics-framework": {
+    "nom": "indicateurs-cles-de-performance",
+    "description": "Définit, calcule et suit les indicateurs clés de performance selon le modèle d'affaires : coût d'acquisition d'un client, valeur à vie, rétention, marge et trésorerie. À utiliser pour choisir les bons indicateurs et les calculer correctement.",
+    "gdt": "non verifie"
+  },
+  "market-sizing-analysis": {
+    "nom": "estimation-de-la-taille-du-marche",
+    "description": "Estime la taille du marché (total, accessible, atteignable) par trois méthodes complémentaires, en citant chaque source et en nommant chaque hypothèse. À utiliser avant d'ouvrir un nouveau territoire, de lancer un service ou de présenter un projet à un prêteur.",
+    "gdt": "non verifie"
+  },
+  "skill-router": {
+    "nom": "aiguillage-des-competences",
+    "description": "Trouve la compétence qui convient dans toute la bibliothèque curated-skills (installée ou non), la recommande puis la charge. Demande le dépôt curated-skills et Node sur l'ordinateur. À utiliser quand on ne sait pas quelle compétence employer ou qu'une compétence demandée n'est pas installée.",
+    "gdt": "non verifie"
+  }
+}

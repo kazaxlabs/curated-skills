@@ -1,0 +1,5 @@
+Liste des fournisseurs (fictive, pour les tests)
+
+Fournisseur A : isolant en vrac, livraison le mardi.
+Fournisseur B : équipement de protection, commande en ligne.
+Fournisseur C : location de souffleuse, réservation 48 heures à l'avance.

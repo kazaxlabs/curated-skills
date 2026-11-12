@@ -1,0 +1,14 @@
+#!/bin/sh
+# pre-commit: blocks key-like strings in every staged file, and customer contact details in memoire/.
+# Git runs it once core.hooksPath points at .githooks (the SessionStart hook sets that).
+# The check itself is outils/verifier-secrets.mjs, shared with outils/sauvegarde.mjs.
+# Never bypass it with --no-verify: remove the value instead.
+
+root=$(git rev-parse --show-toplevel) || exit 1
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "Vérification des secrets impossible : Node.js est introuvable. Rien n'a été enregistré." >&2
+  exit 1
+fi
+
+exec node "$root/outils/verifier-secrets.mjs" --staged

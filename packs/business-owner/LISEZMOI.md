@@ -61,5 +61,8 @@ supprimer quoi que ce soit, il vous demande aussi votre accord.
 3. Ajoutez le fichier `profil-entreprise.md` que Claude vous remet aux fichiers du projet.
 4. Écrivez « prochaine étape ».
 
+Vous avez un Mac et un iPhone ? Votre conseiller peut aussi vous envoyer un seul texte à coller dans l'onglet Code de
+l'application Claude sur votre Mac (`installation-mac-iphone.md`) : il installe tout, puis prépare votre iPhone.
+
 À la fin de chaque réponse qui change quelque chose, Claude écrit « En clair : » et résume en quelques phrases
 simples ce qui a changé et pourquoi c'est important pour vous.

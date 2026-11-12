@@ -30,6 +30,7 @@ packs/business-owner/
   SPEC.md                       the build contract
   README.md                     this file (English, for the conseiller)
   LISEZMOI.md                   the owner's guide (Québec French)
+  installation-mac-iphone.md    one text to paste on a Mac: tools, workspace, project package, iPhone
   pack.json, noms-fr.json       skills in the pack, their French names and targets
   instructions/
     instructions-agent.md       Project instructions; imported by the workspace CLAUDE.md
@@ -63,7 +64,10 @@ the one in `instructions/`, then copy it into the template, so the two never dri
 3. The owner runs `profil-entreprise` in the Project and adds `profil-entreprise.md` to the Project files.
 4. The owner says « prochaine étape » and works through the playbooks. He pastes each RAPPORT in the Project and sends
    it to you.
-5. When he wants Claude Code from his phone or computer: `playbooks/espace-de-travail.md`.
+5. When he wants Claude Code from his phone or computer: `playbooks/espace-de-travail.md`. With a Mac and an iPhone,
+   send him instead the one text in [`installation-mac-iphone.md`](installation-mac-iphone.md), filled in: it installs
+   the tools with Homebrew, sets up the workspace and, if you prepared one, a private project package for this client,
+   then the iPhone (Remote Control and cloud sessions).
 
 ## Build the skill ZIPs (claude.ai)
 

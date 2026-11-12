@@ -52,7 +52,8 @@ the French-named skills, push it to a private GitHub repository, and check that 
    - payment, plans and billing;
    - accepting terms and licences, and authorization windows (the Claude GitHub App, Remote Control's one-time
      confirmation);
-   - downloading and running installers, and any system prompt that asks for permission;
+   - downloading and running installers, and any system prompt that asks for permission or the computer's password
+     (on a Mac, `brew install node gh` is the one exception: you may run it after the phase's « oui »);
    - identity verification and legal documents.
 3. **Never handle a secret.** Take no screenshot while a code or token is on screen. Never write a token in a file,
    a command line or a commit. Never commit `.env` files or anything that looks like a key.
@@ -143,8 +144,9 @@ github_app: <installed on: repository list> / session_started: <yes|no> / pack_r
    `git clone --depth 1 https://github.com/kazaxlabs/curated-skills.git /tmp/curated-skills`. If it fails (for example a
    403 that says access « is not enabled for this session »), stop and report the exact message: the conseiller fills
    the repository instead, or the owner takes the computer path.
-3. **Copy** the content of `packs/business-owner/workspace-template/` to the repository root. If a file would replace
-   one that exists (other than an empty README), ask first. Check that `instructions-agent.md` is at the root; if the
+3. **Copy** the content of `packs/business-owner/workspace-template/` to the repository root, hidden folders included
+   (`cp -R <template>/. <repository>/`; a `*` would skip `.claude/` and `.githooks/`). If a file would replace one that
+   exists (other than an empty README), ask first. Check that `instructions-agent.md` is at the root; if the
    template lacks it, copy `packs/business-owner/instructions/instructions-agent.md` there.
 4. **Skills in French.** From the pack folder, run:
 
@@ -213,6 +215,11 @@ auto_save: <on|off>
 
 ### Phase C1: Install the software (Claude in Chrome; the owner clicks)
 
+On a Mac with the Claude desktop app, `../installation-mac-iphone.md` replaces C1 and C2: one text the owner pastes in
+the Code tab, which installs git, Node and the GitHub CLI with Homebrew, then routes to C3 to C7 and sets up the iPhone.
+The desktop app's Code tab needs neither Node nor the CLI ([desktop quickstart](https://code.claude.com/docs/en/desktop-quickstart)),
+but this pack's hooks and scripts run `node`, so Node is still installed.
+
 Open each official page; the owner downloads and runs each installer himself, and accepts each licence:
 1. **Git:** git-scm.com (on Windows, Git for Windows).
 2. **Node.js:** nodejs.org, the LTS version.
@@ -246,7 +253,9 @@ gh_auth: <logged in as <username>|not logged in>
 
 1. Clone the pack next to the workspace folder: `git clone --depth 1 https://github.com/kazaxlabs/curated-skills.git`.
 2. Create the folder `<Fixed-facts folder>/<repository name>`, check it's empty, and copy
-   `packs/business-owner/workspace-template/` into it. Check `instructions-agent.md` as in Phase P3, step 3.
+   `packs/business-owner/workspace-template/` into it with its hidden folders (`cp -R <template>/. <folder>/` on macOS
+   or Linux). Check that `.claude/settings.json` and `.githooks/pre-commit` arrived, and `instructions-agent.md` as in
+   Phase P3, step 3.
 3. In the workspace folder: `git init`, then `git config core.hooksPath .githooks`.
 4. From the pack folder, install the skills twice, for the workspace and for the computer (`~/.claude/skills`;
    `"$HOME/..."` works in both PowerShell and Bash):

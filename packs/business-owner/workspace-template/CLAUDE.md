@@ -13,6 +13,11 @@ repository name follows in brackets.
    open tasks; open the files themselves before you rely on a detail.
 2. No `profil-entreprise.md` yet: run `profil-entreprise` [business-profile-intake] before any substantive work.
 3. The memory index is imported at the end of this file. Open a memory file only when the task needs it.
+4. **On a computer** (`CLAUDE_CODE_REMOTE` isn't `true`): if `git status --porcelain` is empty and the branch has an
+   upstream, run `git pull --ff-only`, so work merged from a phone session arrives. If it fails, say so in one line and
+   go on; never force, reset or rebase.
+5. **In a cloud session** (`CLAUDE_CODE_REMOTE=true`): you work on the session's own branch. Before the session ends,
+   push that branch and tell the owner to merge its pull request, or the computer won't see this session's work.
 
 ## While you work
 

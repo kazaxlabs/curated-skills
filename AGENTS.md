@@ -5,8 +5,10 @@ Antigravity, and any subagent spawned from either.
 
 This file is deliberately short. It holds only what must be true on **every** task.
 Everything task-specific lives in a skill that is loaded on demand — see
-[Routing](#routing). Keep this file under 12,000 characters: Antigravity enforces that
-cap on rules files and silently drops the excess.
+[Routing](#routing). Keep this file under 12,000 characters, this repository's own budget
+(checked by `scripts/validate.js`). It loads into every session, and Antigravity fits all
+always-on rules into one shared token budget, replacing the largest files with a pointer
+when that budget overflows.
 
 ---
 

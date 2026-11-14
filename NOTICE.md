@@ -161,6 +161,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## Business-owner pack (2026-11)
+
+The pack in `packs/business-owner/` (build contract: its `SPEC.md`) selects existing skills, adds twelve
+self-authored ones, and ships packaged copies built by `scripts/pack-skills.mjs` and `scripts/install-pack.mjs`.
+
+**Adapted skills.** Three new skills are adaptations; each credits its original in `metadata` and in a « Credits »
+section of its `SKILL.md`. Licences were checked on 2026-11-11 by opening each upstream `LICENSE`:
+
+| New skill | Adapted from (this repo) | Upstream | Licence and copyright line |
+| :--- | :--- | :--- | :--- |
+| `9. Workflow/Project Mgmt/work-plan-files` | `5. General/Other/planning-with-files` (`source: community`, no attribution in the copy) | https://github.com/OthmanAdi/planning-with-files | MIT, "Copyright (c) 2026 Ahmad Adi" |
+| `5. General/Productivity/context-in-files` | `5. General/Other/filesystem-context` (`source: community`) | https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering | MIT, "Copyright (c) 2025 Context Engineering Agent Skills Contributors" |
+| `9. Workflow/Project Mgmt/handoff-note` | `9. Workflow/Project Mgmt/handoff` | https://github.com/mattpocock/skills | MIT, "Copyright (c) 2026 Matt Pocock" (licence text reproduced above) |
+
+The upstream for `planning-with-files` is identified by its file set (`task_plan.md`, `findings.md`, `progress.md`,
+`init-session.sh`, `check-complete.sh`), which the upstream README lists; the community ledger of Agentic Awesome
+Skills does not list this skill. The upstream for `filesystem-context` is the one that ledger names. The MIT licence
+text reproduced in the mattpocock section above applies to all three adaptations, each under its own copyright line.
+
+**Repair files.** Seventeen files were written where a selected skill referenced a file that did not exist
+(`data-storytelling`, `kpi-dashboard-design`, `business-analyst`, `sales-automator`, `startup-financial-modeling`,
+`market-sizing-analysis`, `beautiful-prose`). Each starts with
+`<!-- Repaired for the business-owner pack, 2026-11; self-authored, not upstream. -->`. They are not upstream content.
+
+**Packaged copies.** The copies the build scripts produce (git-ignored `dist/`, or an owner's skills folder) change
+each skill's frontmatter (French `name` and `description`, other keys moved into `metadata`) and, where `pack.json`
+says so, remove a section or reduce a dead link to its text. Each packaged `SKILL.md` records this in
+`metadata.pack-changes`. Files that carry their own licence (for example `LICENSE.txt` in `theme-factory`,
+`canvas-design` and `internal-comms-anthropic`) are copied unchanged with the skill.
+
 ## Other third-party code
 
 Code files that keep their own copyright headers (for example vendored scripts inside a skill)

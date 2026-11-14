@@ -24,3 +24,6 @@ Thumbs.db
 # Verification harness scratch (plan 5.2)
 .verify/
 **/evals/results/
+
+# Build output (scripts/pack-skills.mjs)
+dist/

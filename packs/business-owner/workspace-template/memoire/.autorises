@@ -1,0 +1,8 @@
+# Coordonnées autorisées dans memoire/
+#
+# La vérification des secrets refuse les courriels, numéros de téléphone, codes postaux et adresses dans
+# memoire/, pour qu'aucune donnée de client n'y soit gardée. Les coordonnées de l'entreprise elle-même
+# peuvent y figurer : inscrivez-les ici, une par ligne (courriel, téléphone, code postal ou adresse).
+# Jamais les coordonnées d'un client.
+#
+# Les lignes qui commencent par # sont des commentaires.

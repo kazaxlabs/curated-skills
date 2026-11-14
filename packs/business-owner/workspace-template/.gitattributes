@@ -1,0 +1,4 @@
+# Les scripts gardent des fins de ligne Unix, même sur Windows : sinon le crochet Git ne s'exécute pas.
+.githooks/* text eol=lf
+*.mjs text eol=lf
+*.sh text eol=lf

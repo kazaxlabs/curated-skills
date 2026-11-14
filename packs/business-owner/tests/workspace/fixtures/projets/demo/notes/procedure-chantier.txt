@@ -1,0 +1,4 @@
+Procédure d'ouverture de chantier (fictive, pour les tests)
+
+Avant d'ouvrir le chantier : vérifier l'accès au grenier, protéger les planchers, installer la ventilation.
+À la fermeture du chantier : nettoyer, prendre les photos de fin, faire signer le bon de travail.

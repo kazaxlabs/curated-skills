@@ -37,3 +37,12 @@ After editing it:
 ```bash
 wc -m AGENTS.md
 ```
+
+`~/.claude/CLAUDE.md` is a generated copy of `AGENTS.md` that Claude Code loads in every
+project. Never edit the copy. After changing `AGENTS.md`, regenerate it, then confirm it
+matches (exit 0):
+
+```bash
+node scripts/sync-contract.mjs --apply
+node scripts/sync-contract.mjs --check
+```

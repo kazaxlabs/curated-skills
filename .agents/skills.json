@@ -1,0 +1,163 @@
+{
+  "entries": [
+    {
+      "path": "skills"
+    },
+    {
+      "path": "skills/1. Architecture/Agents"
+    },
+    {
+      "path": "skills/1. Architecture/Analysis"
+    },
+    {
+      "path": "skills/1. Architecture/Decision Making"
+    },
+    {
+      "path": "skills/1. Architecture/Other"
+    },
+    {
+      "path": "skills/1. Architecture/Patterns"
+    },
+    {
+      "path": "skills/10. Legal"
+    },
+    {
+      "path": "skills/10. Legal/GDPR-Compliance"
+    },
+    {
+      "path": "skills/2. Business/Legal"
+    },
+    {
+      "path": "skills/2. Business/Marketing"
+    },
+    {
+      "path": "skills/2. Business/Operations"
+    },
+    {
+      "path": "skills/2. Business/Other"
+    },
+    {
+      "path": "skills/2. Business/Sales"
+    },
+    {
+      "path": "skills/2. Business/Strategy"
+    },
+    {
+      "path": "skills/2. Business/Strategy/startup-analyst"
+    },
+    {
+      "path": "skills/3. Data-AI/Data Engineering"
+    },
+    {
+      "path": "skills/3. Data-AI/Database"
+    },
+    {
+      "path": "skills/3. Data-AI/LLM-NLP"
+    },
+    {
+      "path": "skills/3. Data-AI/Machine Learning"
+    },
+    {
+      "path": "skills/3. Data-AI/Other"
+    },
+    {
+      "path": "skills/4. Development/API"
+    },
+    {
+      "path": "skills/4. Development/Backend"
+    },
+    {
+      "path": "skills/4. Development/Frontend"
+    },
+    {
+      "path": "skills/4. Development/Frontend/makepad-skills"
+    },
+    {
+      "path": "skills/4. Development/Mobile"
+    },
+    {
+      "path": "skills/4. Development/Other"
+    },
+    {
+      "path": "skills/4. Development/Tools"
+    },
+    {
+      "path": "skills/5. General/Communication"
+    },
+    {
+      "path": "skills/5. General/Learning"
+    },
+    {
+      "path": "skills/5. General/Learning/game-development"
+    },
+    {
+      "path": "skills/5. General/Other"
+    },
+    {
+      "path": "skills/5. General/Other/app-builder"
+    },
+    {
+      "path": "skills/5. General/Productivity"
+    },
+    {
+      "path": "skills/5. General/Tools"
+    },
+    {
+      "path": "skills/6. Infrastructure/Cloud"
+    },
+    {
+      "path": "skills/6. Infrastructure/Containers"
+    },
+    {
+      "path": "skills/6. Infrastructure/DevOps"
+    },
+    {
+      "path": "skills/6. Infrastructure/Observability"
+    },
+    {
+      "path": "skills/6. Infrastructure/Other"
+    },
+    {
+      "path": "skills/7. Security/Compliance"
+    },
+    {
+      "path": "skills/7. Security/Forensic"
+    },
+    {
+      "path": "skills/7. Security/Hacking"
+    },
+    {
+      "path": "skills/7. Security/Other"
+    },
+    {
+      "path": "skills/7. Security/Protection"
+    },
+    {
+      "path": "skills/8. Testing/E2E"
+    },
+    {
+      "path": "skills/8. Testing/Other"
+    },
+    {
+      "path": "skills/8. Testing/Performance"
+    },
+    {
+      "path": "skills/8. Testing/Unit-QA"
+    },
+    {
+      "path": "skills/9. Workflow/Git"
+    },
+    {
+      "path": "skills/9. Workflow/Other"
+    },
+    {
+      "path": "skills/9. Workflow/Project Mgmt"
+    },
+    {
+      "path": "skills/DesignSystems_WireFrames"
+    },
+    {
+      "path": "skills/blender-skills"
+    }
+  ]
+}

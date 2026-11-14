@@ -31,9 +31,21 @@ Everything above applies. These additions are Claude-only.
 
 ## Verifying a change to the contract
  
-`AGENTS.md` must stay under 12,000 characters or Antigravity will drop the excess.
-After editing it:
+`AGENTS.md` must stay under 12,000 characters: the repository's own budget, enforced by
+`scripts/validate.js`. Antigravity's limits are looser but shared. Per antigravity.google/docs/rules
+(checked 2026-11-14), a rules file is truncated past 24,000 bytes, and all always-on rules
+share a 20,000-token budget; on overflow the largest files are replaced by a path-and-description
+pointer. After editing it:
  
 ```bash
 wc -m AGENTS.md
+```
+
+`~/.claude/CLAUDE.md` is a generated copy of `AGENTS.md` that Claude Code loads in every
+project. Never edit the copy. After changing `AGENTS.md`, regenerate it, then confirm it
+matches (exit 0):
+
+```bash
+node scripts/sync-contract.mjs --apply
+node scripts/sync-contract.mjs --check
 ```

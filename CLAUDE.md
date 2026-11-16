@@ -41,9 +41,11 @@ pointer. After editing it:
 wc -m AGENTS.md
 ```
 
-`~/.claude/CLAUDE.md` is a generated copy of `AGENTS.md` that Claude Code loads in every
-project. Never edit the copy. After changing `AGENTS.md`, regenerate it, then confirm it
-matches (exit 0):
+`scripts/sync-contract.mjs` generates three files from `AGENTS.md`. Never edit them by hand:
+`~/.claude/CLAUDE.md` (Claude Code loads it in every project), `~/.gemini/config/GEMINI.md`
+(Antigravity's global rules), and `~/.claude/hooks/evidence.json` (the evidence hook's text,
+built from the `[EG-n]` rules in §2). After changing `AGENTS.md`, regenerate them, then confirm
+they match (exit 0):
 
 ```bash
 node scripts/sync-contract.mjs --apply

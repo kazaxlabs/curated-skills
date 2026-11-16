@@ -218,13 +218,18 @@ server.registerTool(
       };
     }
 
+    // Core skills are installed: head with their slash command. Archive skills have no command
+    // (m.command is null): head with their name; they are loaded by reading skillPath.
     const formatted = matches
-      .map(
-        (m, idx) =>
-          `${idx + 1}. **${m.command}** (${m.name}) — [${m.category}] (score: ${m.score})\n` +
+      .map((m, idx) => {
+        const heading = m.command ?? m.name;
+        const alias = m.name !== m.slug && m.name !== heading ? ` (${m.name})` : '';
+        return (
+          `${idx + 1}. **${heading}**${alias} · ${m.tier} — [${m.category}] (score: ${m.score})\n` +
           `   Path: \`${m.skillPath}\`\n` +
           `   Summary: ${m.summary}`
-      )
+        );
+      })
       .join('\n\n');
 
     return {

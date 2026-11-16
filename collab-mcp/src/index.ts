@@ -96,17 +96,20 @@ server.registerTool(
     description:
       'Create a new handoff file in docs/COLLAB for a scope (e.g. "general" -> HANDOFF.md, ' +
       '"admin-ontology" -> HANDOFF-ADMIN-ONTOLOGY.md, or a one-off dated task slug). ' +
-      'Never overwrites an existing file for that scope — use append_note on an existing one.',
+      'Never overwrites an existing file for that scope — use append_note on an existing one. ' +
+      'The file starts with a status block (ADR-0001) set to status "claimed": starting a handoff claims the scope.',
     inputSchema: z.object({
       scope: z.string().describe('Topic slug, or "general" for the repo-wide handoff.'),
       tool: z.string().describe('Who is writing this, e.g. "claude-code" or "antigravity".'),
       summary: z.string().describe('What this handoff covers, in a sentence or two.'),
+      next: z.string().optional().describe('The single next step, one line.'),
+      links: z.array(z.string()).optional().describe('Related paths: plan file, ADR, decision record.'),
       project_dir: projectDirField,
     }),
   },
-  async ({ scope, tool, summary, project_dir }) => {
+  async ({ scope, tool, summary, next, links, project_dir }) => {
     const { result, footer } = await withProject(project_dir, true, hasCollabDir, (config) =>
-      startHandoff(config, { scope, tool, summary })
+      startHandoff(config, { scope, tool, summary, next, links })
     );
     const text = result.created
       ? `Created ${result.path}`
@@ -118,17 +121,23 @@ server.registerTool(
 server.registerTool(
   'append_note',
   {
-    description: 'Append a new dated, numbered section to an existing docs/COLLAB handoff file.',
+    description:
+      'Append a new dated, numbered section to an existing docs/COLLAB handoff file, and update its status ' +
+      'block (ADR-0001). Fields you leave out keep their current value. Set status "done" when the scope is finished.',
     inputSchema: z.object({
       scope: z.string().describe('Same scope used in start_handoff.'),
       tool: z.string().describe('Who is writing this note.'),
       note: z.string().describe('What happened, what changed, what is next.'),
+      status: z.enum(['claimed', 'active', 'blocked', 'done']).optional().describe('New status for the scope.'),
+      next: z.string().optional().describe('The single next step, one line.'),
+      blockers: z.array(z.string()).optional().describe('Open blockers, one line each. [] clears them.'),
+      links: z.array(z.string()).optional().describe('Related paths: plan file, ADR, decision record.'),
       project_dir: projectDirField,
     }),
   },
-  async ({ scope, tool, note, project_dir }) => {
+  async ({ scope, tool, note, status, next, blockers, links, project_dir }) => {
     const { result, footer } = await withProject(project_dir, false, hasHandoff(scope), (config) =>
-      appendNote(config, { scope, tool, note })
+      appendNote(config, { scope, tool, note, status, next, blockers, links })
     );
     return {
       content: [
@@ -173,7 +182,9 @@ server.registerTool(
       listHandoffs
     );
     const lines = listings.map(
-      (l) => `${l.filename} — "${l.title}" — modified ${l.modifiedISO} — ${l.bytes} bytes`
+      (l) =>
+        `${l.filename} — "${l.title}" — status ${l.status ?? 'none'}${l.next ? ` — next: ${l.next}` : ''}` +
+        ` — modified ${l.modifiedISO} — ${l.bytes} bytes`
     );
     const body = lines.length > 0 ? lines.join('\n') : 'No handoff files yet.';
     return { content: [{ type: 'text', text: body + footer }] };

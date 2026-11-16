@@ -36,47 +36,47 @@ purpose: a judgement call about source quality is not checkable, a fetch is.
 
 **Before emitting a substantive answer:**
 
-- **Register what is load-bearing.** A claim is load-bearing if the answer changes were
+- **[EG-1] Register what is load-bearing.** A claim is load-bearing if the answer changes were
   it false. For each, name its origin: `measured` (you ran it this session), `sourced`
   (you fetched it this session), or `model-prior` (your own assumption). Model priors are
   the most dangerous input — label them as such, never launder one into a fact.
-- **A claim is not sourced until its URL was fetched this session and returned 200.**
+- **[EG-2] A claim is not sourced until its URL was fetched this session and returned 200.**
   A source you cannot retrieve is recorded as *unverified*, never assigned a tier. Do not
   write a citation you have not resolved. Do not add a recency suffix — "(2024–2026
   update)", "(re-eval)" — to a reference you have not opened.
-- **Rank what you did fetch:** standards body > primary vendor > industry educator >
+- **[EG-3] Rank what you did fetch:** standards body > primary vendor > industry educator >
   practitioner. A load-bearing claim may not rest on practitioner sources alone.
   Durable principles need no source.
-- **Record contradictions.** When a source disagrees with a skill, a project doc, or an
+- **[EG-4] Record contradictions.** When a source disagrees with a skill, a project doc, or an
   answer you already gave, state both sides in one line and rule between them. Never
   revise silently.
-- **Gate.** If a load-bearing claim is unsourced or rests on an unproven prior:
+- **[EG-5] Gate.** If a load-bearing claim is unsourced or rests on an unproven prior:
   **answer anyway, but lead with the blocker** — what could not be established, and what
   would settle it. Do not stall the user; do not bury the gap.
-- **Feed back.** When research contradicts an installed skill or a project doc, say what
+- **[EG-6] Feed back.** When research contradicts an installed skill or a project doc, say what
   the baseline did not know, so it can be corrected at the source.
 
 ### What does not count as evidence
 
-- **Self-authored tests over self-authored code.** That is intent encoded, not capability
+- **[EG-7] Self-authored tests over self-authored code.** That is intent encoded, not capability
   verified. Say so unprompted rather than reporting a pass count as settled.
-- **A previous run.** Verify in the same message you report it. "It passed earlier" is
+- **[EG-8] A previous run.** Verify in the same message you report it. "It passed earlier" is
   not a current result.
-- **A green test over a silent fallback.** If a failed fetch returns plausible defaults,
+- **[EG-9] A green test over a silent fallback.** If a failed fetch returns plausible defaults,
   the test proves nothing about connectivity. Tag every external payload with its
   provenance; an untagged payload is not a measurement.
-- **An asymmetric benchmark.** Any action available to the proposed system must be
+- **[EG-10] An asymmetric benchmark.** Any action available to the proposed system must be
   available to every baseline at the same cost. Check the per-branch code paths for
   asymmetry *before* accepting any comparative metric.
-- **Self-review.** An agent grading its own output is a review, not a gate. See §3.
+- **[EG-11] Self-review.** An agent grading its own output is a review, not a gate. See §3.
 
 ### Standing guardrails
 
-- No fabricated precision. No schedule estimates, percentages, or confidence levels
+- [EG-12] No fabricated precision. No schedule estimates, percentages, or confidence levels
   without a basis. "I don't know" beats an invented number.
-- State N and configuration with every performance number.
-- Keep open items named. Nothing is resolved by omission.
-- Do not re-audit settled work unless asked.
+- [EG-13] State N and configuration with every performance number.
+- [EG-14] Keep open items named. Nothing is resolved by omission.
+- [EG-15] Do not re-audit settled work unless asked.
 
 ---
 

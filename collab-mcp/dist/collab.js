@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync, appendFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 /**
@@ -58,6 +58,62 @@ export function scopeToFilename(scope) {
 export function todayISO() {
     return new Date().toISOString().slice(0, 10);
 }
+// ---- Status block (ADR-0001): YAML front matter at the top of each handoff file ----
+// Written in a strict subset so it round-trips without a YAML library: one `key: value` per line,
+// strings as JSON double-quoted strings (valid YAML), lists as JSON flow arrays (valid YAML).
+export const STATUSES = ['claimed', 'active', 'blocked', 'done'];
+const FRONT = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
+/** Reads the status block at the top of a handoff file, or null if there is none. */
+export function readStatus(text) {
+    const m = text.match(FRONT);
+    if (!m)
+        return null;
+    const raw = {};
+    for (const line of m[1].split(/\r?\n/)) {
+        const kv = line.match(/^([a-z_]+):\s*(.*?)\s*(?:#.*)?$/);
+        if (!kv)
+            continue;
+        const v = kv[2];
+        try {
+            raw[kv[1]] = v.startsWith('"') || v.startsWith('[') ? JSON.parse(v) : v;
+        }
+        catch {
+            raw[kv[1]] = v;
+        }
+    }
+    const list = (x) => (Array.isArray(x) ? x.map(String) : []);
+    return {
+        scope: String(raw.scope ?? ''),
+        status: STATUSES.includes(String(raw.status)) ? raw.status : 'active',
+        tool: String(raw.tool ?? ''),
+        updated: String(raw.updated ?? ''),
+        next: String(raw.next ?? ''),
+        blockers: list(raw.blockers),
+        links: list(raw.links),
+    };
+}
+function renderStatus(s) {
+    return [
+        '---',
+        `scope: ${JSON.stringify(s.scope)}`,
+        `status: ${s.status}`,
+        `tool: ${JSON.stringify(s.tool)}`,
+        `updated: ${s.updated}`,
+        `next: ${JSON.stringify(s.next)}`,
+        `blockers: ${JSON.stringify(s.blockers)}`,
+        `links: ${JSON.stringify(s.links)}`,
+        '---',
+        '',
+    ].join('\n');
+}
+function checkStatus(status) {
+    if (status === undefined)
+        return undefined;
+    if (!STATUSES.includes(status)) {
+        throw new Error(`Unknown status "${status}". Use one of: ${STATUSES.join(', ')}.`);
+    }
+    return status;
+}
 /**
  * Creates a new handoff file for `scope` if none exists. Never overwrites an existing one —
  * existing files often have hand-written headers in slightly different shapes, and silently
@@ -74,7 +130,11 @@ export function startHandoff(config, input) {
     const title = input.scope.trim().toLowerCase() === 'general'
         ? `${basename(config.projectDir)} repository`
         : input.scope.trim();
-    const header = [
+    const status = renderStatus({
+        scope: input.scope.trim(), status: 'claimed', tool: input.tool, updated: date,
+        next: input.next ?? '', blockers: [], links: input.links ?? [],
+    });
+    const header = status + [
         `# Handoff — ${title}`,
         '',
         `- **Repo:** \`${config.projectDir}\``,
@@ -100,12 +160,26 @@ export function appendNote(config, input) {
     if (!existsSync(path)) {
         throw new Error(`No handoff file for scope "${input.scope}" (looked for ${filename}). Call start_handoff first.`);
     }
+    const status = checkStatus(input.status); // validate before touching the file
     const content = readFileSync(path, 'utf-8');
     const existingNumbers = [...content.matchAll(/^## (\d+)\./gm)].map((m) => Number(m[1]));
     const nextNumber = existingNumbers.length > 0 ? Math.max(...existingNumbers) + 1 : 1;
     const date = todayISO();
+    // The status block is replaced; the body below it is kept byte-for-byte and the note is appended.
+    // A file written before ADR-0001 gets a block (status: active) on its first new note.
+    const current = readStatus(content);
+    const body = current ? content.replace(FRONT, '') : content;
+    const updated = renderStatus({
+        scope: current?.scope || input.scope.trim(),
+        status: status ?? current?.status ?? 'active',
+        tool: input.tool,
+        updated: date,
+        next: input.next ?? current?.next ?? '',
+        blockers: input.blockers ?? current?.blockers ?? [],
+        links: input.links ?? current?.links ?? [],
+    });
     const section = `\n## ${nextNumber}. ${date} — ${input.tool}\n\n${input.note}\n`;
-    appendFileSync(path, section, 'utf-8');
+    writeFileSync(path, updated + body + section, 'utf-8');
     return { path, sectionNumber: nextNumber };
 }
 export function readLatestHandoff(config, scope) {
@@ -126,12 +200,16 @@ export function listHandoffs(config) {
     const listings = files.map((filename) => {
         const path = join(config.collabDir, filename);
         const stat = statSync(path);
-        const firstLine = readFileSync(path, 'utf-8').split('\n', 1)[0] ?? '';
+        const text = readFileSync(path, 'utf-8');
+        const status = readStatus(text);
+        const heading = text.replace(FRONT, '').split('\n').find((l) => /^#\s/.test(l)) ?? '';
         return {
             filename,
-            title: firstLine.replace(/^#\s*/, '').trim() || filename,
+            title: heading.replace(/^#\s*/, '').trim() || filename,
             modifiedISO: stat.mtime.toISOString(),
             bytes: stat.size,
+            status: status?.status ?? null,
+            next: status ? status.next : null,
         };
     });
     return listings.sort((a, b) => (a.modifiedISO < b.modifiedISO ? 1 : -1));

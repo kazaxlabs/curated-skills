@@ -67,10 +67,14 @@ function loadIndex() {
     }
     if (!cachedIndex) {
         const raw = readFileSync(indexPath, 'utf-8');
+        const parsed = JSON.parse(raw);
+        for (const skill of parsed.skills) {
+            skill._termEntries = Object.entries(skill.terms);
+        }
         cachedIndex = {
             mtimeLoaded: Date.now(),
             skillsRoot: skillsRoot.replace(/\\/g, '/'),
-            data: JSON.parse(raw),
+            data: parsed,
         };
     }
     return cachedIndex;
@@ -90,7 +94,13 @@ export function searchSkills(input) {
     for (const tok of queryTokens) {
         qFreq[tok] = (qFreq[tok] ?? 0) + 1;
     }
-    const qNorm = Math.sqrt(Object.values(qFreq).reduce((acc, v) => acc + v * v, 0)) || 1;
+    const qEntries = Object.entries(qFreq);
+    const qNumKeys = qEntries.length;
+    let qSumSq = 0;
+    for (let i = 0; i < qNumKeys; i++) {
+        qSumSq += qEntries[i][1] * qEntries[i][1];
+    }
+    const qNorm = Math.sqrt(qSumSq) || 1;
     const scored = [];
     for (const skill of data.skills) {
         if (categoryFilter) {
@@ -100,27 +110,30 @@ export function searchSkills(input) {
         }
         let dot = 0;
         let matchedTerms = 0;
-        for (const [qTerm, qWeight] of Object.entries(qFreq)) {
-            const docWeight = skill.terms[qTerm];
+        const terms = skill.terms;
+        const termEntries = skill._termEntries ?? Object.entries(terms);
+        const numTermEntries = termEntries.length;
+        for (let qIdx = 0; qIdx < qNumKeys; qIdx++) {
+            const qTerm = qEntries[qIdx][0];
+            const qWeight = qEntries[qIdx][1];
+            const docWeight = terms[qTerm];
             if (docWeight !== undefined) {
                 dot += qWeight * docWeight;
                 matchedTerms++;
             }
-            else {
-                // Prefix partial match for longer technical stems
-                if (qTerm.length >= 4) {
-                    for (const [dTerm, dWeight] of Object.entries(skill.terms)) {
-                        if (dTerm.startsWith(qTerm) || qTerm.startsWith(dTerm)) {
-                            dot += qWeight * dWeight * 0.45;
-                            matchedTerms += 0.5;
-                            break;
-                        }
+            else if (qTerm.length >= 4) {
+                for (let dIdx = 0; dIdx < numTermEntries; dIdx++) {
+                    const dTerm = termEntries[dIdx][0];
+                    if (dTerm.startsWith(qTerm) || qTerm.startsWith(dTerm)) {
+                        dot += qWeight * termEntries[dIdx][1] * 0.45;
+                        matchedTerms += 0.5;
+                        break;
                     }
                 }
             }
         }
         const cosine = dot / (qNorm * (skill.norm || 1));
-        const coverage = queryTokens.length > 0 ? matchedTerms / Object.keys(qFreq).length : 0;
+        const coverage = queryTokens.length > 0 ? matchedTerms / qNumKeys : 0;
         let slugBoost = 0;
         if (skill.slug === normSlugQuery) {
             slugBoost = 50;

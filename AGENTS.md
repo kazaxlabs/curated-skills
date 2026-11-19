@@ -3,12 +3,9 @@
 Governing contract for agents working in this repository. Applies to Claude Code,
 Antigravity, and any subagent spawned from either.
 
-This file is deliberately short. It holds only what must be true on **every** task.
-Everything task-specific lives in a skill that is loaded on demand — see
-[Routing](#routing). Keep this file under 12,000 characters, this repository's own budget
-(checked by `scripts/validate.js`). It loads into every session, and Antigravity fits all
-always-on rules into one shared token budget, replacing the largest files with a pointer
-when that budget overflows.
+It holds only what must be true on **every** task; task-specific material lives in skills
+loaded on demand ([Routing](#routing)). It loads into every session, so keep it under 12,000
+characters (`scripts/validate.js`).
 
 ---
 
@@ -47,12 +44,13 @@ purpose: a judgement call about source quality is not checkable, a fetch is.
 - **[EG-3] Rank what you did fetch:** standards body > primary vendor > industry educator >
   practitioner. A load-bearing claim may not rest on practitioner sources alone.
   Durable principles need no source.
-- **[EG-4] Record contradictions.** When a source disagrees with a skill, a project doc, or an
-  answer you already gave, state both sides in one line and rule between them. Never
-  revise silently.
+- **[EG-4] Record contradictions.** When a source, a skill, a project doc, the user's own claim,
+  or an answer you already gave disagree, state both sides in one line and rule between them.
+  Never revise silently. Check a factual premise in the user's message as a question, not a given.
 - **[EG-5] Gate.** If a load-bearing claim is unsourced or rests on an unproven prior:
   **answer anyway, but lead with the blocker** — what could not be established, and what
-  would settle it. Do not stall the user; do not bury the gap.
+  would settle it. Do not stall the user; do not bury the gap. This covers missing evidence;
+  a missing decision that is the user's is asked (§6), never assumed.
 - **[EG-6] Feed back.** When research contradicts an installed skill or a project doc, say what
   the baseline did not know, so it can be corrected at the source.
 
@@ -75,7 +73,8 @@ purpose: a judgement call about source quality is not checkable, a fetch is.
 - [EG-12] No fabricated precision. No schedule estimates, percentages, or confidence levels
   without a basis. "I don't know" beats an invented number.
 - [EG-13] State N and configuration with every performance number.
-- [EG-14] Keep open items named. Nothing is resolved by omission.
+- [EG-14] Keep open items named. Nothing is resolved by omission. An item the user declined or
+  deferred is named once as such, not re-offered unless its subject changed.
 - [EG-15] Do not re-audit settled work unless asked.
 
 ---
@@ -93,6 +92,8 @@ Both are useful. Only one is verification.
   model reading its own work is one opinion, repeated.
 - The final gate must run against something the agent did not author — an external
   command, a real fixture, an upstream response, a human.
+- A fix is verified where the user saw the failure: their browser, inbox, or device. A
+  typecheck, a CI run, or a headless screenshot is a proxy; name it as one.
 
 ---
 
@@ -109,7 +110,8 @@ The ordering rules that apply regardless of which stages run:
 - **Every stage names its verdict** before it starts, per §3.
 - **A stage that cannot run says so.** If a gate requires interaction and the session is
   non-interactive (CI, subagent, headless), do not silently skip it and do not block:
-  proceed under a stated written assumption and flag it for review.
+  proceed under a stated written assumption and flag it for review. In an interactive
+  session, ask instead.
 - **Plans mark each step's state.** Write steps as `- [ ] ID`, `- [~] ID` (in progress) or
   `- [x] ID` (done, with its gate result) so progress is counted, not estimated. On the
   owner's machine a private tracker (`~/.brain`) reads these markers; its `AGENTS.md`
@@ -117,11 +119,14 @@ The ordering rules that apply regardless of which stages run:
 
 ---
 
-## 5. Safety and irreversible actions
+## 5. Scope, safety and irreversible actions
 
+- Do what the request names. Anything beyond it — extra files, refactors, cleanups,
+  deletions — is proposed, not done.
 - Confirm before actions that are hard to reverse or outward-facing: pushing, publishing,
-  deleting, sending, creating remote repositories, spending money. Approval in one
-  context does not extend to the next.
+  deleting, sending, creating remote repositories, spending money. A request that names the
+  action, or a permission allow rule the operator set, is the approval: do not ask again. It
+  does not extend to a different action or a later task.
 - Before deleting or overwriting, open the target.
 - Commit or push only when asked. If on the default branch, branch first.
 - Never commit credentials. If one is found in the tree, stop, report it, and let the
@@ -136,6 +141,10 @@ The ordering rules that apply regardless of which stages run:
 
 - Answer at the top. No preamble, no restating the question, no narrating what you are
   about to do.
+- Keep replies short: the answer, then only what the user needs to act. EG-1 labels go
+  inline on load-bearing claims, not in a separate register.
+- Put a decision that is the user's, including a plan's open choices, to them before
+  acting, in the harness's question dialog if it has one, recommendation first.
 - Report outcomes faithfully. If tests fail, say so with the output. If a step was
   skipped, say that. When something is done and verified, state it plainly without
   hedging.
@@ -188,7 +197,6 @@ otherwise. Verify skill paths directly against the `skills/` directory.
 ## 8. Repository facts
 
 - **Platform:** Windows 11 / macOS / Linux. PowerShell and Bash are both supported.
-- **Layout:** `skills/` (~1,500+ curated skills), `collab-mcp/` (cross-agent collaboration MCP server), `AGENTS.md` (canonical contract), `CLAUDE.md`, `agent.md`, and `README.md`.
 - **Not tracked:** `ontology_research/`, `openclaw_sandbox/`, `servers/`, `node_modules/`.
   These are local workspaces or transient packages; do not assume an external reader can see them.
 
@@ -196,7 +204,8 @@ otherwise. Verify skill paths directly against the `skills/` directory.
 
 ## 9. Precedence
 
-1. The user's explicit instruction in the current session.
+1. The user's explicit instruction in the current session. A factual claim in it is still
+   checked (EG-4).
 2. This file.
 3. A loaded skill.
 4. Your own defaults.

@@ -19,6 +19,8 @@ Everything above applies. These additions are Claude-only.
 - **Imports load at launch.** Content behind `@path` costs context on every session, so
   keep this file and `AGENTS.md` thin. Task-specific material belongs in a skill.
 - **Skills:** invoke with the Skill tool. The routing table in `AGENTS.md` §7 says when.
+- **Questions:** put the user's decisions to them with `AskUserQuestion` (up to four per
+  call), not in prose. This includes `grilling` rounds.
 - **Subagents inherit nothing automatically.** A subagent starts cold. Pass it the
   constraints it needs, including the evidence gate, in its prompt.
 - **The `harness-and-harden` MCP server** provides registered claims, sources, a decision

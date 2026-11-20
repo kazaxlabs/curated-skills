@@ -156,12 +156,14 @@ The ordering rules that apply regardless of which stages run:
 
 ## 7. Routing
 
-Two tiers. **Core**: the skills in `core.json`, installed for Claude Code and Antigravity by
-`scripts/install-core.mjs`; invoke them by name. Membership is evidence-gated (`core.json`
+Two tiers. **Core**: the skills in `core.json`. Membership is evidence-gated (`core.json`
 `rules`); `provisional` members must earn a Verification within 60 days. **Archive**: every other
-skill in `skills/`; installed too only when the owner runs `install-core.mjs --all`. When no Core skill fits, or a named skill is not installed, load
-`skill-router`: it searches Core and Archive (`collab` MCP `search_skills`, or
-`node scripts/search-skills.mjs`), then loads the chosen `SKILL.md` by path and follows it.
+skill in `skills/`. A tier is list membership, not install state: a machine has whatever
+`scripts/install-core.mjs` last applied (Core by default, all with `--all`, or an older full
+install), and `install-core.mjs --check` reports the difference. Invoke an installed skill by name.
+When no installed skill fits, or the Skill tool does not know a name, load `skill-router`: it
+searches Core and Archive (`collab` MCP `search_skills`, or `node scripts/search-skills.mjs`), then
+invokes the chosen skill if installed, or loads its `SKILL.md` by path and follows it.
 Do not load skills speculatively.
 
 | Trigger | Load |

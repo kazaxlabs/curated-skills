@@ -1,12 +1,14 @@
 ---
 name: skill-router
-description: "Finds and loads the right skill from the whole Curated Skills library (the installed Core and the ~1,500-skill Archive). Use when the user is unsure which skill to use or where to start, asks 'what can I do', 'which skill fits' or 'where do I start', names a skill or /command that is not installed, or when the Skill tool answers 'Unknown skill'. Recovers context before asking anything, searches the Archive with the collab MCP search_skills tool, recommends, then loads and follows the chosen skill."
+description: "Finds and loads the right skill from the whole Curated Skills library (the Core and the ~1,500-skill Archive). Use when the user is unsure which skill to use or where to start, asks 'what can I do', 'which skill fits' or 'where do I start', names a skill or /command that is not installed, or when the Skill tool answers 'Unknown skill'. Recovers context before asking anything, searches the Archive with the collab MCP search_skills tool, recommends, then loads and follows the chosen skill."
 ---
 
 # Skill Router
 
-Only the **Core** (about two dozen skills) is installed. Every other skill is in the **Archive**:
-searchable, not installed, loaded on demand by path. This router covers both.
+The **Core** is the two dozen skills in `core.json`; the **Archive** is every other skill in the library.
+A skill's `tier` says which list it is in, **not** whether it is installed. What is installed depends on the
+machine (Core only by default, everything after `install-core.mjs --all`, or an older full install);
+`node C:/Curated_Skills/scripts/install-core.mjs --check` reports the difference. This router covers both.
 
 ## Architecture
 
@@ -58,7 +60,8 @@ Call with `limit` 5. Each match returns `name`, `tier` (`core` or `archive`), `s
 `command` (Core only).
 
 ### Step 3: Add installed context
-Also scan the installed skill list in your context (Core and plugin skills) for names that fit.
+Also scan the installed skill list in your context (whatever is installed, plus plugin skills) for names
+that fit.
 Search results and installed skills together form the candidate set. Do not read SKILL.md bodies yet.
 
 ---
@@ -87,7 +90,7 @@ two secondary.
 
 **✅ Primary: `skill-name`** · `core` or `archive`
 *Why:* 1–2 sentences specific to the user's task.
-*Path:* `skillPath` (Archive) or `/skill-name` (Core)
+*Load as:* `/skill-name` if it is in your installed skill list, otherwise `skillPath`
 
 **🔁 Also consider:** up to two, one line each, with tier.
 
@@ -97,8 +100,9 @@ two secondary.
 - Otherwise ask once: "Load `skill-name` and start?"
 
 To load:
-- **Core:** invoke it through the Skill tool (or `/skill-name`).
-- **Archive:** Read its `SKILL.md` at `skillPath` in full; read the files it points to (`references/`,
+- **Installed** (its name is in your installed skill list, whatever its tier): invoke it through the Skill
+  tool (or `/skill-name`).
+- **Not installed** (or the Skill tool answers `Unknown skill`): Read its `SKILL.md` at `skillPath` in full; read the files it points to (`references/`,
   `scripts/`) by path when it asks. Then follow it for the user's task as if the Skill tool had loaded it.
   Say in one line which skill you loaded and its path.
 

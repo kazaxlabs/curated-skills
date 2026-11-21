@@ -122,8 +122,9 @@ server.registerTool('list_handoffs', {
 server.registerTool('search_skills', {
     description: 'Search all ~1,500 Curated Skills (Core and Archive) by task keywords, domain, or skill name. ' +
         'Use it when no installed skill fits the task. Returns the top matches with tier, summary and the ' +
-        'exact SKILL.md path. Core skills are installed and also return their /<skill> command; Archive skills ' +
-        'are not installed, so read the SKILL.md at skillPath and follow it. Reads the index only; changes nothing.',
+        'exact SKILL.md path; Core skills also return their /<skill> command. A tier is list membership, not ' +
+        'install state: if the name is an installed skill, invoke it; otherwise read the SKILL.md at skillPath ' +
+        'and follow it. Reads the index only; changes nothing.',
     inputSchema: z.object({
         query: z
             .string()
